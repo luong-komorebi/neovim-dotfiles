@@ -1,6 +1,6 @@
 " Theme and icons
 " ======================
-Plug 'navarasu/onedark.vim'
+Plug 'navarasu/onedark.nvim'
 Plug 'ryanoasis/vim-devicons'
 
 " Search and jump around
