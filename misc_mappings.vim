@@ -39,5 +39,3 @@ nnoremap gf :vertical wincmd f<CR>
 nmap <silent> cprp :let @+=expand("%")<CR>
 nmap <silent> cpfp :let @+ = expand("%:p")<CR>
 nmap <silent> cpfn :let @+ = expand("%:t")<CR>
-
-
