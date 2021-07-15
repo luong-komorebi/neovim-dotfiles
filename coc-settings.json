@@ -1,0 +1,73 @@
+{
+  "suggest.enablePreview": true,
+  "snippets.ultisnips.directories": [
+    "UltiSnips",
+    "gosnippets/UltiSnips"
+  ],
+  "diagnostic.displayByAle": true,
+  /* "languageserver": { */
+  /*   "golang": { */
+  /*     "command": "gopls", */
+  /*     "rootPatterns": [ */
+  /*       "go.mod", */
+  /*       ".vim/", */
+  /*       ".git/", */
+  /*       ".hg/" */
+  /*     ], */
+  /*     "filetypes": [ */
+  /*       "go" */
+  /*     ], */
+  /*     "initializationOptions": { */
+  /*       "usePlaceholders": true */
+  /*     } */
+  /*   } */
+  /* }, */
+  "coc.preferences.formatOnSaveFiletypes": [
+    "go",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "rust",
+    "typescript",
+    "typescript.tsx",
+    "typescriptreact",
+    "yaml",
+    "ruby"
+  ],
+  "go.disable": {
+    "workspaceFolders": true
+  },
+  "go.goplsArgs": ["-remote=auto", "-logfile", "/tmp/gopls.log"],
+  "go.goplsOptions": {
+    "ui.completion.usePlaceholders": true
+    // add parameter placeholders when completing a function
+  },
+  "suggest.completionItemKindLabels": {
+    "method": "  ",
+    "function": "  ",
+    "variable": "[]",
+    "field": "  ",
+    "typeParameter": "<>",
+    "constant": "  ",
+    "class": " פּ ",
+    "interface": " 蘒",
+    "struct": "  ",
+    "event": "  ",
+    "operator": "  ",
+    "module": "  ",
+    "property": "  ",
+    "enum": " 練",
+    "reference": "  ",
+    "keyword": "  ",
+    "file": "  ",
+    "folder": " ﱮ ",
+    "color": "  ",
+    "unit": " 塞 ",
+    "snippet": "  ",
+    "text": "  ",
+    "constructor": "  ",
+    "value": "  ",
+    "enumMember": "  "
+  },
+  "yank.enableCompletion": false
+}
