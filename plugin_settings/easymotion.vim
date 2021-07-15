@@ -11,7 +11,7 @@ map / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 
 nmap <silent><tab> <Plug>(easymotion-overwin-w)
-nmap s <Plug>(easymotion-s2)
+nmap ss <Plug>(easymotion-s2)
 
 map z/ <Plug>(incsearch-fuzzy-/)
 map z? <Plug>(incsearch-fuzzy-?)

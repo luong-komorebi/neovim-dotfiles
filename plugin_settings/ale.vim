@@ -11,7 +11,7 @@ let g:ale_fixers = {
       \}
 let g:ale_linters = {
       \   'javascript': ['prettier', 'eslint'],
-      \   'ruby': ['rubocop', 'ruby'],
+      \   'ruby': [],
       \   'go': ['golint', 'gofmt'],
       \}
 let g:ale_ruby_rubocop_executable = 'bundle'

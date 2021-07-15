@@ -60,12 +60,13 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'andymass/vim-matchup'
 
-" Testing linting and autocomplete
+" Testing and autocomplete
 " ================================
 Plug 'janko-m/vim-test'
 Plug 'dense-analysis/ale'
 Plug 'honza/vim-snippets'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'neovim/nvim-lspconfig'
 
 " Miscs
 " ======================
