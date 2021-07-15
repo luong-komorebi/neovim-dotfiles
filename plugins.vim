@@ -64,7 +64,6 @@ Plug 'andymass/vim-matchup'
 " ================================
 Plug 'janko-m/vim-test'
 Plug 'dense-analysis/ale'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 Plug 'editorconfig/editorconfig-vim'
 

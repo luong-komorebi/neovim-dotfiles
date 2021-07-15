@@ -17,7 +17,6 @@ let g:vista_default_executive = 'ctags'
 let g:vista_executive_for = {
   \ 'cpp': 'vim_lsp',
   \ 'php': 'vim_lsp',
-  \ 'ruby': 'coc'
   \ }
 
 " Declare the command including the executable and options used to generate ctags output
