@@ -11,7 +11,7 @@ vim.cmd([[autocmd BufWritePost _plugins.lua source init.lua | PackerCompile]])
 return require('packer').startup(function()
   -- Theme and icons
   -- ======================
-  use 'navarasu/onedark.vim'
+  use 'navarasu/onedark.nvim'
   use 'ryanoasis/vim-devicons'
 
   -- Search and jump around
