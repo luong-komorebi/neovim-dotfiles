@@ -2,7 +2,7 @@ let g:vim_home = get(g:, 'vim_home', expand('~/.config/nvim/'))
 let g:netrw_home=$HOME.'/vim'
 lua require"init"
 
-# some old vim configs
+" some old vim configs
 let config_list = [
       \ 'general.vim',
       \ 'visual.vim',
