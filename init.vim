@@ -5,7 +5,6 @@ lua require"init"
 " some old vim configs
 let config_list = [
       \ 'general.vim',
-      \ 'visual.vim',
       \ 'misc_mappings.vim',
       \]
 
