@@ -1,19 +1,6 @@
 local vim = vim
 local gl = require('galaxyline')
-
-local utils = {}
-
-function utils.is_buffer_empty()
-  -- Check whether the current buffer is empty
-  return vim.fn.empty(vim.fn.expand('%:t')) == 1
-end
-
-function utils.has_width_gt(cols)
-  -- Check if the windows width is greater than a given number of columns
-  return vim.fn.winwidth(0) / 2 > cols
-end
-
-local gls = gl.section
+local condition = require('galaxyline.condition')local gls = gl.section
 gl.short_line_list = { 'CHADTree', 'packer', 'vista' }
 
 -- Colors
@@ -29,22 +16,6 @@ local colors = {
   blue = '#8be9fd',
   red = '#ff5555'
 }
-
--- Local helper functions
-local buffer_not_empty = function()
-  return not utils.is_buffer_empty()
-end
-
-local in_git_repo = function ()
-  local vcs = require('galaxyline.provider_vcs')
-  local branch_name = vcs.get_git_branch()
-
-  return branch_name ~= nil
-end
-
-local checkwidth = function()
-  return utils.has_width_gt(40) and in_git_repo()
-end
 
 local mode_color = function()
   local mode_colors = {
@@ -100,14 +71,14 @@ gls.left[2] = {
 gls.left[3] ={
   FileIcon = {
     provider = 'FileIcon',
-    condition = buffer_not_empty,
+    condition = condition.buffer_not_empty,
     highlight = { require('galaxyline.provider_fileinfo').get_file_icon_color, colors.section_bg },
   },
 }
 gls.left[4] = {
   FileName = {
     provider = 'FileName',
-    condition = buffer_not_empty,
+    condition = condition.buffer_not_empty,
     highlight = { colors.fg, colors.section_bg },
     separator = " ",
     separator_highlight = {colors.section_bg, colors.bg},
@@ -116,7 +87,7 @@ gls.left[4] = {
 gls.left[5] = {
   GitIcon = {
     provider = function() return '  ' end,
-    condition = in_git_repo,
+    condition = condition.check_git_workspace,
     highlight = {colors.red,colors.bg},
   }
 }
@@ -130,14 +101,14 @@ gls.left[6] = {
       end
       return branch_name .. " "
     end,
-    condition = in_git_repo,
+    condition = condition.check_git_workspace,
     highlight = {colors.fg,colors.bg},
   }
 }
 gls.left[7] = {
   DiffAdd = {
     provider = 'DiffAdd',
-    condition = checkwidth,
+    condition = condition.hide_in_width,
     icon = ' ',
     highlight = { colors.green, colors.bg },
   }
@@ -145,7 +116,7 @@ gls.left[7] = {
 gls.left[8] = {
   DiffModified = {
     provider = 'DiffModified',
-    condition = checkwidth,
+    condition = condition.hide_in_width,
     icon = ' ',
     highlight = { colors.orange, colors.bg },
   }
@@ -153,7 +124,7 @@ gls.left[8] = {
 gls.left[9] = {
   DiffRemove = {
     provider = 'DiffRemove',
-    condition = checkwidth,
+    condition = condition.hide_in_width,
     icon = ' ',
     highlight = { colors.red,colors.bg },
   }
@@ -161,7 +132,7 @@ gls.left[9] = {
 gls.left[10] = {
   LeftEnd = {
     provider = function() return ' ' end,
-    condition = buffer_not_empty,
+    condition = condition.buffer_not_empty,
     highlight = {colors.section_bg,colors.bg}
   }
 }
@@ -218,14 +189,22 @@ gls.right[2] = {
     separator_highlight = { colors.bg, colors.section_bg },
   },
 }
--- gls.right[3] = {
---   Heart = {
---     provider = function() return ' ' end,
---     highlight = { colors.red, colors.section_bg },
---     separator = ' | ',
---     separator_highlight = { colors.bg, colors.section_bg },
---   }
--- }
+
+-- Mid
+gls.mid[1] = {
+  ShowLspClient = {
+    provider = 'GetLspClient',
+    condition = function ()
+      local tbl = {['dashboard'] = true,['']=true}
+      if tbl[vim.bo.filetype] then
+        return false
+      end
+      return true
+    end,
+    icon = ' LSP:',
+    highlight = {colors.cyan,colors.bg,'bold'}
+  }
+}
 
 -- Short status line
 gls.short_line_left[1] = {
@@ -234,6 +213,14 @@ gls.short_line_left[1] = {
     highlight = { colors.fg, colors.section_bg },
     separator = ' ',
     separator_highlight = { colors.section_bg, colors.bg },
+  }
+}
+
+gls.short_line_left[2] = {
+  SFileName = {
+    provider =  'SFileName',
+    condition = condition.buffer_not_empty,
+    highlight = {colors.fg,colors.bg,'bold'}
   }
 }
 
