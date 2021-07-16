@@ -68,8 +68,6 @@ return require('packer').startup(function()
       -- some optional icons
       requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
-  use 'mengelbrecht/lightline-bufferline'
-  use 'maximbaz/lightline-ale'
 
   -- Passive support
   -- ======================
