@@ -1,15 +1,26 @@
 local vim = vim
 local gl = require('galaxyline')
-local utils = require('utils')
+
+local utils = {}
+
+function utils.is_buffer_empty()
+  -- Check whether the current buffer is empty
+  return vim.fn.empty(vim.fn.expand('%:t')) == 1
+end
+
+function utils.has_width_gt(cols)
+  -- Check if the windows width is greater than a given number of columns
+  return vim.fn.winwidth(0) / 2 > cols
+end
 
 local gls = gl.section
-gl.short_line_list = { 'defx', 'packager', 'vista' }
+gl.short_line_list = { 'CHADTree', 'packager', 'vista' }
 
 -- Colors
 local colors = {
-  bg = '#282a36',
-  fg = '#f8f8f2',
-  section_bg = '#38393f',
+  bg = '#31353f',
+  fg = '#abb2bf',
+  section_bg = '#393f4a',
   yellow = '#f1fa8c',
   cyan = '#8be9fd',
   green = '#50fa7b',
