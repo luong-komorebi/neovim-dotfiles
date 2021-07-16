@@ -60,7 +60,14 @@ return require('packer').startup(function()
       'nvim-lua/plenary.nvim'
     },
   }
-  use 'itchyny/lightline.vim'
+  use {
+    'glepnir/galaxyline.nvim',
+      branch = 'main',
+      -- your statusline
+      config = function() require'my_statusline' end,
+      -- some optional icons
+      requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
   use 'mengelbrecht/lightline-bufferline'
   use 'maximbaz/lightline-ale'
 
