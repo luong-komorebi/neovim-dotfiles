@@ -8,5 +8,5 @@ augroup colorextend
 augroup end
 ]])
 
--- vim.g.onedark_style = 'darker'
+vim.g.onedark_style = 'default'
 require('onedark').setup()

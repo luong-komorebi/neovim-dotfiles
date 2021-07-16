@@ -101,6 +101,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/fzf.vim"
   },
+  ["galaxyline.nvim"] = {
+    loaded = true,
+    path = "/Users/eh/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
+  },
   ["git-messenger.vim"] = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/git-messenger.vim"
@@ -141,18 +145,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/lazygit.nvim"
   },
-  ["lightline-ale"] = {
-    loaded = true,
-    path = "/Users/eh/.local/share/nvim/site/pack/packer/start/lightline-ale"
-  },
-  ["lightline-bufferline"] = {
-    loaded = true,
-    path = "/Users/eh/.local/share/nvim/site/pack/packer/start/lightline-bufferline"
-  },
-  ["lightline.vim"] = {
-    loaded = true,
-    path = "/Users/eh/.local/share/nvim/site/pack/packer/start/lightline.vim"
-  },
   neoformat = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/neoformat"
@@ -165,9 +157,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
-  ["onedark.vim"] = {
+  ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/Users/eh/.local/share/nvim/site/pack/packer/start/onedark.vim"
+    path = "/Users/eh/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+  },
+  ["onedark.nvim"] = {
+    loaded = true,
+    path = "/Users/eh/.local/share/nvim/site/pack/packer/start/onedark.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
