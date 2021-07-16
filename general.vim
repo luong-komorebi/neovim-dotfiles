@@ -1,4 +1,5 @@
 set nocompatible " We're running Vim, not Vi!
+set secure
 syntax on
 filetype on
 filetype indent on
