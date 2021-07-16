@@ -9,5 +9,5 @@ augroup colorextend
   au ColorScheme * call onedark#extend_highlight("Function", { "gui": "italic" })
 augroup end
 
-let g:onedark_style = 'darker'
+" let g:onedark_style = 'darker'
 colorscheme onedark
