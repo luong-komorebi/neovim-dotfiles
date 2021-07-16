@@ -1,5 +1,5 @@
 local execute = vim.api.nvim_command
-vim.cmd([[autocmd BufWritePost lua/lv/init.lua execute 'source '.stdpath('config').'/init.lua' | PackerCompile]])
+vim.cmd([[autocmd BufWritePost init.lua source $MYVIMRC | PackerCompile]])
 
 require('packer').startup(function()
   use 'wbthomason/packer.nvim'
@@ -56,15 +56,12 @@ require('packer').startup(function()
   }
   use {
     'glepnir/galaxyline.nvim',
-      branch = 'main',
-      -- some optional icons
-      requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    branch = 'main',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
   use {
     'romgrk/barbar.nvim',
-      branch = 'main',
-      -- some optional icons
-      requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
 
   -- Passive support
