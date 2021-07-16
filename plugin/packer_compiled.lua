@@ -77,6 +77,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/astronauta.nvim"
   },
+  ["barbar.nvim"] = {
+    loaded = true,
+    path = "/Users/eh/.local/share/nvim/site/pack/packer/start/barbar.nvim"
+  },
   chadtree = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/chadtree"
