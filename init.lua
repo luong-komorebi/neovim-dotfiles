@@ -16,4 +16,4 @@ for _, mod in ipairs(vim.api.nvim_get_runtime_file('lua/lv/plugin/**/*.lua', tru
 end
 
 vim.cmd[[runtime misc_mappings.vim]]
-vim.cmd[[runtime general.vim']]
+vim.cmd[[runtime general.vim]]
