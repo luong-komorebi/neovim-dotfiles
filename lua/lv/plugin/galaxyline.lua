@@ -14,7 +14,7 @@ function utils.has_width_gt(cols)
 end
 
 local gls = gl.section
-gl.short_line_list = { 'CHADTree', 'packager', 'vista' }
+gl.short_line_list = { 'CHADTree', 'packer', 'vista' }
 
 -- Colors
 local colors = {
