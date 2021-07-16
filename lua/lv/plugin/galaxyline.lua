@@ -1,9 +1,9 @@
-local vim = vim
 local gl = require('galaxyline')
-local condition = require('galaxyline.condition')local gls = gl.section
+local condition = require('galaxyline.condition')
+local gls = gl.section
 gl.short_line_list = { 'CHADTree', 'packer', 'vista' }
 
--- Colors
+-- Colors from onedark theme
 local colors = {
   bg = '#31353f',
   fg = '#abb2bf',
@@ -11,6 +11,7 @@ local colors = {
   yellow = '#f1fa8c',
   cyan = '#8be9fd',
   green = '#50fa7b',
+  purple = '#c678dd',
   orange = '#ffb86c',
   magenta = '#ff79c6',
   blue = '#8be9fd',
@@ -29,23 +30,23 @@ table.insert(gls.left, {
     provider = function()
       -- auto change color according the vim mode
       local alias = {
-          n = 'NORM',
-          i = 'INS',
-          c = 'CMD',
-          V = 'VISUAL',
-          [''] = 'VISUAL',
-          v ='VIS',
-          c  = 'CMD',
-          ['r?'] = ':CONFIRM',
-          rm = '--MORE',
-          R  = 'REPLACE',
-          Rv = 'VIRTUAL',
-          s  = 'SELECT',
-          S  = 'SELECT',
-          ['r']  = 'HIT-ENTER',
-          [''] = 'SELECT',
-          t  = 'TERMINAL',
-          ['!']  = 'SHELL',
+        n = 'NORM',
+        i = 'INS',
+        c = 'CMD',
+        V = 'VISUAL',
+        [''] = 'VISUAL',
+        v ='VISUAL',
+        c  = 'CMD',
+        ['r?'] = ':CONFIRM',
+        rm = '--MORE',
+        R  = 'REPLACE',
+        Rv = 'VIRTUAL',
+        s  = 'SELECT',
+        S  = 'SELECT',
+        ['r']  = 'HIT-ENTER',
+        [''] = 'SELECT',
+        t  = 'TERMINAL',
+        ['!']  = 'SHELL',
       }
       local mode_color = {
         n = colors.blue,
@@ -76,13 +77,11 @@ table.insert(gls.left, {
       end
       return alias_mode..' '
     end,
+    highlight = { colors.bg, colors.bg },
+    separator = "  ",
     separator_highlight = { colors.bg, colors.section_bg },
-    highlight = { colors.bg, colors.section_bg },
   },
 })
-
--- print(vim.fn.getbufvar(0, 'ts'))
-vim.fn.getbufvar(0, "ts")
 
 table.insert(gls.left, {
   GitIcon = {
@@ -98,11 +97,16 @@ table.insert(gls.left, {
 
 table.insert(gls.left, {
   GitBranch = {
-    provider = "GitBranch",
+    provider = function()
+      local vcs = require('galaxyline.provider_vcs')
+      local branch_name = vcs.get_git_branch()
+      if (string.len(branch_name) > 28) then
+        return string.sub(branch_name, 1, 25).."..."
+      end
+      return branch_name .. " "
+    end,
     condition = condition.check_git_workspace,
-    separator = " ",
-    separator_highlight = { colors.bg, colors.section_bg },
-    highlight = { colors.grey, colors.section_bg },
+    highlight = { colors.fg, colors.section_bg },
   },
 })
 
@@ -218,20 +222,6 @@ table.insert(gls.right, {
   },
 })
 
-table.insert(gls.right, {
-  TreesitterIcon = {
-    provider = function()
-      if next(vim.treesitter.highlighter.active) ~= nil then
-        return "  "
-      end
-      return ""
-    end,
-    separator = " ",
-    separator_highlight = { colors.bg, colors.section_bg },
-    highlight = { colors.green, colors.section_bg },
-  },
-})
-
 local get_lsp_client = function(msg)
   msg = msg or "LSP Inactive"
   local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
@@ -272,7 +262,7 @@ table.insert(gls.right, {
       end
       return true
     end,
-    icon = " ",
+    icon = "  ",
     highlight = { colors.grey, colors.section_bg },
   },
 })
@@ -280,7 +270,7 @@ table.insert(gls.right, {
 table.insert(gls.right, {
   LineInfo = {
     provider = "LineColumn",
-    separator = "  ",
+    separator = " ",
     separator_highlight = { colors.bg, colors.section_bg },
     highlight = { colors.grey, colors.section_bg },
   },
@@ -296,12 +286,21 @@ table.insert(gls.right, {
 })
 
 table.insert(gls.right, {
-  BufferType = {
-    provider = "FileTypeName",
-    condition = condition.hide_in_width,
+  FileIcon = {
+    provider = 'FileIcon',
     separator = " ",
     separator_highlight = { colors.bg, colors.section_bg },
-    highlight = { colors.section_bg, colors.section_bg },
+    condition = condition.buffer_not_empty,
+    highlight = { require('galaxyline.provider_fileinfo').get_file_icon_color, colors.section_bg },
+   },
+})
+
+table.insert(gls.right, {
+  BufferType = {
+    provider = "FileTypeName",
+    condition = condition.hide_in_width and condition.buffer_not_empty,
+    separator_highlight = { colors.bg, colors.section_bg },
+    highlight = { colors.grey, colors.section_bg },
   },
 })
 
@@ -315,30 +314,17 @@ table.insert(gls.right, {
   },
 })
 
-table.insert(gls.right, {
-  Space = {
-    provider = function()
-      return " "
-    end,
-    separator = " ",
-    separator_highlight = { colors.bg, colors.section_bg },
-    highlight = { colors.grey, colors.section_bg },
-  },
-})
-
-table.insert(gls.short_line_left, {
-  BufferType = {
-    provider = "FileTypeName",
-    separator = " ",
-    separator_highlight = { colors.bg, colors.section_bg },
-    highlight = { colors.section_bg, colors.section_bg },
-  },
-})
-
 table.insert(gls.short_line_left, {
   SFileName = {
     provider = "SFileName",
     condition = condition.buffer_not_empty,
-    highlight = { colors.section_bg, colors.section_bg },
+    highlight = { colors.fg, colors.section_bg },
   },
+})
+
+table.insert(gls.short_line_right, {
+  BufferIcon = {
+    provider= 'BufferIcon',
+    highlight = { colors.fg, colors.section_bg },
+  }
 })
