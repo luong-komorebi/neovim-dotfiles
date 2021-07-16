@@ -1,9 +1,8 @@
 local execute = vim.api.nvim_command
-local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 
 vim.cmd([[autocmd BufWritePost _plugins.lua source init.lua | PackerCompile]])
-return require('packer').startup(function()
+require('packer').startup(function()
+  use 'wbthomason/packer.nvim'
   -- Theme and icons
   -- ======================
   use 'navarasu/onedark.nvim'
@@ -71,6 +70,8 @@ return require('packer').startup(function()
   use 'tmux-plugins/vim-tmux-focus-events'
   use 'jeetsukumaran/vim-indentwise'
   use 'andymass/vim-matchup'
+  -- Autoload load nvim plugins config
+  use 'tjdevries/astronauta.nvim'
 
   -- Testing and autocomplete
   -- ================================

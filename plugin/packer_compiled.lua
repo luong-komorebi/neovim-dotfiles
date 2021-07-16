@@ -73,6 +73,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/ale"
   },
+  ["astronauta.nvim"] = {
+    loaded = true,
+    path = "/Users/eh/.local/share/nvim/site/pack/packer/start/astronauta.nvim"
+  },
   chadtree = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/chadtree"
@@ -164,6 +168,10 @@ _G.packer_plugins = {
   ["onedark.nvim"] = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/onedark.nvim"
+  },
+  ["packer.nvim"] = {
+    loaded = true,
+    path = "/Users/eh/.local/share/nvim/site/pack/packer/start/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
