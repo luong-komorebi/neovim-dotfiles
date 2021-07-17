@@ -1,6 +1,6 @@
 vim.g.netrw_home= os.getenv("HOME") .. '/vim'
 
-if require"luong.first_load"() then
+if require"luong._first_load"() then
   return
 end
 
@@ -11,4 +11,3 @@ require"settings"
 -- legacy
 vim.cmd[[runtime misc_augroup.vim]]
 vim.cmd[[runtime misc_mappings.vim]]
-

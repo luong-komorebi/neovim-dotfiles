@@ -1,21 +1,23 @@
 local gl = require('galaxyline')
 local condition = require('galaxyline.condition')
 local gls = gl.section
+local c = require('onedark.colors')
+
 gl.short_line_list = { 'CHADTree', 'packer', 'vista' }
 
 -- Colors from onedark theme
 local colors = {
-  bg = '#31353f',
-  fg = '#abb2bf',
-  section_bg = '#393f4a',
-  yellow = '#f1fa8c',
-  cyan = '#8be9fd',
-  green = '#50fa7b',
-  purple = '#c678dd',
-  orange = '#ffb86c',
-  magenta = '#ff79c6',
-  blue = '#8be9fd',
-  red = '#ff5555'
+  bg = c.bg0,
+  fg = c.fg,
+  section_bg = c.bg1,
+  cyan = c.cyan,
+  yellow = c.yellow,
+  green = c.green,
+  orange = c.orange,
+  purple = c.purple,
+  magenta = "#FF00FF",
+  red = c.red,
+  blue = c.blue,
 }
 
 table.insert(gls.left, {

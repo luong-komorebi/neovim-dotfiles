@@ -25,7 +25,8 @@ for k, v in pairs(O.default_options) do
 end
 
 -- load all plugins and configs
-require"luong"
+require"luong.plugins"
+require"luong.colorscheme"
 if O.has_sourced then
   return
 else
