@@ -1,12 +1,15 @@
 vim.g.netrw_home= os.getenv("HOME") .. '/vim'
 
-if require"lv.first_load"() then
+if require"luong.first_load"() then
   return
 end
 
-require"lv"
+-- load all modules and configs
+require"default_config"
+require"misc_mappings"
+require"luong"
 
-for _, mod in ipairs(vim.api.nvim_get_runtime_file('lua/lv/plugin/**/*.lua', true)) do
+for _, mod in ipairs(vim.api.nvim_get_runtime_file('lua/luong/plugin/**/*.lua', true)) do
   local ok, msg = pcall(loadfile(mod))
 
   if not ok then
@@ -15,5 +18,7 @@ for _, mod in ipairs(vim.api.nvim_get_runtime_file('lua/lv/plugin/**/*.lua', tru
   end
 end
 
-vim.cmd[[runtime misc_mappings.vim]]
-vim.cmd[[runtime general.vim]]
+require"settings"
+vim.cmd[[runtime misc_augroup.vim]]
+-- vim.cmd[[runtime misc_mappings.vim]]
+
