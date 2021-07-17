@@ -20,5 +20,5 @@ end
 
 require"settings"
 vim.cmd[[runtime misc_augroup.vim]]
--- vim.cmd[[runtime misc_mappings.vim]]
+vim.cmd[[runtime misc_mappings.vim]]
 
