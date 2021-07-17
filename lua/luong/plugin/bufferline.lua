@@ -35,7 +35,7 @@ require('bufferline').setup {
     persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
     -- can also be a table containing 2 custom separators
     -- [focused and unfocused]. eg: { '|', '|' }
-    separator_style = "thick",
+    separator_style = "thin",
     enforce_regular_tabs = false,
     always_show_bufferline = true,
   }
@@ -46,4 +46,4 @@ vim.api.nvim_set_keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", { noremap = tr
 vim.api.nvim_set_keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>c", ":bdelete<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-s>", ":BufferLinePick<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<A-w>", ":only<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<A-w>", ":%bd|e#|bd# <CR>", { noremap = true }) -- close all other buffers but this one
