@@ -1,5 +1,5 @@
 local execute = vim.api.nvim_command
-vim.cmd([[autocmd BufWritePost init.lua source $MYVIMRC | PackerCompile]])
+vim.cmd([[autocmd BufWritePost plugins.lua source $MYVIMRC | PackerCompile]])
 
 require('packer').startup(function()
   use 'wbthomason/packer.nvim'

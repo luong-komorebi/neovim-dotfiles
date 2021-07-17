@@ -7,9 +7,9 @@ gl.short_line_list = { 'CHADTree', 'packer', 'vista' }
 
 -- Colors from onedark theme
 local colors = {
-  bg = c.bg0,
+  bg = c.bg1,
   fg = c.fg,
-  section_bg = c.bg1,
+  section_bg = c.bg0,
   cyan = c.cyan,
   yellow = c.yellow,
   green = c.green,
