@@ -1,6 +1,6 @@
 # Neovim dotfiles
 
-My colleagues keeps asking for my dotfiles. Gotta make it public (however, it may not be up-to-date) :)
+My colleagues keep asking for my dotfiles. Therefore, I thought I would make it public one day :D (although this repo may not be up-to-date since I don't manage nvim configs with this repo)
 
 Branches:
 - Master: init.lua with a lot of new plugins made for nvim 0.5+ only
@@ -8,4 +8,4 @@ Branches:
 - Snapshot: Good old nvim with vim-compatible configurations
   - In this branch, one can find good ways to split `init.vim` into multiple files and load `lua` configs into nvim with minimum hassle.
 
-
+I hope you are inspired or have learned something new during the exploration of this repo :).
