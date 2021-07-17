@@ -23,3 +23,18 @@ end
 for k, v in pairs(O.default_options) do
   vim.opt[k] = v
 end
+
+-- load all plugins and configs
+require"luong"
+if O.has_sourced then
+  return
+else
+  for _, mod in ipairs(vim.api.nvim_get_runtime_file('lua/luong/plugin/**/*.lua', true)) do
+    local ok, msg = pcall(loadfile(mod))
+    if not ok then
+      print("Failed to load: ", mod)
+      print("\t", msg)
+    end
+    O.has_sourced = true
+  end
+end

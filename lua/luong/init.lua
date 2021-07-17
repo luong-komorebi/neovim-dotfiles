@@ -86,7 +86,6 @@ require('packer').startup(function()
 
   -- Miscs
   -- ======================
-  use 'schickling/vim-bufonly'
   use 'vim-scripts/git-time-lapse'
   -- use 'kristijanhusak/vim-carbon-now-sh'
   use {"npxbr/glow.nvim", run = "GlowInstall"}

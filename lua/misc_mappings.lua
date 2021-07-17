@@ -7,7 +7,6 @@ local my_misc_mappings = {
     -- { "zk", "<C-W><C-K>" },
     -- { "zl", "<C-W><C-L>" },
     -- { "zj", "<C-W><C-J>" },
-    -- { "zj", "<C-W><C-J>" },
     -- maaping buffer
     { ",b", ":buffer <C-z><S-Tab>" },
     { ",B", ":sbuffer <C-z><S-Tab>" },
