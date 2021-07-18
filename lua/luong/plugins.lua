@@ -107,7 +107,6 @@ packer.startup(function()
   -- LSP
   use {
     'neovim/nvim-lspconfig',
-    config = [[require"luong.config.nvim-lspconfig"]],
   }
 
   -- LSP Install

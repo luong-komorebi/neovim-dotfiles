@@ -1,79 +1,46 @@
--- TODO: figure out why this don't work
-vim.fn.sign_define(
-  "LspDiagnosticsSignError",
-  { texthl = "LspDiagnosticsSignError", text = "", numhl = "LspDiagnosticsSignError" }
-)
-vim.fn.sign_define(
-  "LspDiagnosticsSignWarning",
-  { texthl = "LspDiagnosticsSignWarning", text = "", numhl = "LspDiagnosticsSignWarning" }
-)
-vim.fn.sign_define(
-  "LspDiagnosticsSignHint",
-  { texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint" }
-)
-vim.fn.sign_define(
-  "LspDiagnosticsSignInformation",
-  { texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation" }
-)
+local execute = vim.api.nvim_command
+local fn = vim.fn
+local lsp_config = {}
+local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
--- local opts = { border = "single" }
--- TODO revisit this
--- local border = {
---   { "🭽", "FloatBorder" },
---   { "▔", "FloatBorder" },
---   { "🭾", "FloatBorder" },
---   { "▕", "FloatBorder" },
---   { "🭿", "FloatBorder" },
---   { "▁", "FloatBorder" },
---   { "🭼", "FloatBorder" },
---   { "▏", "FloatBorder" },
--- }
+fn.sign_define("LspDiagnosticsSignError",
+    {text = "", texthl = "GruvboxRed"})
+fn.sign_define("LspDiagnosticsSignWarning",
+    {text = "", texthl = "GruvboxYellow"})
+fn.sign_define("LspDiagnosticsSignInformation",
+    {text = "", texthl = "GruvboxBlue"})
+fn.sign_define("LspDiagnosticsSignHint",
+    {text = "", texthl = "GruvboxAqua"})
 
--- My font didn't like this :/
--- vim.api.nvim_set_keymap(
---   "n",
---   "gl",
---   '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ show_header = false, border = { { "🭽", "FloatBorder" }, { "▔", "FloatBorder" }, { "🭾", "FloatBorder" }, { "▕", "FloatBorder" }, { "🭿", "FloatBorder" }, { "▁", "FloatBorder" }, { "🭼", "FloatBorder" }, { "▏", "FloatBorder" }, } })<CR>',
---   { noremap = true, silent = true }
--- )
+local kind_symbols = {
+  Text = '',
+  Method = '',
+  Function = 'ƒ',
+  Constructor = '',
+  Variable = '[]',
+  Field = 'ﴲ',
+  Class = '',
+  Interface = 'ﰮ',
+  Module = '',
+  Property = '襁',
+  Unit = '',
+  Value = '',
+  Enum = '練',
+  Keyword = '',
+  Snippet = '',
+  Color = '',
+  File = '',
+  Folder = '',
+  Reference = '',
+  EnumMember = '',
+  Constant = '',
+  Struct = 'ﳤ',
+  Event = '',
+  Operator = '',
+  TypeParameter = '',
+}
 
-vim.cmd "nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>"
-vim.cmd "nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>"
-vim.cmd "nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>"
-vim.cmd "nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>"
-vim.api.nvim_set_keymap(
-  "n",
-  "gl",
-  '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ show_header = false, border = "single" })<CR>',
-  { noremap = true, silent = true }
-)
-
-vim.cmd "nnoremap <silent> gp <cmd>lua require'lsp'.PeekDefinition()<CR>"
-vim.cmd "nnoremap <silent> K :lua vim.lsp.buf.hover()<CR>"
-vim.cmd "nnoremap <silent> <C-p> :lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = O.lsp.popup_border}})<CR>"
-vim.cmd "nnoremap <silent> <C-n> :lua vim.lsp.diagnostic.goto_next({popup_opts = {border = O.lsp.popup_border}})<CR>"
-vim.cmd "nnoremap <silent> <tab> <cmd>lua vim.lsp.buf.signature_help()<CR>"
--- scroll down hover doc or scroll in definition preview
--- scroll up hover doc
-vim.cmd 'command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()'
-
--- Set Default Prefix.
--- Note: You can set a prefix per lsp server in the lv-globals.lua file
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  virtual_text = O.lsp.diagnostics.virtual_text,
-  signs = O.lsp.diagnostics.signs,
-  underline = O.lsp.document_highlight,
-})
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = O.lsp.popup_border,
-})
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = O.lsp.popup_border,
-})
-
--- symbols for autocomplete
 vim.lsp.protocol.CompletionItemKind = {
   "   (Text) ",
   "   (Method)",
@@ -102,6 +69,31 @@ vim.lsp.protocol.CompletionItemKind = {
   "   (TypeParameter)",
 }
 
+-- LSP settings
+-- log file location: $HOME/.local/share/nvim/lsp.log
+vim.lsp.set_log_level("debug")
+local nvim_lsp = require('lspconfig')
+
+-- scroll down hover doc or scroll in definition preview
+-- scroll up hover doc
+vim.cmd 'command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()'
+
+-- Set Default Prefix.
+-- Note: You can set a prefix per lsp server in the lv-globals.lua file
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  virtual_text = O.lsp.diagnostics.virtual_text,
+  signs = O.lsp.diagnostics.signs,
+  underline = O.lsp.document_highlight,
+})
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = O.lsp.popup_border,
+})
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = O.lsp.popup_border,
+})
+
 --[[ " autoformat
 autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 100)
 autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 100)
@@ -113,7 +105,7 @@ local function documentHighlight(client, bufnr)
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_exec(
-      [[
+    [[
       hi LspReferenceRead cterm=bold ctermbg=red guibg=#464646
       hi LspReferenceText cterm=bold ctermbg=red guibg=#464646
       hi LspReferenceWrite cterm=bold ctermbg=red guibg=#464646
@@ -126,8 +118,33 @@ local function documentHighlight(client, bufnr)
       false
     )
   end
+ 
+  --Enable completion triggered by <c-x><c-o>
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'gp', "<cmd>lua require'lsp'.PeekDefinition()<CR>", opts)
+  buf_set_keymap('n', 'sd', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ show_header = false, border = "single" })<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = O.lsp.popup_border}})<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = O.lsp.popup_border}})<CR>', opts)
+  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
-local lsp_config = {}
 
 -- Taken from https://www.reddit.com/r/neovim/comments/gyb077/nvimlsp_peek_defination_javascript_ttserver/
 function lsp_config.preview_location(location, context, before_context)
@@ -194,10 +211,8 @@ function lsp_config.PeekImplementation()
   end
 end
 
-if O.lsp.document_highlight then
-  function lsp_config.common_on_attach(client, bufnr)
-    documentHighlight(client, bufnr)
-  end
+function lsp_config.common_on_attach(client, bufnr)
+  documentHighlight(client, bufnr)
 end
 
 function lsp_config.tsserver_on_attach(client, bufnr)
@@ -251,8 +266,4 @@ require("lv-utils").define_augroups {
   },
 }
 
--- Use a loop to conveniently both setup defined servers
--- and map buffer local keybindings when the language server attaches
--- local servers = {"pyright", "tsserver"}
--- for _, lsp in ipairs(servers) do nvim_lsp[lsp].setup {on_attach = on_attach} end
 return lsp_config
