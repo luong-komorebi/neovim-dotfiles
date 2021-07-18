@@ -141,6 +141,18 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/hop"
   },
+  ["incsearch-easymotion.vim"] = {
+    loaded = true,
+    path = "/Users/eh/.local/share/nvim/site/pack/packer/start/incsearch-easymotion.vim"
+  },
+  ["incsearch-fuzzy.vim"] = {
+    loaded = true,
+    path = "/Users/eh/.local/share/nvim/site/pack/packer/start/incsearch-fuzzy.vim"
+  },
+  ["incsearch.vim"] = {
+    loaded = true,
+    path = "/Users/eh/.local/share/nvim/site/pack/packer/start/incsearch.vim"
+  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim"
@@ -234,6 +246,11 @@ _G.packer_plugins = {
   ["vim-easy-align"] = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/vim-easy-align"
+  },
+  ["vim-easymotion"] = {
+    config = { "require'luong.config.easymotion'" },
+    loaded = true,
+    path = "/Users/eh/.local/share/nvim/site/pack/packer/start/vim-easymotion"
   },
   ["vim-fugitive"] = {
     loaded = true,
@@ -347,18 +364,22 @@ time([[Defining packer_plugins]], false)
 time([[Config for nvim-autopairs]], true)
 require"luong.config.autopairs"
 time([[Config for nvim-autopairs]], false)
+-- Config for: vim-easymotion
+time([[Config for vim-easymotion]], true)
+require'luong.config.easymotion'
+time([[Config for vim-easymotion]], false)
 -- Config for: nvim-bufferline.lua
 time([[Config for nvim-bufferline.lua]], true)
 require"luong.config.bufferline"
 time([[Config for nvim-bufferline.lua]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-require"luong.config.gitsigns"
-time([[Config for gitsigns.nvim]], false)
 -- Config for: nvim-compe
 time([[Config for nvim-compe]], true)
 require"luong.config.nvim-compe"
 time([[Config for nvim-compe]], false)
+-- Config for: lazygit.nvim
+time([[Config for lazygit.nvim]], true)
+require"luong.config.lazygit"
+time([[Config for lazygit.nvim]], false)
 -- Config for: nvim-lspconfig
 time([[Config for nvim-lspconfig]], true)
 require"luong.config.nvim-lspconfig"
@@ -367,23 +388,23 @@ time([[Config for nvim-lspconfig]], false)
 time([[Config for nvim-treesitter]], true)
 require"luong.config.nvim-treesitter"
 time([[Config for nvim-treesitter]], false)
--- Config for: hop
-time([[Config for hop]], true)
-require"luong.config.hop"
-time([[Config for hop]], false)
--- Config for: lazygit.nvim
-time([[Config for lazygit.nvim]], true)
-require"luong.config.lazygit"
-time([[Config for lazygit.nvim]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+require"luong.config.gitsigns"
+time([[Config for gitsigns.nvim]], false)
 -- Config for: galaxyline.nvim
 time([[Config for galaxyline.nvim]], true)
 require"luong.config.galaxyline"
 time([[Config for galaxyline.nvim]], false)
+-- Config for: hop
+time([[Config for hop]], true)
+require"luong.config.hop"
+time([[Config for hop]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'friendly-snippets', 'vim-vsnip'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'vim-vsnip', 'friendly-snippets'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

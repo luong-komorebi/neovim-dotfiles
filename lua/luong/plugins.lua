@@ -25,6 +25,13 @@ packer.startup(function()
     'phaazon/hop.nvim', as = 'hop',
     config = [[require"luong.config.hop"]]
   }
+  use {
+    'easymotion/vim-easymotion',
+    config = [[require'luong.config.easymotion']]
+  }
+  use 'haya14busa/incsearch.vim'
+  use 'haya14busa/incsearch-easymotion.vim'
+  use 'haya14busa/incsearch-fuzzy.vim'
   use 'jesseleite/vim-agriculture'
   use {'junegunn/fzf', dir = '~/.fzf', run = './install --all'}
   use 'junegunn/fzf.vim'

@@ -12,10 +12,8 @@ I hope you are inspired or have learned something new during the exploration of 
 
 Master:
 
-![image](https://user-images.githubusercontent.com/15828926/126062731-f3005a49-8f1f-4bd9-9207-0dc16986fa3a.png)
-![image](https://user-images.githubusercontent.com/15828926/126062736-c9622536-3c3b-4a03-a209-04be33aefbca.png)
 
-Snapshot:
-
+![image](https://user-images.githubusercontent.com/15828926/126064955-8e1ad654-c436-4eb5-a01b-c6c2cdd82e83.png)
+![image](https://user-images.githubusercontent.com/15828926/126064972-3dc2bf3f-4f13-47da-82c7-3ed9077dbdbe.png)
 
 
