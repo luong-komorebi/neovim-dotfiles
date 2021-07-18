@@ -15,11 +15,11 @@ packer.startup(function()
   use 'wbthomason/packer.nvim'
   -- Theme and icons
   -- ======================
-  use 'navarasu/onedark.nvim'
+  use 'folke/tokyonight.nvim'
   use 'ryanoasis/vim-devicons'
 
-  -- Search and jump around
   -- ======================
+  -- Search and jump around
   --  note : to paste in easymotion search mode: use ctrl-r and + or "
   use {
     'phaazon/hop.nvim', as = 'hop',
@@ -72,7 +72,6 @@ packer.startup(function()
   }
   use {
     'glepnir/galaxyline.nvim',
-    branch = 'main',
     config = [[require"luong.config.galaxyline"]],
     requires = {'kyazdani42/nvim-web-devicons', opt = true},
   }
