@@ -112,7 +112,6 @@ O = {
   lang = {
     efm = {},
     emmet = { active = false },
-    svelte = {},
     tailwindcss = {
       active = false,
       filetypes = {
