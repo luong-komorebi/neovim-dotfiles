@@ -35,8 +35,8 @@ O = {
     splitright = true, -- force all vertical splits to go to the right of current window
     swapfile = false, -- creates a swapfile
     termguicolors = true, -- set term gui colors (most terminals support this)
-    title = true, -- set the title of window to the value of the titlestring
-    -- opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
+    title = false, -- set the title of window to the value of the titlestring
+    -- titlestring = "%<%F%=%l/%L - nvim", -- what the title of the window will be set to
     undodir = CACHE_PATH .. "/undo", -- set an undo directory
     undofile = true, -- enable persisten undo
     updatetime = 300, -- faster completion
@@ -154,7 +154,6 @@ end
 require("lang.clang").config()
 require("lang.cmake").config()
 require("lang.css").config()
-require("lang.dart").config()
 require("lang.dockerfile").config()
 require("lang.elixir").config()
 require("lang.go").config()
