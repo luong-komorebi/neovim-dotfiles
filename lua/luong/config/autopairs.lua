@@ -46,4 +46,3 @@ if package.loaded["compe"] then
     map_complete = true, -- it will auto insert `(` after select function or method item
   }
 end
-

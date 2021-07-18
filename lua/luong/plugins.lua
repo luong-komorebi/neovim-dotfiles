@@ -95,9 +95,12 @@ require('packer').startup(function()
   }
   use {
     'hrsh7th/nvim-compe',
-    requires = {{'hrsh7th/vim-vsnip', event='InsertEnter'}, 'hrsh7th/vim-vsnip-integ'},
+    requires = {'hrsh7th/vim-vsnip-integ'},
     config = [[require"luong.config.nvim-compe"]],
   }
+  use { "hrsh7th/vim-vsnip", event = "InsertEnter" }
+  use { "rafamadriz/friendly-snippets", event = "InsertEnter" }
+
   -- Miscs
   -- ======================
   use 'vim-scripts/git-time-lapse'
