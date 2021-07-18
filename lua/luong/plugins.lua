@@ -22,8 +22,8 @@ packer.startup(function()
   -- ======================
   --  note : to paste in easymotion search mode: use ctrl-r and + or "
   use {
-    'ggandor/lightspeed.nvim',
-    config = [[require"luong.config.lightspeed"]]
+    'phaazon/hop.nvim', as = 'hop',
+    config = [[require"luong.config.hop"]]
   }
   use 'jesseleite/vim-agriculture'
   use {'junegunn/fzf', dir = '~/.fzf', run = './install --all'}
