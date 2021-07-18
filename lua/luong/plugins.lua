@@ -1,7 +1,17 @@
 local execute = vim.api.nvim_command
-vim.cmd([[autocmd BufWritePost plugins.lua | PackerCompile]])
+vim.cmd([[autocmd BufWritePost plugins.lua PackerCompile]])
+local packer = require('packer')
 
-require('packer').startup(function()
+packer.init({
+    git = {
+        clone_timeout = 300, -- 5 mins
+    },
+    profile = {
+        enable = true,
+    },
+})
+
+packer.startup(function()
   use 'wbthomason/packer.nvim'
   -- Theme and icons
   -- ======================
@@ -11,10 +21,10 @@ require('packer').startup(function()
   -- Search and jump around
   -- ======================
   --  note : to paste in easymotion search mode: use ctrl-r and + or "
-  use 'easymotion/vim-easymotion'
-  use 'haya14busa/incsearch.vim'
-  use 'haya14busa/incsearch-easymotion.vim'
-  use 'haya14busa/incsearch-fuzzy.vim'
+  use {
+    'ggandor/lightspeed.nvim',
+    config = [[require"luong.config.lightspeed"]]
+  }
   use 'jesseleite/vim-agriculture'
   use {'junegunn/fzf', dir = '~/.fzf', run = './install --all'}
   use 'junegunn/fzf.vim'
