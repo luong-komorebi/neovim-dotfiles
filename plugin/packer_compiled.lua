@@ -348,14 +348,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-compe
-time([[Config for nvim-compe]], true)
-require"luong.config.nvim-compe"
-time([[Config for nvim-compe]], false)
--- Config for: lazygit.nvim
-time([[Config for lazygit.nvim]], true)
-require"luong.config.lazygit"
-time([[Config for lazygit.nvim]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+require"luong.config.gitsigns"
+time([[Config for gitsigns.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require"luong.config.nvim-treesitter"
+time([[Config for nvim-treesitter]], false)
 -- Config for: nvim-autopairs
 time([[Config for nvim-autopairs]], true)
 require"luong.config.autopairs"
@@ -364,18 +364,18 @@ time([[Config for nvim-autopairs]], false)
 time([[Config for nvim-lspconfig]], true)
 require"luong.config.nvim-lspconfig"
 time([[Config for nvim-lspconfig]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-require"luong.config.nvim-treesitter"
-time([[Config for nvim-treesitter]], false)
 -- Config for: nvim-bufferline.lua
 time([[Config for nvim-bufferline.lua]], true)
 require"luong.config.bufferline"
 time([[Config for nvim-bufferline.lua]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-require"luong.config.gitsigns"
-time([[Config for gitsigns.nvim]], false)
+-- Config for: nvim-compe
+time([[Config for nvim-compe]], true)
+require"luong.config.nvim-compe"
+time([[Config for nvim-compe]], false)
+-- Config for: lazygit.nvim
+time([[Config for lazygit.nvim]], true)
+require"luong.config.lazygit"
+time([[Config for lazygit.nvim]], false)
 -- Config for: galaxyline.nvim
 time([[Config for galaxyline.nvim]], true)
 require"luong.config.galaxyline"
