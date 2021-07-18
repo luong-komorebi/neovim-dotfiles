@@ -29,6 +29,9 @@ require'compe'.setup {
   },
 }
 
+-- vsnip snippet dir
+vim.g.vsnip_snippet_dir = O.vsnip_dir
+
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
