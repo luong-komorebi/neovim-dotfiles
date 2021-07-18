@@ -7,7 +7,7 @@ USER = vim.fn.expand "$USER"
 O = {
   leader_key = [[\]],
   has_sourced = false,
-  pallete = {},
+  pallete = {}, -- color pallete to do custom coloring
   vsnip_dir = vim.fn.stdpath "config" .. "/snippets",
   default_options = {
     autoread = true, --  When a file has been detected to have been changed outside of Vim and it has not been changed inside of Vim, automatically read it again.
@@ -64,6 +64,8 @@ O = {
     foldenable = false,
   },
 
+  plugin = {},
+
   lsp = {
     diagnostics = {
       virtual_text = {
@@ -98,8 +100,44 @@ O = {
     -- 'matchit', 'matchparen', 'shada_plugin',
   },
 
+  formatters = {
+    filetype = {},
+  },
+
   user_autocommands = {
     { "Filetype", "qf", "set nobuflisted" },
+  },
+
+  -- TODO move all of this into lang specific files, only require when using
+  lang = {
+    efm = {},
+    emmet = { active = false },
+    svelte = {},
+    tailwindcss = {
+      active = false,
+      filetypes = {
+        "html",
+        "css",
+        "scss",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+      },
+    },
+    tsserver = {
+      -- @usage can be 'eslint' or 'eslint_d'
+      linter = "",
+      diagnostics = {
+        virtual_text = { spacing = 0, prefix = "" },
+        signs = true,
+        underline = true,
+      },
+      formatter = {
+        exe = "prettier",
+        args = {},
+      },
+    },
   },
 }
 
@@ -112,3 +150,30 @@ function O.register_mappings(mappings, default_options)
     end
   end
 end
+
+require("lang.clang").config()
+require("lang.cmake").config()
+require("lang.css").config()
+require("lang.dart").config()
+require("lang.dockerfile").config()
+require("lang.elixir").config()
+require("lang.elm").config()
+require("lang.go").config()
+require("lang.graphql").config()
+require("lang.html").config()
+-- require("lang.java").config() -- not ready and I would not use java
+require("lang.json").config()
+require("lang.kotlin").config()
+require("lang.lua").config()
+require("lang.php").config()
+require("lang.python").config()
+require("lang.ruby").config()
+require("lang.rust").config()
+-- require("lang.scala").config()
+require("lang.sh").config()
+require("lang.svelte").config()
+require("lang.terraform").config()
+require("lang.tex").config()
+require("lang.vim").config()
+require("lang.yaml").config()
+require("lang.zig").config()

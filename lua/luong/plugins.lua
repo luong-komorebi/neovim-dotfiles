@@ -105,10 +105,31 @@ packer.startup(function()
   use 'janko-m/vim-test'
   use 'dense-analysis/ale'
   use 'editorconfig/editorconfig-vim'
+  -- LSP
   use {
     'neovim/nvim-lspconfig',
     config = [[require"luong.config.nvim-lspconfig"]],
   }
+
+  -- LSP Install
+  use {
+    "kabouzeid/nvim-lspinstall",
+    event = "VimEnter",
+    config = [[require"luong.config.lspinstall"]],
+  }
+
+  -- Debugging
+  use {
+    "mfussenegger/nvim-dap",
+    config = [[require"luong.config.nvim-dap"]],
+  }
+
+  -- Debugger management
+  use {
+    "Pocco81/DAPInstall.nvim",
+  }
+
+  -- Completion and snippet
   use {
     'hrsh7th/nvim-compe',
     requires = {'hrsh7th/vim-vsnip-integ'},
@@ -139,17 +160,53 @@ packer.startup(function()
     run = ':TSUpdate',
     config = [[require"luong.config.nvim-treesitter"]],
   }
-  execute('set regexpengine=1') -- use old engine for ruby, new engine is slow as fuck
+
+  -- markdown
   use 'gabrielelana/vim-markdown'
   vim.g.markdown_enable_mappings = false
 
+  -- yard
   use 'noprompt/vim-yardoc'
   execute('hi link yardGenericTag rubyInstanceVariable')
+
+  -- yaml
   use 'pedrohdz/vim-yaml-folds'
+
+  -- rego
   use 'tsandall/vim-rego'
+
+  -- terraform
   use 'hashivim/vim-terraform'
   use 'sbdchd/neoformat' -- Currently ALE does not support fix rego so we have to use neoformat
+
+  -- jsonnet
   use 'google/vim-jsonnet'
+
+  -- latex
+  use {
+    "lervag/vimtex",
+    ft = "tex",
+  }
+
+  -- Rust tools
+  -- TODO: use lazy loading maybe?
+  use {"simrat39/rust-tools.nvim"}
+
+  -- Elixir
+  use { "elixir-editors/vim-elixir", ft = { "elixir", "eelixir", "euphoria3" } }
+
+  -- Javascript / Typescript
+  use {
+    "jose-elias-alvarez/nvim-lsp-ts-utils",
+    ft = {
+      "javascript",
+      "javascriptreact",
+      "javascript.jsx",
+      "typescript",
+      "typescriptreact",
+      "typescript.tsx",
+    },
+  }
 
   -- Tpope and his ruby magics
   -- =========================

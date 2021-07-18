@@ -69,6 +69,10 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["DAPInstall.nvim"] = {
+    loaded = true,
+    path = "/Users/eh/.local/share/nvim/site/pack/packer/start/DAPInstall.nvim"
+  },
   ale = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/ale"
@@ -88,6 +92,11 @@ _G.packer_plugins = {
   ["ctrlsf.vim"] = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/ctrlsf.vim"
+  },
+  ["diffview.nvim"] = {
+    config = { 'require"luong.config.diffview"' },
+    loaded = true,
+    path = "/Users/eh/.local/share/nvim/site/pack/packer/start/diffview.nvim"
   },
   ["editorconfig-vim"] = {
     loaded = true,
@@ -181,10 +190,26 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
+  ["nvim-dap"] = {
+    config = { 'require"luong.config.nvim-dap"' },
+    loaded = true,
+    path = "/Users/eh/.local/share/nvim/site/pack/packer/start/nvim-dap"
+  },
+  ["nvim-lsp-ts-utils"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/eh/.local/share/nvim/site/pack/packer/opt/nvim-lsp-ts-utils"
+  },
   ["nvim-lspconfig"] = {
     config = { 'require"luong.config.nvim-lspconfig"' },
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+  },
+  ["nvim-lspinstall"] = {
+    config = { 'require"luong.config.lspinstall"' },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/eh/.local/share/nvim/site/pack/packer/opt/nvim-lspinstall"
   },
   ["nvim-treesitter"] = {
     config = { 'require"luong.config.nvim-treesitter"' },
@@ -202,6 +227,10 @@ _G.packer_plugins = {
   ["plenary.nvim"] = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+  },
+  ["rust-tools.nvim"] = {
+    loaded = true,
+    path = "/Users/eh/.local/share/nvim/site/pack/packer/start/rust-tools.nvim"
   },
   ["splitjoin.vim"] = {
     loaded = true,
@@ -251,6 +280,11 @@ _G.packer_plugins = {
     config = { "require'luong.config.easymotion'" },
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/vim-easymotion"
+  },
+  ["vim-elixir"] = {
+    loaded = false,
+    needs_bufread = true,
+    path = "/Users/eh/.local/share/nvim/site/pack/packer/opt/vim-elixir"
   },
   ["vim-fugitive"] = {
     loaded = true,
@@ -349,6 +383,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/vim-yardoc"
   },
+  vimtex = {
+    loaded = false,
+    needs_bufread = true,
+    path = "/Users/eh/.local/share/nvim/site/pack/packer/opt/vimtex"
+  },
   vimux = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/vimux"
@@ -360,34 +399,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-compe
-time([[Config for nvim-compe]], true)
-require"luong.config.nvim-compe"
-time([[Config for nvim-compe]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-require"luong.config.nvim-lspconfig"
-time([[Config for nvim-lspconfig]], false)
--- Config for: galaxyline.nvim
-time([[Config for galaxyline.nvim]], true)
-require"luong.config.galaxyline"
-time([[Config for galaxyline.nvim]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-require"luong.config.nvim-treesitter"
-time([[Config for nvim-treesitter]], false)
--- Config for: lazygit.nvim
-time([[Config for lazygit.nvim]], true)
-require"luong.config.lazygit"
-time([[Config for lazygit.nvim]], false)
 -- Config for: gitsigns.nvim
 time([[Config for gitsigns.nvim]], true)
 require"luong.config.gitsigns"
 time([[Config for gitsigns.nvim]], false)
--- Config for: vim-easymotion
-time([[Config for vim-easymotion]], true)
-require'luong.config.easymotion'
-time([[Config for vim-easymotion]], false)
 -- Config for: nvim-autopairs
 time([[Config for nvim-autopairs]], true)
 require"luong.config.autopairs"
@@ -396,16 +411,70 @@ time([[Config for nvim-autopairs]], false)
 time([[Config for nvim-bufferline.lua]], true)
 require"luong.config.bufferline"
 time([[Config for nvim-bufferline.lua]], false)
+-- Config for: nvim-compe
+time([[Config for nvim-compe]], true)
+require"luong.config.nvim-compe"
+time([[Config for nvim-compe]], false)
+-- Config for: lazygit.nvim
+time([[Config for lazygit.nvim]], true)
+require"luong.config.lazygit"
+time([[Config for lazygit.nvim]], false)
+-- Config for: nvim-dap
+time([[Config for nvim-dap]], true)
+require"luong.config.nvim-dap"
+time([[Config for nvim-dap]], false)
+-- Config for: galaxyline.nvim
+time([[Config for galaxyline.nvim]], true)
+require"luong.config.galaxyline"
+time([[Config for galaxyline.nvim]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+require"luong.config.nvim-lspconfig"
+time([[Config for nvim-lspconfig]], false)
+-- Config for: vim-easymotion
+time([[Config for vim-easymotion]], true)
+require'luong.config.easymotion'
+time([[Config for vim-easymotion]], false)
+-- Config for: diffview.nvim
+time([[Config for diffview.nvim]], true)
+require"luong.config.diffview"
+time([[Config for diffview.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require"luong.config.nvim-treesitter"
+time([[Config for nvim-treesitter]], false)
 -- Config for: hop
 time([[Config for hop]], true)
 require"luong.config.hop"
 time([[Config for hop]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType euphoria3 ++once lua require("packer.load")({'vim-elixir'}, { ft = "euphoria3" }, _G.packer_plugins)]]
+vim.cmd [[au FileType typescript ++once lua require("packer.load")({'nvim-lsp-ts-utils'}, { ft = "typescript" }, _G.packer_plugins)]]
+vim.cmd [[au FileType eelixir ++once lua require("packer.load")({'vim-elixir'}, { ft = "eelixir" }, _G.packer_plugins)]]
+vim.cmd [[au FileType javascript ++once lua require("packer.load")({'nvim-lsp-ts-utils'}, { ft = "javascript" }, _G.packer_plugins)]]
+vim.cmd [[au FileType javascriptreact ++once lua require("packer.load")({'nvim-lsp-ts-utils'}, { ft = "javascriptreact" }, _G.packer_plugins)]]
+vim.cmd [[au FileType javascript.jsx ++once lua require("packer.load")({'nvim-lsp-ts-utils'}, { ft = "javascript.jsx" }, _G.packer_plugins)]]
+vim.cmd [[au FileType typescriptreact ++once lua require("packer.load")({'nvim-lsp-ts-utils'}, { ft = "typescriptreact" }, _G.packer_plugins)]]
+vim.cmd [[au FileType typescript.tsx ++once lua require("packer.load")({'nvim-lsp-ts-utils'}, { ft = "typescript.tsx" }, _G.packer_plugins)]]
+vim.cmd [[au FileType tex ++once lua require("packer.load")({'vimtex'}, { ft = "tex" }, _G.packer_plugins)]]
+vim.cmd [[au FileType elixir ++once lua require("packer.load")({'vim-elixir'}, { ft = "elixir" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au VimEnter * ++once lua require("packer.load")({'nvim-lspinstall'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'vim-vsnip', 'friendly-snippets'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
+vim.cmd("augroup END")
+vim.cmd [[augroup filetypedetect]]
+time([[Sourcing ftdetect script at: /Users/eh/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tex.vim]], true)
+vim.cmd [[source /Users/eh/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tex.vim]]
+time([[Sourcing ftdetect script at: /Users/eh/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tex.vim]], false)
+time([[Sourcing ftdetect script at: /Users/eh/.local/share/nvim/site/pack/packer/opt/vim-elixir/ftdetect/elixir.vim]], true)
+vim.cmd [[source /Users/eh/.local/share/nvim/site/pack/packer/opt/vim-elixir/ftdetect/elixir.vim]]
+time([[Sourcing ftdetect script at: /Users/eh/.local/share/nvim/site/pack/packer/opt/vim-elixir/ftdetect/elixir.vim]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
