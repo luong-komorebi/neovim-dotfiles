@@ -26,7 +26,6 @@ require'compe'.setup {
     ultisnips = false,
     treesitter = false,
     emoji = { kind = " ﲃ  (Emoji)", filetypes = { "markdown", "text" } },
-    -- for emoji press : (idk if that in compe tho)
   },
 }
 
