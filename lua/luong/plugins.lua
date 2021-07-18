@@ -1,5 +1,5 @@
 local execute = vim.api.nvim_command
-vim.cmd([[autocmd BufWritePost plugins.lua source $MYVIMRC | PackerCompile]])
+vim.cmd([[autocmd BufWritePost plugins.lua | PackerCompile]])
 
 require('packer').startup(function()
   use 'wbthomason/packer.nvim'
@@ -18,6 +18,11 @@ require('packer').startup(function()
   use 'jesseleite/vim-agriculture'
   use {'junegunn/fzf', dir = '~/.fzf', run = './install --all'}
   use 'junegunn/fzf.vim'
+  -- use telescope when https://github.com/nvim-telescope/telescope.nvim/pull/987
+  -- use {
+  --   'nvim-telescope/telescope.nvim',
+  --   requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+  -- }
   use 'nelstrom/vim-visual-star-search'
 
   -- Editing and formatting codes
@@ -25,7 +30,7 @@ require('packer').startup(function()
   use 'matze/vim-move'
   use 'tpope/vim-commentary'
   use 'junegunn/vim-easy-align'
-  -- use 'jiangmiao/auto-pairs'
+  use 'windwp/nvim-autopairs'
   use {'mg979/vim-visual-multi', branch = 'master'}
   use 'AndrewRadev/splitjoin.vim'
   use 'dyng/ctrlsf.vim'
@@ -80,6 +85,7 @@ require('packer').startup(function()
   use 'honza/vim-snippets'
   use 'editorconfig/editorconfig-vim'
   use 'neovim/nvim-lspconfig'
+  use 'hrsh7th/nvim-compe'
 
   -- Miscs
   -- ======================
