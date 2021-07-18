@@ -82,10 +82,13 @@ require('packer').startup(function()
   -- ================================
   use 'janko-m/vim-test'
   use 'dense-analysis/ale'
-  use 'honza/vim-snippets'
   use 'editorconfig/editorconfig-vim'
   use 'neovim/nvim-lspconfig'
-  use 'hrsh7th/nvim-compe'
+  use {
+    'hrsh7th/nvim-compe',
+    requires = {'hrsh7th/vim-vsnip', 'hrsh7th/vim-vsnip-integ'}
+  }
+  use 'hrsh7th/vim-vsnip'
 
   -- Miscs
   -- ======================

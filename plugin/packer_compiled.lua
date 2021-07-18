@@ -289,10 +289,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/vim-smoothie"
   },
-  ["vim-snippets"] = {
-    loaded = true,
-    path = "/Users/eh/.local/share/nvim/site/pack/packer/start/vim-snippets"
-  },
   ["vim-surround"] = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/vim-surround"
@@ -316,6 +312,14 @@ _G.packer_plugins = {
   ["vim-visual-star-search"] = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/site/pack/packer/start/vim-visual-star-search"
+  },
+  ["vim-vsnip"] = {
+    loaded = true,
+    path = "/Users/eh/.local/share/nvim/site/pack/packer/start/vim-vsnip"
+  },
+  ["vim-vsnip-integ"] = {
+    loaded = true,
+    path = "/Users/eh/.local/share/nvim/site/pack/packer/start/vim-vsnip-integ"
   },
   ["vim-yaml-folds"] = {
     loaded = true,
