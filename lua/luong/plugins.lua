@@ -30,7 +30,7 @@ require('packer').startup(function()
   use 'matze/vim-move'
   use 'tpope/vim-commentary'
   use 'junegunn/vim-easy-align'
-  use 'windwp/nvim-autopairs'
+  use {'windwp/nvim-autopairs', config = [[require"luong.config.autopairs"]]}
   use {'mg979/vim-visual-multi', branch = 'master'}
   use 'AndrewRadev/splitjoin.vim'
   use 'dyng/ctrlsf.vim'
@@ -58,13 +58,19 @@ require('packer').startup(function()
     requires = {
       'nvim-lua/plenary.nvim'
     },
+    config = [[require"luong.config.gitsigns"]],
   }
   use {
     'glepnir/galaxyline.nvim',
     branch = 'main',
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    config = [[require"luong.config.galaxyline"]],
+    requires = {'kyazdani42/nvim-web-devicons', opt = true},
   }
-  use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
+  use {
+    'akinsho/nvim-bufferline.lua',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = [[require"luong.config.bufferline"]],
+  }
 
   -- Passive support
   -- ======================
@@ -83,10 +89,14 @@ require('packer').startup(function()
   use 'janko-m/vim-test'
   use 'dense-analysis/ale'
   use 'editorconfig/editorconfig-vim'
-  use 'neovim/nvim-lspconfig'
+  use {
+    'neovim/nvim-lspconfig',
+    config = [[require"luong.config.nvim-lspconfig"]],
+  }
   use {
     'hrsh7th/nvim-compe',
-    requires = {'hrsh7th/vim-vsnip', 'hrsh7th/vim-vsnip-integ'}
+    requires = {'hrsh7th/vim-vsnip', 'hrsh7th/vim-vsnip-integ'},
+    config = [[require"luong.config.nvim-compe"]],
   }
   use 'hrsh7th/vim-vsnip'
 
@@ -95,13 +105,17 @@ require('packer').startup(function()
   use 'vim-scripts/git-time-lapse'
   use {"npxbr/glow.nvim", run = "GlowInstall"}
   use 'rhysd/git-messenger.vim'
-  use 'kdheepak/lazygit.nvim'
+  use {'kdheepak/lazygit.nvim', config=[[require"luong.config.lazygit"]] }
 
   -- Syntax and language packs
   -- =========================
   -- https://github.com/sheerun/vim-polyglot/issues/309
   -- have to load vim go before vim polygot
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = [[require"luong.config.nvim-treesitter"]],
+  }
   execute('set regexpengine=1') -- use old engine for ruby, new engine is slow as fuck
   use 'gabrielelana/vim-markdown'
   vim.g.markdown_enable_mappings = false
