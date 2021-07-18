@@ -103,7 +103,6 @@ packer.startup(function()
   -- Testing and autocomplete
   -- ================================
   use 'janko-m/vim-test'
-  use 'dense-analysis/ale'
   use 'editorconfig/editorconfig-vim'
   -- LSP
   use {
