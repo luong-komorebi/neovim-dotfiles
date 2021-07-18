@@ -120,9 +120,15 @@ packer.startup(function()
   -- Miscs
   -- ======================
   use 'vim-scripts/git-time-lapse'
-  use {"npxbr/glow.nvim", run = "GlowInstall"}
+  use { "npxbr/glow.nvim", run = "GlowInstall" }
   use 'rhysd/git-messenger.vim'
-  use {'kdheepak/lazygit.nvim', config=[[require"luong.config.lazygit"]] }
+
+  use {
+    'sindrets/diffview.nvim',
+    config=[[require"luong.config.diffview"]],
+    requires = {'kyazdani42/nvim-web-devicons', opt = true},
+  }
+  use { 'kdheepak/lazygit.nvim', config=[[require"luong.config.lazygit"]] }
 
   -- Syntax and language packs
   -- =========================
