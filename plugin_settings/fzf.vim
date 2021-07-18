@@ -39,11 +39,11 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit' }
 
 " See `man fzf-tmux` for available options
-" if exists('$TMUX')
-  " let g:fzf_layout = { 'tmux': '-p90%,60%' }
-" else
-let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.8 } }
-" endif
+if exists('$TMUX')
+  let g:fzf_layout = { 'tmux': '-p90%,60%' }
+else
+  let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.8 } }
+endif
 
 " Enable per-command history
 " - History files will be stored in the specified directory
