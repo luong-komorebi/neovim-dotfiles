@@ -1,6 +1,29 @@
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
+local kind_symbols = {
+  Text = '',
+  Method = 'Ƒ',
+  Function = 'ƒ',
+  Constructor = '',
+  Variable = '',
+  Class = '',
+  Interface = 'ﰮ',
+  Module = '',
+  Property = '',
+  Unit = '',
+  Value = '',
+  Enum = '了',
+  Keyword = '',
+  Snippet = '﬌',
+  Color = '',
+  File = '',
+  Folder = '',
+  EnumMember = '',
+  Constant = '',
+  Struct = '',
+}
+
 -- LSP settings
 -- log file location: $HOME/.local/share/nvim/lsp.log
 vim.lsp.set_log_level("debug")
@@ -39,6 +62,7 @@ end
 local servers = { "solargraph", "gopls" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
+    kind_labels = kind_symbols,
     on_attach = on_attach,
     flags = {
       debounce_text_changes = 150,
