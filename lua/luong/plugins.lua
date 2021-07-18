@@ -129,6 +129,18 @@ packer.startup(function()
     "Pocco81/DAPInstall.nvim",
   }
 
+  -- Formatter.nvim
+  use {
+    "mhartington/formatter.nvim",
+    config = [[require"luong.config.formatter"]]
+  }
+
+  -- Linter
+  use {
+    "mfussenegger/nvim-lint",
+    config = [[require"luong.config.nvim-lint"]]
+  }
+
   -- Completion and snippet
   use {
     'hrsh7th/nvim-compe',
