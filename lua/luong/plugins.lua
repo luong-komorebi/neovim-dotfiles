@@ -45,7 +45,11 @@ packer.startup(function()
   -- Editing and formatting codes
   -- ======================
   use 'matze/vim-move'
-  use 'tpope/vim-commentary'
+  use {
+    "terrortylor/nvim-comment",
+    event = "BufRead",
+    config = [[require"luong.config.nvim-comment"]],
+  }
   use 'junegunn/vim-easy-align'
   use {'windwp/nvim-autopairs', config = [[require"luong.config.autopairs"]]}
   use {'mg979/vim-visual-multi', branch = 'master'}
