@@ -29,3 +29,26 @@ Snapshot:
 
 ![image](https://user-images.githubusercontent.com/15828926/126114843-1c5b88a5-7986-4cbc-950c-6d84eb1da592.png)
 
+
+## Q & A
+
+> solargraph server config
+
+```yaml
+---
+include:
+- "**/*.rb"
+exclude:
+- spec/**/*
+- test/**/*
+- vendor/**/*
+- ".bundle/**/*"
+- .git/**/*
+- .logs/**/*
+require: []
+domains: []
+reporters:
+- rubocop
+require_paths: []
+max_files: 10000
+```
