@@ -40,7 +40,7 @@ let g:fzf_action = {
 
 " See `man fzf-tmux` for available options
 if exists('$TMUX')
-  let g:fzf_layout = { 'tmux': '-p90%,60%' }
+  let g:fzf_layout = { 'tmux': '-p90%,70%' }
 else
   let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.8 } }
 endif
