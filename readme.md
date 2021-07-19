@@ -27,4 +27,5 @@ Snapshot:
 
 - Colorscheme: [Onedark](https://github.com/joshdick/onedark.vim)
 
+![image](https://user-images.githubusercontent.com/15828926/126114843-1c5b88a5-7986-4cbc-950c-6d84eb1da592.png)
 
