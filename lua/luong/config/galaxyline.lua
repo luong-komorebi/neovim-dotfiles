@@ -3,7 +3,7 @@ local condition = require('galaxyline.condition')
 local gls = gl.section
 local c = O.pallete
 
-gl.short_line_list = { "qf", "vista_kind", "terminal", "packer", "CHADTree" }
+gl.short_line_list = { "qf", "vista_kind", "terminal", "packer", "NvimTree" }
 
 -- Colors from onedark theme
 local colors = {

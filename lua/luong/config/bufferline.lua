@@ -27,7 +27,7 @@ require('bufferline').setup {
     diagnostics_indicator = function(count, level, diagnostics_dict, context)
       return "("..count..")"
     end,
-    offsets = {{filetype = "CHADTree", text = "File Explorer", text_align = "center"}},
+    offsets = {{filetype = "NvimTree", text = "File Explorer", text_align = "center"}},
     show_buffer_icons = true, -- disable filetype icons for buffers
     show_buffer_close_icons = false,
     show_close_icon = false,
