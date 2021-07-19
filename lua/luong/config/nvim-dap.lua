@@ -1,7 +1,7 @@
 local dap = require"dap"
 
 O.plugin.dap = {
-  active = false,
+  active = false, -- TODO: turn on disable until ruby is ready
   breakpoint = {
     text = "",
     texthl = "LspDiagnosticsSignError",

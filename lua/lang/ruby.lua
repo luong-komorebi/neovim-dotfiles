@@ -18,7 +18,7 @@ M.config = function()
     settings = { -- solargraph lsp client settings
       solargraph = {
         diagnostics = true,
-        autoformat = false, -- will enable true when it got out of experimental phase
+        autoformat = false, -- TODO: will enable true when it got out of experimental phase
         formatting = false, -- use nvim-formatter for now (async format)
       },
     },
