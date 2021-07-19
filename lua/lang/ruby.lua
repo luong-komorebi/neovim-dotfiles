@@ -15,6 +15,13 @@ M.config = function()
       stdin = true,
     },
     linters = { "ruby" },
+    settings = { -- solargraph lsp client settings
+      solargraph = {
+        diagnostics = true,
+        autoformat = false, -- will enable true when it got out of experimental phase
+        formatting = false, -- use nvim-formatter for now (async format)
+      },
+    },
   }
 end
 
@@ -59,6 +66,7 @@ M.lsp = function()
       }),
     },
     filetypes = O.lang.ruby.filetypes,
+    settings = O.lang.ruby.settings,
   }
 end
 
