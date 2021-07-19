@@ -10,7 +10,8 @@ M.config = function()
     filetypes = { "rb", "erb", "rakefile", "ruby" },
     formatter = {
       exe = "bundle exec rubocop ",
-      args = { "-a", "-o", "/dev/null" },
+      -- dirty trick from https://github.com/sbdchd/neoformat/pull/49/files
+      args = { '--auto-correct', '--stdin', '%:p', '2>/dev/null', '|', 'sed "1,/^====================$/d"' },
       stdin = true,
     },
     linters = { "ruby" },
