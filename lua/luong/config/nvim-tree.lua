@@ -51,4 +51,4 @@ vim.g.nvim_tree_bindings = {
   { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
   { key = "v", cb = tree_cb "vsplit" },
 }
-vim.api.nvim_set_keymap("n", "<leader>ls", ":NvimTreeToggle", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>ls", ":NvimTreeToggle<CR>", { silent = true, noremap = true })
