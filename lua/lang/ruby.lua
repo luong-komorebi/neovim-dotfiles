@@ -9,8 +9,8 @@ M.config = function()
     },
     filetypes = { "rb", "erb", "rakefile", "ruby" },
     formatter = {
-      exe = "rufo",
-      args = { "-x" },
+      exe = "bundle exec rubocop ",
+      args = { "-a", "-o", "/dev/null" },
       stdin = true,
     },
     linters = { "ruby" },
