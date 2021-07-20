@@ -68,10 +68,8 @@ packer.startup(function()
   -- Navigations and files
   -- ======================
   use 'psliwka/vim-smoothie'
-  use {
-    "kyazdani42/nvim-tree.lua",
-    config = [[require"luong.config.nvim-tree"]],
-  }
+  -- You will have to run :CHADdeps when installing / updating
+  use {'ms-jpq/chadtree', branch = 'chad', run = 'python3 -m chadtree deps'}
 
   -- Indicators
   -- ======================
