@@ -69,7 +69,11 @@ packer.startup(function()
   -- ======================
   use 'psliwka/vim-smoothie'
   -- You will have to run :CHADdeps when installing / updating
-  use {'ms-jpq/chadtree', branch = 'chad', run = 'python3 -m chadtree deps'}
+  use {
+    'ms-jpq/chadtree',
+    branch = 'chad',
+    run = 'python3 -m chadtree deps',
+  }
 
   -- Indicators
   -- ======================
