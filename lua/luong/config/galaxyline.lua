@@ -1,3 +1,9 @@
+-- galaxy line depends on colors from tokyonight, so to prevent this from failure in first load:
+local status_ok, _ = pcall(require, "tokyonight")
+if not status_ok then
+  return
+end
+
 local gl = require('galaxyline')
 local condition = require('galaxyline.condition')
 local gls = gl.section
