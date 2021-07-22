@@ -2,6 +2,9 @@ local execute = vim.api.nvim_command
 vim.cmd([[autocmd BufWritePost plugins.lua PackerCompile]])
 local packer = require('packer')
 
+packer.init({
+  max_jobs = 16
+})
 packer.startup(function()
   use 'wbthomason/packer.nvim'
   -- Theme and icons
