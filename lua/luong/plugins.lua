@@ -152,7 +152,6 @@ packer.startup(function()
 
   -- Git tools
   use { 'kdheepak/lazygit.nvim', config=[[require"luong.config.lazygit"]] }
-  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim', config = "require'neogit'.setup({})" }
   use {
    'ruifm/gitlinker.nvim',
    requires = 'nvim-lua/plenary.nvim',
