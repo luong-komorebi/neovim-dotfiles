@@ -2,15 +2,6 @@ local execute = vim.api.nvim_command
 vim.cmd([[autocmd BufWritePost plugins.lua PackerCompile]])
 local packer = require('packer')
 
-packer.init({
-    git = {
-        clone_timeout = 300, -- 5 mins
-    },
-    profile = {
-        enable = true,
-    },
-})
-
 packer.startup(function()
   use 'wbthomason/packer.nvim'
   -- Theme and icons
@@ -156,6 +147,15 @@ packer.startup(function()
   use { "hrsh7th/vim-vsnip", event = "InsertEnter" }
   use { "rafamadriz/friendly-snippets", event = "InsertEnter" }
 
+  -- Git tools
+  use { 'kdheepak/lazygit.nvim', config=[[require"luong.config.lazygit"]] }
+  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim', config = "require'neogit'.setup({})" }
+  use {
+   'ruifm/gitlinker.nvim',
+   requires = 'nvim-lua/plenary.nvim',
+   config = [[require"luong.config.gitlinker"]],
+  }
+
   -- Miscs
   -- ======================
   use 'vim-scripts/git-time-lapse'
@@ -167,7 +167,6 @@ packer.startup(function()
     config=[[require"luong.config.diffview"]],
     requires = {'kyazdani42/nvim-web-devicons', opt = true},
   }
-  use { 'kdheepak/lazygit.nvim', config=[[require"luong.config.lazygit"]] }
 
   -- Syntax and language packs
   -- =========================
@@ -230,10 +229,8 @@ packer.startup(function()
   -- =========================
   use 'tpope/vim-cucumber'
   use 'tpope/vim-surround'
-  use 'tpope/vim-fugitive'
   use 'tpope/vim-projectionist'
   use 'junegunn/gv.vim'
-  use 'shumphrey/fugitive-gitlab.vim'
   use 'tpope/vim-rhubarb'
   use 'tpope/vim-rake'
   use 'tpope/vim-bundler'
