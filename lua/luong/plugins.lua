@@ -97,7 +97,6 @@ packer.startup(function()
   use 'lukas-reineke/indent-blankline.nvim'
   use 'benmills/vimux'
   use 'liuchengxu/vista.vim'
-  use 'tmux-plugins/vim-tmux-focus-events'
   use 'jeetsukumaran/vim-indentwise'
   use 'andymass/vim-matchup'
   -- Autoload load nvim plugins config
