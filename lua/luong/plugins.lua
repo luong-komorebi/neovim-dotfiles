@@ -88,6 +88,7 @@ packer.startup(function()
     'akinsho/nvim-bufferline.lua',
     requires = 'kyazdani42/nvim-web-devicons',
     config = [[require"luong.config.bufferline"]],
+    event = "BufWinEnter",
   }
 
   -- Passive support
