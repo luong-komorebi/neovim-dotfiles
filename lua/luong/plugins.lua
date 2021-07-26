@@ -5,7 +5,7 @@ local packer = require('packer')
 packer.init({
   max_jobs = 16
 })
-packer.startup(function()
+packer.startup(function(use)
   use 'wbthomason/packer.nvim'
   -- Theme and icons
   -- ======================
