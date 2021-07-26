@@ -75,9 +75,12 @@ O = {
       },
       signs = true,
       underline = true,
-      document_highlight = true,
-      popup_border = "single",
     },
+    override = {},
+    document_highlight = true,
+    popup_border = "single",
+    default_keybinds = true,
+    on_attach_callback = nil,
   },
 
   disabled_built_ins = {
@@ -109,36 +112,7 @@ O = {
     { "Filetype", "qf", "set nobuflisted" },
   },
 
-  -- TODO move all of this into lang specific files, only require when using
-  lang = {
-    efm = {},
-    emmet = { active = false },
-    tailwindcss = {
-      active = false,
-      filetypes = {
-        "html",
-        "css",
-        "scss",
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-      },
-    },
-    tsserver = {
-      -- @usage can be 'eslint' or 'eslint_d'
-      linter = "",
-      diagnostics = {
-        virtual_text = { spacing = 0, prefix = "" },
-        signs = true,
-        underline = true,
-      },
-      formatter = {
-        exe = "prettier",
-        args = {},
-      },
-    },
-  },
+  lang = {},
 }
 
 function O.register_mappings(mappings, default_options)
@@ -151,20 +125,5 @@ function O.register_mappings(mappings, default_options)
   end
 end
 
-require("lang.clang").config()
-require("lang.cmake").config()
-require("lang.css").config()
-require("lang.dockerfile").config()
-require("lang.elixir").config()
-require("lang.go").config()
-require("lang.graphql").config()
-require("lang.html").config()
-require("lang.json").config()
 require("lang.lua").config()
-require("lang.python").config()
 require("lang.ruby").config()
-require("lang.rust").config()
-require("lang.sh").config()
-require("lang.terraform").config()
-require("lang.vim").config()
-require("lang.yaml").config()

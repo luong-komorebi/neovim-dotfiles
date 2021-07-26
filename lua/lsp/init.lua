@@ -78,22 +78,6 @@ local nvim_lsp = require('lspconfig')
 -- scroll up hover doc
 vim.cmd 'command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()'
 
--- Set Default Prefix.
--- Note: You can set a prefix per lsp server in the lv-globals.lua file
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  virtual_text = O.lsp.diagnostics.virtual_text,
-  signs = O.lsp.diagnostics.signs,
-  underline = O.lsp.document_highlight,
-})
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = O.lsp.popup_border,
-})
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = O.lsp.popup_border,
-})
-
 --[[ " autoformat
 autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 100)
 autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 100)
@@ -213,6 +197,22 @@ end
 
 function lsp_config.common_on_attach(client, bufnr)
   documentHighlight(client, bufnr)
+end
+
+function lsp_config.setup_handlers()
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = O.lsp.diagnostics.virtual_text,
+    signs = O.lsp.diagnostics.signs,
+    underline = O.lsp.document_highlight,
+  })
+
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = O.lsp.popup_border,
+  })
+
+  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = O.lsp.popup_border,
+  })
 end
 
 function lsp_config.tsserver_on_attach(client, bufnr)
