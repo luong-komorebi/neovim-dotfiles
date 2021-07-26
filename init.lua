@@ -9,6 +9,13 @@ require"misc_mappings"
 require"settings"
 
 -- legacy
-vim.cmd[[runtime misc_augroup.vim]]
 vim.cmd[[runtime misc_mappings.vim]]
--- require("lsp").setup_handlers()
+
+-- init lsp soon
+require("lsp").setup_handlers()
+
+local null_status_ok, null_ls = pcall(require, "null-ls")
+if null_status_ok then
+  null_ls.config {}
+  require("lspconfig")["null-ls"].setup {}
+end

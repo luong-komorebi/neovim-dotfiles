@@ -38,8 +38,17 @@ function lv_utils.unrequire(m)
 end
 
 lv_utils.define_augroups {
-
   _general_settings = {
+    {
+      "BufEnter,FocusGained,InsertLeave",
+      "*",
+      "setlocal relativenumber",
+    },
+    {
+      "BufLeave,FocusGained,InsertEnter",
+      "*",
+      "setlocal norelativenumber",
+    },
     {
       "TextYankPost",
       "*",
@@ -67,10 +76,13 @@ lv_utils.define_augroups {
     },
     { "BufWritePost", "lv-config.lua", "lua require('lv-utils').reload_lv_config()" },
   },
-  _solidity = {
+  _filetypechanges = {
     { "BufWinEnter", ".tf", "setlocal filetype=hcl" },
     { "BufRead", "*.tf", "setlocal filetype=hcl" },
     { "BufNewFile", "*.tf", "setlocal filetype=hcl" },
+    { "BufWinEnter", ".zsh", "setlocal filetype=sh" },
+    { "BufRead", "*.zsh", "setlocal filetype=sh" },
+    { "BufNewFile", "*.zsh", "setlocal filetype=sh" },
   },
   _markdown = {
     { "FileType", "markdown", "setlocal wrap" },

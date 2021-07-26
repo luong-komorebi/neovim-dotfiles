@@ -1,5 +1,4 @@
 local execute = vim.api.nvim_command
-vim.cmd([[autocmd BufWritePost plugins.lua PackerCompile]])
 local packer = require('packer')
 
 packer.init({
@@ -107,9 +106,7 @@ packer.startup(function(use)
   use 'janko-m/vim-test'
   use 'editorconfig/editorconfig-vim'
   -- LSP
-  use {
-    'neovim/nvim-lspconfig',
-  }
+  use 'neovim/nvim-lspconfig'
 
   -- LSP Install
   use {
@@ -129,17 +126,8 @@ packer.startup(function(use)
     "Pocco81/DAPInstall.nvim",
   }
 
-  -- Formatter.nvim
-  use {
-    "mhartington/formatter.nvim",
-    config = [[require"luong.config.formatter"]]
-  }
-
-  -- Linter
-  use {
-    "mfussenegger/nvim-lint",
-    config = [[require"luong.config.nvim-lint"]]
-  }
+  -- Formatter and linter
+  use "jose-elias-alvarez/null-ls.nvim"
 
   -- Completion and snippet
   use {

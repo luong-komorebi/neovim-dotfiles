@@ -211,6 +211,11 @@ function lsp_config.common_on_attach(client, bufnr)
   lsp_highlight_document(client, bufnr)
 end
 
+local function no_formatter_on_attach(client, bufnr)
+  lsp_highlight_document(client)
+  client.resolved_capabilities.document_formatting = false
+end
+
 function lsp_config.setup_handlers()
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = O.lsp.diagnostics.virtual_text,
@@ -233,11 +238,48 @@ require("lv-utils").define_augroups {
   },
 }
 
+local function is_table(t)
+  return type(t) == "table"
+end
+
+local function is_string(t)
+  return type(t) == "string"
+end
+
+local function has_value(tab, val)
+  for _, value in ipairs(tab) do
+    if value == val then
+      return true
+    end
+  end
+
+  return false
+end
+
 function lsp_config.setup(lang)
   local lang_server = O.lang[lang].lsp
   local provider = lang_server.provider
   if require("lv-utils").check_lsp_client_active(provider) then
     return
+  end
+
+  local sources = require("lsp.null-ls").setup(lang)
+
+  for _, source in pairs(sources) do
+    local method = source.method
+    local format_method = "NULL_LS_FORMATTING"
+
+    if is_table(method) then
+      if has_value(method, format_method) then
+        lang_server.setup.on_attach = no_formatter_on_attach
+      end
+    end
+
+    if is_string(method) then
+      if method == format_method then
+        lang_server.setup.on_attach = no_formatter_on_attach
+      end
+    end
   end
 
   require("lspconfig")[provider].setup(lang_server.setup)
