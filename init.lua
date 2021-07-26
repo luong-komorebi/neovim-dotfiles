@@ -11,5 +11,4 @@ require"settings"
 -- legacy
 vim.cmd[[runtime misc_augroup.vim]]
 vim.cmd[[runtime misc_mappings.vim]]
-
-require("lsp").setup_handlers()
+-- require("lsp").setup_handlers()

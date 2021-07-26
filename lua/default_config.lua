@@ -76,7 +76,6 @@ O = {
       signs = true,
       underline = true,
     },
-    override = {},
     document_highlight = true,
     popup_border = "single",
     default_keybinds = true,
@@ -110,9 +109,81 @@ O = {
 
   user_autocommands = {
     { "Filetype", "qf", "set nobuflisted" },
-  },
+  }
+}
 
-  lang = {},
+local common_on_attach = require("lsp").common_on_attach
+
+O.lang = {
+  lua = {
+    formatter = {
+      exe = "stylua",
+      args = {},
+    },
+    linters = { "luacheck" },
+    lsp = {
+      provider = "sumneko_lua",
+      setup = {
+        cmd = {
+          DATA_PATH .. "/lspinstall/lua/sumneko-lua-language-server",
+          "-E",
+          DATA_PATH .. "/lspinstall/lua/main.lua",
+        },
+        on_attach = common_on_attach,
+        settings = {
+          Lua = {
+            runtime = {
+              -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+              version = "LuaJIT",
+              -- Setup your lua path
+              path = vim.split(package.path, ";"),
+            },
+            diagnostics = {
+              -- Get the language server to recognize the `vim` global
+              globals = { "vim", "O" },
+            },
+            workspace = {
+              -- Make the server aware of Neovim runtime files
+              library = {
+                [vim.fn.expand "~/.local/share/lunarvim/lvim/lua"] = true,
+                [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+                [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+              },
+              maxPreload = 100000,
+              preloadFileSize = 1000,
+            },
+          },
+        },
+      },
+    },
+  },
+  ruby = {
+    filetypes = { "rb", "erb", "rakefile", "ruby" },
+    formatter = {
+      exe = "bundle exec rubocop ",
+      -- dirty trick from https://github.com/sbdchd/neoformat/pull/49/files
+      args = { '--auto-correct', '--stdin', '%:p', '2>/dev/null', '|', "awk 'f; /^====================$/{f=1}'", },
+      stdin = true,
+    },
+    linters = { "ruby" }, -- this option will run a ruby process in background and consume cpu
+    lsp = {
+      provider = 'solargraph',
+      setup = {
+        cmd = { DATA_PATH .. "/lspinstall/ruby/solargraph/solargraph", "stdio" },
+        on_attach = common_on_attach,
+        settings = { -- solargraph lsp client settings
+          solargraph = {
+            diagnostics = true, -- this option may create false alert as solargraph uses global rubocop (not Gemfile specified)
+            autoformat = false, -- disable because we use nvim formatter
+            formatting = false,
+          },
+        },
+        init_options = {
+          formatting = true
+        },
+      },
+    },
+  },
 }
 
 function O.register_mappings(mappings, default_options)
@@ -124,6 +195,3 @@ function O.register_mappings(mappings, default_options)
     end
   end
 end
-
-require("lang.lua").config()
-require("lang.ruby").config()

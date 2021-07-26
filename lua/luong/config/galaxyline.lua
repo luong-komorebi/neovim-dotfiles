@@ -11,7 +11,7 @@ local c = O.pallete
 
 gl.short_line_list = { "qf", "vista_kind", "terminal", "packer", "CHADTree" }
 
--- Colors from onedark theme
+-- Colors from tokyonight theme
 local colors = {
   bg = c.bg,
   fg = c.fg,
