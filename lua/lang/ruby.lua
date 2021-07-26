@@ -18,10 +18,12 @@ M.config = function()
     settings = { -- solargraph lsp client settings
       solargraph = {
         diagnostics = true,
-        autoformat = false, -- TODO: will enable true when it got out of experimental phase
-        formatting = false, -- use nvim-formatter for now (async format)
+        autoformat = false, -- disable because we use nvim formatter
       },
     },
+    init_options = {
+      formatting = false, -- disable because we use nvim formatter
+    }
   }
 end
 
@@ -59,6 +61,7 @@ M.lsp = function()
     on_attach = require("lsp").common_on_attach,
     filetypes = O.lang.ruby.filetypes,
     settings = O.lang.ruby.settings,
+    init_options = O.lang.ruby.init_options,
   }
 end
 
