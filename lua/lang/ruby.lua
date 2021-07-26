@@ -14,15 +14,16 @@ M.config = function()
       args = { '--auto-correct', '--stdin', '%:p', '2>/dev/null', '|', "awk 'f; /^====================$/{f=1}'", },
       stdin = true,
     },
-    linters = { "ruby" },
+    linters = { "ruby" }, -- this option will run a ruby process in background and consume cpu
     settings = { -- solargraph lsp client settings
       solargraph = {
-        diagnostics = true,
+        diagnostics = true, -- this option may create false alert as solargraph uses global rubocop (not Gemfile specified)
         autoformat = false, -- disable because we use nvim formatter
+        formatting = false,
       },
     },
     init_options = {
-      formatting = false, -- disable because we use nvim formatter
+      formatting = true
     }
   }
 end
@@ -56,7 +57,7 @@ M.lsp = function()
   end
 
   -- If you are using rvm, make sure to change below configuration
-  require("lspconfig").solargraph.setup {
+  require("lspconfig")['solargraph'].setup {
     cmd = { DATA_PATH .. "/lspinstall/ruby/solargraph/solargraph", "stdio" },
     on_attach = require("lsp").common_on_attach,
     filetypes = O.lang.ruby.filetypes,
