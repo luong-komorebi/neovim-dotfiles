@@ -14,7 +14,8 @@ M.config = function()
       args = { '--auto-correct', '--stdin', '%:p', '2>/dev/null', '|', "awk 'f; /^====================$/{f=1}'", },
       stdin = true,
     },
-    linters = { "ruby" },
+    -- linters = { "ruby" },
+    linters = { "" },
     settings = { -- solargraph lsp client settings
       solargraph = {
         diagnostics = true,
