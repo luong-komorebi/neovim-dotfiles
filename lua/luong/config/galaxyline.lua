@@ -44,7 +44,6 @@ table.insert(gls.left, {
         V = 'VISUAL',
         [''] = 'VISUAL',
         v ='VISUAL',
-        c  = 'CMD',
         ['r?'] = ':CONFIRM',
         rm = '--MORE',
         R  = 'REPLACE',
@@ -247,7 +246,7 @@ local get_lsp_client = function(msg)
         lsps = client.name
       else
         if not string.find(lsps, client.name) then
-          lsps = lsps .. ", " .. client.name
+          lsps = lsps .. "," .. client.name
         end
         -- print("more", lsps)
       end
