@@ -1,9 +1,9 @@
 local execute = vim.api.nvim_command
-local packer = require('packer')
+local packer = require 'packer'
 
-packer.init({
-  max_jobs = 16
-})
+packer.init {
+  max_jobs = 16,
+}
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
   -- Theme and icons
@@ -15,18 +15,19 @@ packer.startup(function(use)
   -- Search and jump around
   --  note : to paste in easymotion search mode: use ctrl-r and + or "
   use {
-    'phaazon/hop.nvim', as = 'hop',
-    config = [[require"luong.config.hop"]]
+    'phaazon/hop.nvim',
+    as = 'hop',
+    config = [[require"luong.config.hop"]],
   }
   use {
     'easymotion/vim-easymotion',
-    config = [[require'luong.config.easymotion']]
+    config = [[require'luong.config.easymotion']],
   }
   use 'haya14busa/incsearch.vim'
   use 'haya14busa/incsearch-easymotion.vim'
   use 'haya14busa/incsearch-fuzzy.vim'
   use 'jesseleite/vim-agriculture'
-  use {'junegunn/fzf', dir = '~/.fzf', run = './install --all'}
+  use { 'junegunn/fzf', dir = '~/.fzf', run = './install --all' }
   use 'junegunn/fzf.vim'
   -- use telescope when https://github.com/nvim-telescope/telescope.nvim/pull/987
   -- use {
@@ -39,13 +40,13 @@ packer.startup(function(use)
   -- ======================
   use 'matze/vim-move'
   use {
-    "terrortylor/nvim-comment",
-    event = "BufRead",
+    'terrortylor/nvim-comment',
+    event = 'BufRead',
     config = [[require"luong.config.nvim-comment"]],
   }
   use 'junegunn/vim-easy-align'
-  use {'windwp/nvim-autopairs', config = [[require"luong.config.autopairs"]]}
-  use {'mg979/vim-visual-multi', branch = 'master'}
+  use { 'windwp/nvim-autopairs', config = [[require"luong.config.autopairs"]] }
+  use { 'mg979/vim-visual-multi', branch = 'master' }
   use 'AndrewRadev/splitjoin.vim'
   use 'dyng/ctrlsf.vim'
   use 'rhysd/clever-f.vim'
@@ -74,20 +75,20 @@ packer.startup(function(use)
   use {
     'lewis6991/gitsigns.nvim',
     requires = {
-      'nvim-lua/plenary.nvim'
+      'nvim-lua/plenary.nvim',
     },
     config = [[require"luong.config.gitsigns"]],
   }
   use {
     'glepnir/galaxyline.nvim',
     config = [[require"luong.config.galaxyline"]],
-    requires = {'kyazdani42/nvim-web-devicons', opt = true},
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   }
   use {
     'akinsho/nvim-bufferline.lua',
     requires = 'kyazdani42/nvim-web-devicons',
     config = [[require"luong.config.bufferline"]],
-    event = "BufWinEnter",
+    event = 'BufWinEnter',
   }
 
   -- Passive support
@@ -110,52 +111,52 @@ packer.startup(function(use)
 
   -- LSP Install
   use {
-    "kabouzeid/nvim-lspinstall",
-    event = "VimEnter",
+    'kabouzeid/nvim-lspinstall',
+    event = 'VimEnter',
     config = [[require"luong.config.lspinstall"]],
   }
 
   -- Debugging
   use {
-    "mfussenegger/nvim-dap",
+    'mfussenegger/nvim-dap',
     config = [[require"luong.config.nvim-dap"]],
   }
 
   -- Debugger management
   use {
-    "Pocco81/DAPInstall.nvim",
+    'Pocco81/DAPInstall.nvim',
   }
 
   -- Formatter and linter
-  use "jose-elias-alvarez/null-ls.nvim"
+  use 'jose-elias-alvarez/null-ls.nvim'
 
   -- Completion and snippet
   use {
     'hrsh7th/nvim-compe',
-    requires = {'hrsh7th/vim-vsnip-integ'},
+    requires = { 'hrsh7th/vim-vsnip-integ' },
     config = [[require"luong.config.nvim-compe"]],
   }
-  use { "hrsh7th/vim-vsnip", event = "InsertEnter" }
-  use { "rafamadriz/friendly-snippets", event = "InsertEnter" }
+  use { 'hrsh7th/vim-vsnip', event = 'InsertEnter' }
+  use { 'rafamadriz/friendly-snippets', event = 'InsertEnter' }
 
   -- Git tools
-  use { 'kdheepak/lazygit.nvim', config=[[require"luong.config.lazygit"]] }
+  use { 'kdheepak/lazygit.nvim', config = [[require"luong.config.lazygit"]] }
   use {
-   'ruifm/gitlinker.nvim',
-   requires = 'nvim-lua/plenary.nvim',
-   config = [[require"luong.config.gitlinker"]],
+    'ruifm/gitlinker.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = [[require"luong.config.gitlinker"]],
   }
 
   -- Miscs
   -- ======================
   use 'vim-scripts/git-time-lapse'
-  use { "npxbr/glow.nvim", run = "GlowInstall" }
+  use { 'npxbr/glow.nvim', run = 'GlowInstall' }
   use 'rhysd/git-messenger.vim'
 
   use {
     'sindrets/diffview.nvim',
-    config=[[require"luong.config.diffview"]],
-    requires = {'kyazdani42/nvim-web-devicons', opt = true},
+    config = [[require"luong.config.diffview"]],
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   }
 
   -- Syntax and language packs
@@ -174,9 +175,10 @@ packer.startup(function(use)
 
   -- yard
   use 'noprompt/vim-yardoc'
-  execute('hi link yardGenericTag rubyInstanceVariable')
+  execute 'hi link yardGenericTag rubyInstanceVariable'
 
   -- yaml
+  use 'towolf/vim-helm'
   use 'pedrohdz/vim-yaml-folds'
 
   -- rego
@@ -191,27 +193,27 @@ packer.startup(function(use)
 
   -- latex
   use {
-    "lervag/vimtex",
-    ft = "tex",
+    'lervag/vimtex',
+    ft = 'tex',
   }
 
   -- Rust tools
   -- TODO: use lazy loading maybe?
-  use {"simrat39/rust-tools.nvim"}
+  use { 'simrat39/rust-tools.nvim' }
 
   -- Elixir
-  use { "elixir-editors/vim-elixir", ft = { "elixir", "eelixir", "euphoria3" } }
+  use { 'elixir-editors/vim-elixir', ft = { 'elixir', 'eelixir', 'euphoria3' } }
 
   -- Javascript / Typescript
   use {
-    "jose-elias-alvarez/nvim-lsp-ts-utils",
+    'jose-elias-alvarez/nvim-lsp-ts-utils',
     ft = {
-      "javascript",
-      "javascriptreact",
-      "javascript.jsx",
-      "typescript",
-      "typescriptreact",
-      "typescript.tsx",
+      'javascript',
+      'javascriptreact',
+      'javascript.jsx',
+      'typescript',
+      'typescriptreact',
+      'typescript.tsx',
     },
   }
 
