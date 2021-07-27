@@ -99,7 +99,9 @@ lv_utils.define_augroups {
     -- will cause split windows to be resized evenly if main window is resized
     { "BufWritePost", "plugins.lua", "PackerCompile" },
   },
-
+  _tab_bindings = {
+    { "FileType", "*", "lua require'luong.config.nvim-compe'.set_tab_keybindings()" },
+  },
   _user_autocommands = O.user_autocommands,
 }
 
