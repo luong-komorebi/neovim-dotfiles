@@ -20,8 +20,8 @@ for k, v in pairs(O.default_options) do
 end
 
 -- load all plugins and configs
-require"luong.colorscheme"
-require"luong.plugins"
+require "luong.colorscheme"
+require "luong.plugins"
 
 -- TODO: review if we still need this pieces of code since we rely on packer for loading configs now
 -- if O.has_sourced then

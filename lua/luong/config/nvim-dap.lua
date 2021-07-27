@@ -1,4 +1,4 @@
-local dap = require"dap"
+local dap = require "dap"
 
 O.plugin.dap = {
   active = false, -- TODO: turn on disable until ruby is ready
