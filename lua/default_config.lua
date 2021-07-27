@@ -1,32 +1,32 @@
 vim = vim
-CONFIG_PATH = vim.fn.stdpath "config"
-DATA_PATH = vim.fn.stdpath "data"
-CACHE_PATH = vim.fn.stdpath "cache"
-TERMINAL = vim.fn.expand "$TERMINAL"
-USER = vim.fn.expand "$USER"
+CONFIG_PATH = vim.fn.stdpath 'config'
+DATA_PATH = vim.fn.stdpath 'data'
+CACHE_PATH = vim.fn.stdpath 'cache'
+TERMINAL = vim.fn.expand '$TERMINAL'
+USER = vim.fn.expand '$USER'
 
 O = {
   leader_key = [[\]],
   has_sourced = false,
   pallete = {}, -- color pallete to do custom coloring
-  vsnip_dir = vim.fn.stdpath "config" .. "/snippets",
+  vsnip_dir = vim.fn.stdpath 'config' .. '/snippets',
   default_options = {
     autoread = true, --  When a file has been detected to have been changed outside of Vim and it has not been changed inside of Vim, automatically read it again.
     backup = false, -- creates a backup file
-    backspace = "indent,eol,start", -- allow backspacing over autoindent and line breaks(join lines) and start of insert
-    clipboard = "unnamedplus", -- allows neovim to access the system clipboard
+    backspace = 'indent,eol,start', -- allow backspacing over autoindent and line breaks(join lines) and start of insert
+    clipboard = 'unnamedplus', -- allows neovim to access the system clipboard
     cmdheight = 2, -- more space in the neovim command line for displaying messages
-    colorcolumn = "99999", -- fixes indentline for now
+    colorcolumn = '99999', -- fixes indentline for now
     cursorline = true, -- highlight the current line
-    completeopt = { "menuone", "noselect" },
+    completeopt = { 'menuone', 'noselect' },
     conceallevel = 0, -- so that `` is visible in markdown files
-    fileencoding = "utf-8", -- the encoding written to a file
-    guifont = "monospace:h17", -- the font used in graphical neovim applications
+    fileencoding = 'utf-8', -- the encoding written to a file
+    guifont = 'monospace:h17', -- the font used in graphical neovim applications
     hidden = true, -- required to keep multiple buffers and open multiple buffers
     hlsearch = true, -- highlight all matches on previous search pattern
     ignorecase = true, -- ignore case in search patterns
-    inccommand = "split", -- live substitution using vim's :substitue
-    mouse = "a", -- allow the mouse to be used in neovim
+    inccommand = 'split', -- live substitution using vim's :substitue
+    mouse = 'a', -- allow the mouse to be used in neovim
     pumheight = 10, -- pop up menu height
     showmode = false, -- we don't need to see things like -- INSERT -- anymore
     -- showtabline = 2, -- always show tabs
@@ -38,7 +38,7 @@ O = {
     termguicolors = true, -- set term gui colors (most terminals support this)
     title = false, -- set the title of window to the value of the titlestring
     -- titlestring = "%<%F%=%l/%L - nvim", -- what the title of the window will be set to
-    undodir = CACHE_PATH .. "/undo", -- set an undo directory
+    undodir = CACHE_PATH .. '/undo', -- set an undo directory
     undofile = true, -- enable persisten undo
     updatetime = 300, -- faster completion
     writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
@@ -50,9 +50,9 @@ O = {
     relativenumber = false, -- set relative numbered lines
     ruler = true, -- Show the line and column number of the cursor position
     numberwidth = 4, -- set number column width to 2 {default 4}
-    signcolumn = "number", -- recently vim can merge signcolumn and number column into one
+    signcolumn = 'number', -- recently vim can merge signcolumn and number column into one
     spell = false,
-    spelllang = "en",
+    spelllang = 'en',
     scrolloff = 8, -- is one of my fav
     sidescrolloff = 8,
     wrap = true, -- display lines as one long line
@@ -70,36 +70,36 @@ O = {
   lsp = {
     diagnostics = {
       virtual_text = {
-        prefix = "",
+        prefix = '',
         spacing = 0,
       },
       signs = true,
       underline = true,
     },
     document_highlight = true,
-    popup_border = "single",
+    popup_border = 'single',
     default_keybinds = true,
     on_attach_callback = nil,
   },
 
   disabled_built_ins = {
-    "netrw",
-    "netrwPlugin",
-    "netrwSettings",
-    "netrwFileHandlers",
-    "gzip",
-    "zip",
-    "zipPlugin",
-    "tar",
-    "tarPlugin", -- 'man',
-    "getscript",
-    "getscriptPlugin",
-    "vimball",
-    "vimballPlugin",
-    "2html_plugi",
-    "logipat",
-    "rrhelper",
-    "spellfile_plugin",
+    'netrw',
+    'netrwPlugin',
+    'netrwSettings',
+    'netrwFileHandlers',
+    'gzip',
+    'zip',
+    'zipPlugin',
+    'tar',
+    'tarPlugin', -- 'man',
+    'getscript',
+    'getscriptPlugin',
+    'vimball',
+    'vimballPlugin',
+    '2html_plugi',
+    'logipat',
+    'rrhelper',
+    'spellfile_plugin',
     -- 'matchit', 'matchparen', 'shada_plugin',
   },
 
@@ -108,50 +108,50 @@ O = {
   },
 
   user_autocommands = {
-    { "Filetype", "qf", "set nobuflisted" },
+    { 'Filetype', 'qf', 'set nobuflisted' },
     { -- autoformat
-      "BufWritePost",
-      "*",
-      ":silent lua vim.lsp.buf.formatting_sync()",
+      'BufWritePost',
+      '*',
+      ':silent lua vim.lsp.buf.formatting_sync()',
     },
-  }
+  },
 }
 
-local common_on_attach = require("lsp").common_on_attach
+local common_on_attach = require('lsp').common_on_attach
 
 O.lang = {
   lua = {
     formatter = {
-      exe = "stylua",
+      exe = 'stylua',
       args = {},
     },
-    linters = { "luacheck" },
+    linters = { 'luacheck' },
     lsp = {
-      provider = "sumneko_lua",
+      provider = 'sumneko_lua',
       setup = {
         cmd = {
-          DATA_PATH .. "/lspinstall/lua/sumneko-lua-language-server",
-          "-E",
-          DATA_PATH .. "/lspinstall/lua/main.lua",
+          DATA_PATH .. '/lspinstall/lua/sumneko-lua-language-server',
+          '-E',
+          DATA_PATH .. '/lspinstall/lua/main.lua',
         },
         on_attach = common_on_attach,
         settings = {
           Lua = {
             runtime = {
               -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-              version = "LuaJIT",
+              version = 'LuaJIT',
               -- Setup your lua path
-              path = vim.split(package.path, ";"),
+              path = vim.split(package.path, ';'),
             },
             diagnostics = {
               -- Get the language server to recognize the `vim` global
-              globals = { "vim", "O" },
+              globals = { 'vim', 'O' },
             },
             workspace = {
               -- Make the server aware of Neovim runtime files
               library = {
-                [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-                [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+                [vim.fn.expand '$VIMRUNTIME/lua'] = true,
+                [vim.fn.expand '$VIMRUNTIME/lua/vim/lsp'] = true,
               },
               maxPreload = 100000,
               preloadFileSize = 1000,
@@ -162,18 +162,18 @@ O.lang = {
     },
   },
   ruby = {
-    filetypes = { "rb", "erb", "rakefile", "ruby" },
+    filetypes = { 'rb', 'erb', 'rakefile', 'ruby' },
     formatter = {
-      exe = "bundle exec rubocop ",
+      exe = 'bundle exec rubocop ',
       -- dirty trick from https://github.com/sbdchd/neoformat/pull/49/files
-      args = { '--auto-correct', '--stdin', '%:p', '2>/dev/null', '|', "awk 'f; /^====================$/{f=1}'", },
+      args = { '--auto-correct', '--stdin', '%:p', '2>/dev/null', '|', "awk 'f; /^====================$/{f=1}'" },
       stdin = true,
     },
-    linters = { "ruby" }, -- this option will run a ruby process in background and consume cpu
+    linters = { 'ruby' }, -- this option will run a ruby process in background and consume cpu
     lsp = {
       provider = 'solargraph',
       setup = {
-        cmd = { DATA_PATH .. "/lspinstall/ruby/solargraph/solargraph", "stdio" },
+        cmd = { DATA_PATH .. '/lspinstall/ruby/solargraph/solargraph', 'stdio' },
         on_attach = common_on_attach,
         settings = { -- solargraph lsp client settings
           solargraph = {
@@ -183,7 +183,7 @@ O.lang = {
           },
         },
         init_options = {
-          formatting = true
+          formatting = true,
         },
       },
     },
