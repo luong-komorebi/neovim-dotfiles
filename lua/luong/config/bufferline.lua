@@ -31,7 +31,10 @@ require("bufferline").setup {
       local icon = level:match "error" and " " or " "
       return " " .. icon .. count
     end,
-    offsets = { { filetype = "CHADTree", text = "File Explorer", text_align = "center" } },
+    offsets = {
+      { filetype = "CHADTree", text = "File Explorer", text_align = "center" },
+      { filetype = "DiffviewFiles", text = "Diff Files", text_align = "center" },
+    },
     show_buffer_icons = true, -- disable filetype icons for buffers
     show_buffer_close_icons = false,
     show_close_icon = false,
