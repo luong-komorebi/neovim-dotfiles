@@ -227,12 +227,6 @@ function lsp_config.setup_handlers()
   })
 end
 
-require("lv-utils").define_augroups {
-  _general_lsp = {
-    { "FileType", "lspinfo", "nnoremap <silent> <buffer> q :q<CR>" },
-  },
-}
-
 local function is_table(t)
   return type(t) == "table"
 end

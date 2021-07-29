@@ -77,9 +77,9 @@ utils.define_augroups {
     { "BufWritePost", "lv-config.lua", "lua require('lv-utils').reload_lv_config()" },
   },
   _filetypechanges = {
-    { "BufWinEnter", ".tf", "setlocal filetype=hcl" },
-    { "BufRead", "*.tf", "setlocal filetype=hcl" },
-    { "BufNewFile", "*.tf", "setlocal filetype=hcl" },
+    { "BufWinEnter", ".tf", "setlocal filetype=terraform" },
+    { "BufRead", "*.tf", "setlocal filetype=terraform" },
+    { "BufNewFile", "*.tf", "setlocal filetype=terraform" },
     { "BufWinEnter", ".zsh", "setlocal filetype=sh" },
     { "BufRead", "*.zsh", "setlocal filetype=sh" },
     { "BufNewFile", "*.zsh", "setlocal filetype=sh" },
@@ -98,6 +98,9 @@ utils.define_augroups {
   _packer_compile = {
     -- will cause split windows to be resized evenly if main window is resized
     { "BufWritePost", "plugins.lua", "PackerCompile" },
+  },
+  _general_lsp = {
+    { "FileType", "lspinfo", "nnoremap <silent> <buffer> q :q<CR>" },
   },
   _tab_bindings = {
     { "FileType", "*", "lua require'luong.config.nvim-compe'.set_tab_keybindings()" },
