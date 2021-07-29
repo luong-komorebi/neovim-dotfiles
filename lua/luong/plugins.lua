@@ -11,9 +11,8 @@ packer.startup(function(use)
   use "folke/tokyonight.nvim"
   use "ryanoasis/vim-devicons"
 
+  -- jumping around
   -- ======================
-  -- Search and jump around
-  --  note : to paste in easymotion search mode: use ctrl-r and + or "
   use {
     "phaazon/hop.nvim",
     as = "hop",
@@ -23,12 +22,14 @@ packer.startup(function(use)
     "easymotion/vim-easymotion",
     config = [[require'luong.config.easymotion']],
   }
+
+  -- text searching, fuzzy search, file searching
+  -- ======================
   use "haya14busa/incsearch.vim"
   use "haya14busa/incsearch-easymotion.vim"
   use "haya14busa/incsearch-fuzzy.vim"
   use "jesseleite/vim-agriculture"
   use { "junegunn/fzf", dir = "~/.fzf", run = "./install --all" }
-  use "junegunn/fzf.vim"
   -- use telescope when https://github.com/nvim-telescope/telescope.nvim/pull/987
   -- use {
   --   'nvim-telescope/telescope.nvim',
@@ -62,7 +63,6 @@ packer.startup(function(use)
   -- Navigations and files
   -- ======================
   use "psliwka/vim-smoothie"
-  -- You will have to run :CHADdeps when installing / updating
   use {
     "ms-jpq/chadtree",
     branch = "chad",
