@@ -29,7 +29,10 @@ packer.startup(function(use)
   use "haya14busa/incsearch-easymotion.vim"
   use "haya14busa/incsearch-fuzzy.vim"
   use "jesseleite/vim-agriculture"
-  use { "junegunn/fzf", dir = "~/.fzf", run = "./install --all" }
+  use {
+    "junegunn/fzf.vim",
+    requires = { "junegunn/fzf", dir = "~/.fzf", run = "./install --all" },
+  }
   -- use telescope when https://github.com/nvim-telescope/telescope.nvim/pull/987
   -- use {
   --   'nvim-telescope/telescope.nvim',
