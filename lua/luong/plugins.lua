@@ -148,8 +148,8 @@ packer.startup(function(use)
     requires = { "hrsh7th/vim-vsnip-integ" },
     config = [[require"luong.config.nvim-compe"]],
   }
-  use { "hrsh7th/vim-vsnip", event = "InsertEnter" }
-  use { "rafamadriz/friendly-snippets", event = "InsertEnter" }
+  use { "hrsh7th/vim-vsnip", event = "InsertCharPre" }
+  use { "rafamadriz/friendly-snippets", event = "InsertCharPre" }
 
   -- Git tools
   use { "kdheepak/lazygit.nvim", config = [[require"luong.config.lazygit"]] }
