@@ -117,6 +117,23 @@ O = {
 local common_on_attach = require("lsp").common_on_attach
 
 O.lang = {
+  docker = {
+    formatter = {
+      exe = "",
+      args = {},
+    },
+    linters = {},
+    lsp = {
+      provider = "dockerls",
+      setup = {
+        cmd = {
+          DATA_PATH .. "/lspinstall/dockerfile/node_modules/.bin/docker-langserver",
+          "--stdio",
+        },
+        on_attach = common_on_attach,
+      },
+    },
+  },
   lua = {
     formatter = {
       exe = "stylua",
