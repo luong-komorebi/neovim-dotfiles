@@ -175,6 +175,25 @@ O.lang = {
       },
     },
   },
+  python = {
+    formatters = {
+      {
+        exe = "black",
+        args = {},
+      },
+    },
+    linters = { "black" },
+    lsp = {
+      provider = "pyright",
+      setup = {
+        cmd = {
+          DATA_PATH .. "/lspinstall/python/node_modules/.bin/pyright-langserver",
+          "--stdio",
+        },
+        on_attach = common_on_attach,
+      },
+    },
+  },
   ruby = {
     formatter = {
       exe = "bundle exec rubocop ",
