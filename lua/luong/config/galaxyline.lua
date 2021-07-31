@@ -237,27 +237,21 @@ local get_lsp_client = function(msg)
   if next(clients) == nil then
     return msg
   end
-  local lsps = ""
+  local buf_client_names = {}
+
   for _, client in ipairs(clients) do
     local filetypes = client.config.filetypes
     if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-      -- print(client.name)
-      if lsps == "" then
-        -- print("first", lsps)
-        lsps = client.name
+      if client.name == "null-ls" then
+        table.insert(buf_client_names, O.lang[buf_ft].linters[1])
+        table.insert(buf_client_names, O.lang[buf_ft].formatter.exe)
       else
-        if not string.find(lsps, client.name) then
-          lsps = lsps .. "," .. client.name
-        end
-        -- print("more", lsps)
+        table.insert(buf_client_names, client.name)
       end
     end
   end
-  if lsps == "" then
-    return msg
-  else
-    return lsps
-  end
+
+    return table.concat(buf_client_names, ", ")
 end
 
 table.insert(gls.right, {
