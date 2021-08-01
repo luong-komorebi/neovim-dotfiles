@@ -16,3 +16,6 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 nmap <silent> cprp :let @+=expand("%")<CR>
 nmap <silent> cpfp :let @+ = expand("%:p")<CR>
 nmap <silent> cpfn :let @+ = expand("%:t")<CR>
+if has('nvim') && executable('nvr')
+  let $GIT_EDITOR = "nvr -cc split --remote-wait +'set bufhidden=wipe'"
+endif
