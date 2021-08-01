@@ -60,11 +60,6 @@ utils.define_augroups {
       "setlocal formatoptions-=c formatoptions-=r formatoptions-=o",
     },
     {
-      "BufWinEnter",
-      "dashboard",
-      "setlocal cursorline signcolumn=yes cursorcolumn number",
-    },
-    {
       "BufRead",
       "*",
       "setlocal formatoptions-=c formatoptions-=r formatoptions-=o",
@@ -75,6 +70,12 @@ utils.define_augroups {
       "setlocal formatoptions-=c formatoptions-=r formatoptions-=o",
     },
     { "BufWritePost", "lv-config.lua", "lua require('lv-utils').reload_lv_config()" },
+    { "Filetype", "qf", "set nobuflisted" },
+  },
+  _auto_format = {
+    "BufWritePre",
+    "*",
+    ":silent lua vim.lsp.buf.formatting_sync()",
   },
   _filetypechanges = {
     { "BufWinEnter", ".tf", "setlocal filetype=terraform" },
@@ -105,7 +106,6 @@ utils.define_augroups {
   _tab_bindings = {
     { "FileType", "*", "lua require'luong.config.nvim-compe'.set_tab_keybindings()" },
   },
-  _user_autocommands = O.user_autocommands,
 }
 
 vim.cmd [[
