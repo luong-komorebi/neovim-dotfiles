@@ -10,6 +10,7 @@ packer.startup(function(use)
   -- ======================
   use "folke/tokyonight.nvim"
   use "ryanoasis/vim-devicons"
+  use "kyazdani42/nvim-web-devicons"
 
   -- jumping around
   -- ======================
@@ -85,11 +86,10 @@ packer.startup(function(use)
   use {
     "glepnir/galaxyline.nvim",
     config = [[require"luong.config.galaxyline"]],
-    requires = { "kyazdani42/nvim-web-devicons", opt = true },
   }
+
   use {
     "akinsho/nvim-bufferline.lua",
-    requires = "kyazdani42/nvim-web-devicons",
     config = [[require"luong.config.bufferline"]],
     event = "BufWinEnter",
   }
@@ -171,7 +171,6 @@ packer.startup(function(use)
   use {
     "sindrets/diffview.nvim",
     config = [[require"luong.config.diffview"]],
-    requires = { "kyazdani42/nvim-web-devicons", opt = true },
   }
 
   -- Syntax and language packs
