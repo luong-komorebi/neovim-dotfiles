@@ -103,15 +103,6 @@ O = {
   formatters = {
     filetype = {},
   },
-
-  user_autocommands = {
-    { "Filetype", "qf", "set nobuflisted" },
-    { -- autoformat
-      "BufWritePost",
-      "*",
-      ":silent lua vim.lsp.buf.formatting_sync()",
-    },
-  },
 }
 
 local common_on_attach = require("lsp").common_on_attach

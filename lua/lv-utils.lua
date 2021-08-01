@@ -106,6 +106,7 @@ utils.define_augroups {
   _tab_bindings = {
     { "FileType", "*", "lua require'luong.config.nvim-compe'.set_tab_keybindings()" },
   },
+  _nvr = { "FileType", "gitcommit,gitrebase,gitconfig", "set bufhiddden=delete" },
 }
 
 vim.cmd [[
