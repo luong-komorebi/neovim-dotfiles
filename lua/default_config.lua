@@ -99,10 +99,6 @@ O = {
     "spellfile_plugin",
     -- 'matchit', 'matchparen', 'shada_plugin',
   },
-
-  formatters = {
-    filetype = {},
-  },
 }
 
 local common_on_attach = require("lsp").common_on_attach
@@ -167,11 +163,9 @@ O.lang = {
     },
   },
   python = {
-    formatters = {
-      {
-        exe = "black",
-        args = {},
-      },
+    formatter = {
+      exe = "black",
+      args = { "--line-length=99" },
     },
     linters = { "flake8" },
     lsp = {
