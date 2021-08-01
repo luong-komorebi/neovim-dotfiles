@@ -75,6 +75,7 @@ utils.define_augroups {
       "setlocal formatoptions-=c formatoptions-=r formatoptions-=o",
     },
     { "BufWritePost", "lv-config.lua", "lua require('lv-utils').reload_lv_config()" },
+    { "Filetype", "qf", "set nobuflisted" },
   },
   _filetypechanges = {
     { "BufWinEnter", ".tf", "setlocal filetype=terraform" },
@@ -95,6 +96,13 @@ utils.define_augroups {
     -- will cause split windows to be resized evenly if main window is resized
     { "VimResized", "*", "wincmd =" },
   },
+  _autoformat = {
+    {
+      "BufWritePre",
+      "*",
+      ":silent lua vim.lsp.buf.formatting_sync()",
+    }
+  },
   _packer_compile = {
     -- will cause split windows to be resized evenly if main window is resized
     { "BufWritePost", "plugins.lua", "PackerCompile" },
@@ -105,7 +113,6 @@ utils.define_augroups {
   _tab_bindings = {
     { "FileType", "*", "lua require'luong.config.nvim-compe'.set_tab_keybindings()" },
   },
-  _user_autocommands = O.user_autocommands,
 }
 
 vim.cmd [[
