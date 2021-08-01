@@ -173,7 +173,7 @@ O.lang = {
         args = {},
       },
     },
-    linters = { "black" },
+    linters = { "flake8" },
     lsp = {
       provider = "pyright",
       setup = {
