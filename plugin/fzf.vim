@@ -68,10 +68,9 @@ function! RipgrepFzf(query, fullscreen)
 endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
-command! -bang -nargs=* SearchExactWord call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --smart-case --hidden --color=always --glob "!{.git, node_modules}" '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
+function! SearchWordWithRg()
+  execute RipgrepFzf(expand('<cword>'), 0)
+endfunction
 
 " Hide status bar when working with fzf
 if has('nvim') && !exists('g:fzf_layout')
@@ -79,10 +78,6 @@ if has('nvim') && !exists('g:fzf_layout')
   autocmd  FileType fzf set laststatus=0 noshowmode noruler
     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 endif
-
-function! SearchWordWithRg()
-  execute 'SearchExactWord' expand('<cword>')
-endfunction
 
 function! SearchVisualSelectionWithRg() range
   let old_reg = getreg('"')
@@ -93,5 +88,5 @@ function! SearchVisualSelectionWithRg() range
   let selection = getreg('"')
   call setreg('"', old_reg, old_regtype)
   let &clipboard = old_clipboard
-  execute 'SearchExactWord' selection
+  execute RipgrepFzf(selection, 0)
 endfunction
