@@ -15,7 +15,7 @@ nnoremap <silent> <leader>? :History<CR>
 nnoremap <silent> <leader>A :Windows<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 
-nnoremap <silent> K :call SearchWordWithRg()<CR>
+nnoremap <silent> K :call RipgrepFzf(expand('<cword>'), 0)<CR>
 vnoremap <silent> K :call SearchVisualSelectionWithRg()<CR>
 nnoremap <silent> <leader>gl :Commits<CR>
 nnoremap <silent> <leader>ga :BCommits<CR>
@@ -50,6 +50,7 @@ endif
 " - When set, CTRL-N and CTRL-P will be bound to 'next-history' and
 "   'previous-history' instead of 'down' and 'up'.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+let g:fzf_buffers_jump = 1
 
 " Command for git grep
 " - fzf#vim#grep(command, with_column, [options], [fullscreen])
@@ -68,10 +69,6 @@ function! RipgrepFzf(query, fullscreen)
 endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
-function! SearchWordWithRg()
-  execute RipgrepFzf(expand('<cword>'), 0)
-endfunction
-
 " Hide status bar when working with fzf
 if has('nvim') && !exists('g:fzf_layout')
   autocmd! FileType fzf
@@ -88,5 +85,8 @@ function! SearchVisualSelectionWithRg() range
   let selection = getreg('"')
   call setreg('"', old_reg, old_regtype)
   let &clipboard = old_clipboard
-  execute RipgrepFzf(selection, 0)
+  call RipgrepFzf(selection, 0)
 endfunction
+
+" Path completion with custom source command
+inoremap <expr> <c-x><c-f> fzf#vim#complete#path('rg --files')
