@@ -8,7 +8,7 @@ nnoremap <c-p> <ESC>:call fzf#vim#files('.', {'options': g:fzf_preview_source})<
 " search in current directory of a file
 nnoremap <space>. :Files <C-r>=expand("%:h")<CR>/<CR>
 " search for some keywords
-nnoremap <c-g> <ESC>:RG<CR>
+nnoremap <silent> <leader>rg <ESC>:RG<CR>
 nnoremap <c-]> <ESC>:call fzf#vim#tags('^' . expand('<cword>'), {'options': '--exact +i'})<CR>
 nnoremap <silent> <leader>mm <ESC>:Commands<CR>
 nnoremap <silent> <leader>? :History<CR>
