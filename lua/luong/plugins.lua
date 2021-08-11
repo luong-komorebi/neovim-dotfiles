@@ -2,7 +2,7 @@ local execute = vim.api.nvim_command
 local packer = require "packer"
 
 packer.init {
-  max_jobs = 16,
+  max_jobs = 20,
 }
 packer.startup(function(use)
   use "wbthomason/packer.nvim"
