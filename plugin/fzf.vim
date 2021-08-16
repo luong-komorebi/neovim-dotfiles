@@ -15,8 +15,8 @@ nnoremap <silent> <leader>? :History<CR>
 nnoremap <silent> <leader>A :Windows<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 
-nnoremap <silent> K :call RipgrepFzf(expand('<cword>'), 0)<CR>
-vnoremap <silent> K :call SearchVisualSelectionWithRg()<CR>
+nnoremap <silent> K :call FzfVisualSearch(expand('<cword>'), 0)<CR>
+vnoremap <silent> K :call FzfVisualSearchRange()<CR>
 nnoremap <silent> <leader>gl :Commits<CR>
 nnoremap <silent> <leader>ga :BCommits<CR>
 
@@ -59,24 +59,28 @@ command! -bang -nargs=* GGrep
   \   'git grep --line-number '.shellescape(<q-args>), 0,
   \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
 
-" delegate search for rg and fzf will now provide a selector
-function! RipgrepFzf(query, fullscreen)
+" delegate search for rg and fzf will now provide a selector for the result
+" every time we modify the string, fzf will send it to rg and make the process
+" restart so we always get fresh result instead of initiating once
+function! FzfAutoRefreshRipgrep(query, fullscreen)
   let command_fmt = 'rg --column --line-number --no-heading --smart-case --hidden --color=always --glob "!{.git, node_modules}" -- %s || true'
   let initial_command = printf(command_fmt, shellescape(a:query))
   let reload_command = printf(command_fmt, '{q}')
   let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
   call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
 endfunction
-command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+command! -nargs=* -bang RG call FzfAutoRefreshRipgrep(<q-args>, <bang>0)
 
-" Hide status bar when working with fzf
-if has('nvim') && !exists('g:fzf_layout')
-  autocmd! FileType fzf
-  autocmd  FileType fzf set laststatus=0 noshowmode noruler
-    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-endif
+" we have to maintain a different function for visual search because there are
+" some differences in the parameters and this can enable us to query on the
+" filename after doing a visual grep ( passing no reloading option )
+function! FzfVisualSearch(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --fixed-strings --smart-case --hidden --color=always --glob "!{.git, node_modules}" -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(), a:fullscreen)
+endfunction
 
-function! SearchVisualSelectionWithRg() range
+function! FzfVisualSearchRange() range
   let old_reg = getreg('"')
   let old_regtype = getregtype('"')
   let old_clipboard = &clipboard
@@ -85,8 +89,14 @@ function! SearchVisualSelectionWithRg() range
   let selection = getreg('"')
   call setreg('"', old_reg, old_regtype)
   let &clipboard = old_clipboard
-  call RipgrepFzf(selection, 0)
+  call FzfVisualSearch(selection, 0)
 endfunction
+
+if has('nvim') && !exists('g:fzf_layout')
+  autocmd! FileType fzf
+  autocmd  FileType fzf set laststatus=0 noshowmode noruler
+    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+endif
 
 " Path completion with custom source command
 inoremap <expr> <c-x><c-f> fzf#vim#complete#path('rg --files')
