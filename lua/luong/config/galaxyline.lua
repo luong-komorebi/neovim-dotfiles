@@ -108,6 +108,9 @@ table.insert(gls.left, {
     provider = function()
       local vcs = require "galaxyline.provider_vcs"
       local branch_name = vcs.get_git_branch()
+      if vcs.get_git_branch() == nil then
+        return "~ merge conflict" .. " "
+      end
       if string.len(branch_name) > 28 then
         return string.sub(branch_name, 1, 25) .. "..."
       end
@@ -251,7 +254,7 @@ local get_lsp_client = function(msg)
     end
   end
 
-    return table.concat(buf_client_names, ", ")
+  return table.concat(buf_client_names, ", ")
 end
 
 table.insert(gls.right, {
