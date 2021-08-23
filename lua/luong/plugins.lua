@@ -187,6 +187,7 @@ packer.startup(function(use)
   -- have to load vim go before vim polygot
   use {
     "nvim-treesitter/nvim-treesitter",
+    branch = "0.5-compat",
     run = ":TSUpdate",
     config = [[require"luong.config.nvim-treesitter"]],
   }
