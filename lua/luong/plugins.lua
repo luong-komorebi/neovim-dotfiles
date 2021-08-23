@@ -155,11 +155,19 @@ packer.startup(function(use)
   use { "rafamadriz/friendly-snippets", event = "InsertCharPre" }
 
   -- Git tools
-  use { "kdheepak/lazygit.nvim", config = [[require"luong.config.lazygit"]] }
   use {
     "ruifm/gitlinker.nvim",
     requires = "nvim-lua/plenary.nvim",
     config = [[require"luong.config.gitlinker"]],
+  }
+
+  -- Terminal
+  use {
+    "akinsho/nvim-toggleterm.lua",
+    event = "BufWinEnter",
+    config = function()
+      require("luong.config.nvim-toggleterm").setup()
+    end,
   }
 
   -- Miscs
