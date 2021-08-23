@@ -77,6 +77,10 @@ utils.define_augroups {
     { "BufWritePost", "lv-config.lua", "lua require('lv-utils').reload_lv_config()" },
     { "Filetype", "qf", "set nobuflisted" },
   },
+  _git = {
+    { "FileType", "gitcommit", "setlocal wrap" },
+    { "FileType", "gitcommit", "setlocal spell" },
+  },
   _filetypechanges = {
     { "BufWinEnter", ".tf", "setlocal filetype=terraform" },
     { "BufRead", "*.tf", "setlocal filetype=terraform" },
@@ -101,7 +105,7 @@ utils.define_augroups {
       "BufWritePre",
       "*",
       ":silent lua vim.lsp.buf.formatting_sync()",
-    }
+    },
   },
   _packer_compile = {
     -- will cause split windows to be resized evenly if main window is resized
