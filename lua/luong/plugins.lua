@@ -89,7 +89,7 @@ packer.startup(function(use)
   }
 
   use {
-    "akinsho/nvim-bufferline.lua",
+    "akinsho/bufferline.nvim",
     config = [[require"luong.config.bufferline"]],
     event = "BufWinEnter",
   }
