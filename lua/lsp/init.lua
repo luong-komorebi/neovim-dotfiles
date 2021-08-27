@@ -203,6 +203,15 @@ function lsp_config.PeekImplementation()
 end
 
 function lsp_config.common_on_attach(client, bufnr)
+  local lsp_signature_ok, lsp_signature = pcall(require, "lsp-signature")
+  if lsp_signature_ok then
+    lsp_signature.on_attach({
+      bind = true, -- This is mandatory, otherwise border config won't get registered.
+      handler_opts = {
+        border = "single",
+      },
+    }, bufnr)
+  end
   lsp_highlight_document(client, bufnr)
 end
 

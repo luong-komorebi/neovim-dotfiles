@@ -111,6 +111,7 @@ packer.startup(function(use)
   use "editorconfig/editorconfig-vim"
   -- LSP
   use "neovim/nvim-lspconfig"
+  use "ray-x/lsp_signature.nvim"
   use {
     "RishabhRD/nvim-lsputils", -- a lot of sensible configs for lsp
     requires = "RishabhRD/popfix",
