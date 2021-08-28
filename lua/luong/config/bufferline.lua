@@ -1,7 +1,6 @@
 require("bufferline").setup {
   options = {
     numbers = "ordinal",
-    number_style = "superscript", -- buffer_id at index 1, ordinal at index 2
     close_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
     right_mouse_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
     left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
@@ -19,9 +18,9 @@ require("bufferline").setup {
     --- Please note some names can/will break the
     --- bufferline so use this at your discretion knowing that it has
     --- some limitations that will *NOT* be fixed.
-    max_name_length = 20,
+    max_name_length = 19,
     max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
-    tab_size = 20,
+    tab_size = 19,
     diagnostics = "nvim_lsp",
     diagnostics_indicator = function(count, level, diagnostics_dict, context)
       if context.buffer:current() then

@@ -30,15 +30,16 @@ packer.startup(function(use)
   use "haya14busa/incsearch-easymotion.vim"
   use "haya14busa/incsearch-fuzzy.vim"
   use "jesseleite/vim-agriculture"
-  use {
-    "junegunn/fzf.vim",
-    requires = { "junegunn/fzf", dir = "~/.fzf", run = "./install --all" },
-  }
-  -- use telescope when https://github.com/nvim-telescope/telescope.nvim/pull/987
   -- use {
-  --   'nvim-telescope/telescope.nvim',
-  --   requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+  --   "junegunn/fzf.vim",
+  --   requires = { "junegunn/fzf", dir = "~/.fzf", run = "./install --all" },
   -- }
+  -- use telescope when https://github.com/nvim-telescope/telescope.nvim/pull/987
+  use {
+    "nvim-telescope/telescope.nvim",
+    requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
+    config = [[require"luong.config.telescope"]],
+  }
   use "nelstrom/vim-visual-star-search"
 
   -- Editing and formatting codes
@@ -71,6 +72,12 @@ packer.startup(function(use)
     "ms-jpq/chadtree",
     branch = "chad",
     run = "python3 -m chadtree deps",
+  }
+  use {
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require("project_nvim").setup {}
+    end,
   }
 
   -- Indicators
