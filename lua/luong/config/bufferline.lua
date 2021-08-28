@@ -60,6 +60,6 @@ vim.api.nvim_set_keymap("n", "<leader>9", ":BufferLineGoToBuffer 9<CR>", { norem
 vim.api.nvim_set_keymap("n", "<S-x>", ":BufferLineCloseLeft<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>c", ":bdelete<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<A-c>", ":bdelete<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-s>", ":BufferLinePick<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<A-w>", ":%bd|e#|bd# <CR>", { noremap = true }) -- close all other buffers but this one

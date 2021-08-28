@@ -112,6 +112,7 @@ packer.startup(function(use)
   -- LSP
   use "neovim/nvim-lspconfig"
   use "ray-x/lsp_signature.nvim"
+  use "glepnir/lspsaga.nvim"
   use {
     "RishabhRD/nvim-lsputils", -- a lot of sensible configs for lsp
     requires = "RishabhRD/popfix",

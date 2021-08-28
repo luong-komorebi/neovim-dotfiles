@@ -140,6 +140,13 @@ local function lsp_highlight_document(client, bufnr)
   buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = O.lsp.popup_border}})<CR>", opts)
   buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  local lsp_saga_status_ok, lsp_saga = pcall(require, "lspsaga")
+  if lsp_saga_status_ok then
+    lsp_saga.init_lsp_saga()
+    buf_set_keymap("n", "<leader>gh", "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", opts)
+    buf_set_keymap("n", "<leader>ca", "<cmd>lua require('lspsaga.codeaction').code_action()", opts)
+    buf_set_keymap("n", "<leader>ca", ":<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>", opts)
+  end
 end
 
 -- Taken from https://www.reddit.com/r/neovim/comments/gyb077/nvimlsp_peek_defination_javascript_ttserver/
