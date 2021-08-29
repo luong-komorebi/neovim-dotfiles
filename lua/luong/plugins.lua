@@ -30,11 +30,11 @@ packer.startup(function(use)
   use "haya14busa/incsearch-easymotion.vim"
   use "haya14busa/incsearch-fuzzy.vim"
   use "jesseleite/vim-agriculture"
-  -- use {
-  --   "junegunn/fzf.vim",
-  --   requires = { "junegunn/fzf", dir = "~/.fzf", run = "./install --all" },
-  -- }
-  -- use telescope when https://github.com/nvim-telescope/telescope.nvim/pull/987
+  use {
+    "junegunn/fzf.vim",
+    requires = { "junegunn/fzf", dir = "~/.fzf", run = "./install --all" },
+  }
+  -- telescope is only used for some special operations. Fzf is more performant
   use {
     "nvim-telescope/telescope.nvim",
     requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
@@ -75,9 +75,7 @@ packer.startup(function(use)
   }
   use {
     "ahmedkhalf/project.nvim",
-    config = function()
-      require("project_nvim").setup {}
-    end,
+    config = [[require"luong.config.project"]],
   }
 
   -- Indicators
