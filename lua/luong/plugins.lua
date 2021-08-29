@@ -40,6 +40,7 @@ packer.startup(function(use)
     requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
     config = [[require"luong.config.telescope"]],
   }
+  use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
   use "nelstrom/vim-visual-star-search"
 
   -- Editing and formatting codes
