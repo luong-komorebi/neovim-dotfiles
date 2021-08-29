@@ -108,6 +108,13 @@ packer.startup(function(use)
   use "liuchengxu/vista.vim"
   use "jeetsukumaran/vim-indentwise"
   use "andymass/vim-matchup"
+  use { -- rainbow parentheses
+    "luochen1990/rainbow",
+    config = function()
+      vim.g.rainbow_active = 1
+    end,
+    event = "BufWinEnter",
+  }
   -- Autoload load nvim plugins config
   use "tjdevries/astronauta.nvim"
 
@@ -156,6 +163,7 @@ packer.startup(function(use)
   -- Completion and snippet
   use {
     "hrsh7th/nvim-compe",
+    event = "InsertEnter",
     requires = { "hrsh7th/vim-vsnip-integ" },
     config = [[require"luong.config.nvim-compe"]],
   }
