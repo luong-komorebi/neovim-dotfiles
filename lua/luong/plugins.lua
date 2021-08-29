@@ -109,10 +109,8 @@ packer.startup(function(use)
   use "jeetsukumaran/vim-indentwise"
   use "andymass/vim-matchup"
   use { -- rainbow parentheses
-    "luochen1990/rainbow",
-    config = function()
-      vim.g.rainbow_active = 1
-    end,
+    "p00f/nvim-ts-rainbow",
+    config = [[require"luong.config.nvim-ts-rainbow"]],
     event = "BufWinEnter",
   }
   -- Autoload load nvim plugins config
