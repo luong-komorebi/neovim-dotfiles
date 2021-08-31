@@ -52,7 +52,11 @@ packer.startup(function(use)
     config = [[require"luong.config.nvim-comment"]],
   }
   use "junegunn/vim-easy-align"
-  use { "windwp/nvim-autopairs", config = [[require"luong.config.autopairs"]] }
+  use {
+    "windwp/nvim-autopairs",
+    config = [[require"luong.config.autopairs"]],
+    after = "nvim-compe",
+  }
   use { "mg979/vim-visual-multi", branch = "master" }
   use "AndrewRadev/splitjoin.vim"
   use "dyng/ctrlsf.vim"
@@ -162,10 +166,13 @@ packer.startup(function(use)
   use {
     "hrsh7th/nvim-compe",
     event = "InsertEnter",
-    requires = { "hrsh7th/vim-vsnip-integ" },
     config = [[require"luong.config.nvim-compe"]],
   }
-  use { "hrsh7th/vim-vsnip", event = "InsertCharPre" }
+
+  use {
+    "hrsh7th/vim-vsnip-integ",
+    requires = { "hrsh7th/vim-vsnip", event = "InsertCharPre" },
+  }
   use { "rafamadriz/friendly-snippets", event = "InsertCharPre" }
 
   -- Git tools
