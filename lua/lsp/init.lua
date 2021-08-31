@@ -146,7 +146,7 @@ local function lsp_highlight_document(client, bufnr)
     lsp_saga.init_lsp_saga {
       error_sign = "",
       warn_sign = "",
-      info_sign = "",
+      infor_sign = "",
       hint_sign = "",
     }
     buf_set_keymap("n", "<leader>gh", "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", opts)
