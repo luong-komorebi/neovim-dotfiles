@@ -142,7 +142,13 @@ local function lsp_highlight_document(client, bufnr)
   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   local lsp_saga_status_ok, lsp_saga = pcall(require, "lspsaga")
   if lsp_saga_status_ok then
-    lsp_saga.init_lsp_saga()
+    -- this part is just for trying out lspsaga
+    lsp_saga.init_lsp_saga {
+      error_sign = "",
+      warn_sign = "",
+      info_sign = "",
+      hint_sign = "",
+    }
     buf_set_keymap("n", "<leader>gh", "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", opts)
     buf_set_keymap("n", "<leader>ca", "<cmd>lua require('lspsaga.codeaction').code_action()", opts)
     buf_set_keymap("n", "<leader>ca", ":<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>", opts)
