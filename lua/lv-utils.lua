@@ -100,13 +100,13 @@ utils.define_augroups {
     -- will cause split windows to be resized evenly if main window is resized
     { "VimResized", "*", "wincmd =" },
   },
-  _autoformat = {
-    {
-      "BufWritePre",
-      "*",
-      ":silent lua vim.lsp.buf.formatting_sync()",
-    },
-  },
+  -- _autoformat = {
+  --   {
+  --     "BufWritePre",
+  --     "*",
+  --     ":silent lua vim.lsp.buf.formatting_sync()",
+  --   },
+  -- },
   _packer_compile = {
     -- will cause split windows to be resized evenly if main window is resized
     { "BufWritePost", "plugins.lua", "PackerCompile" },
