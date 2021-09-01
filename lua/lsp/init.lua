@@ -140,18 +140,23 @@ local function lsp_highlight_document(client, bufnr)
   buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = O.lsp.popup_border}})<CR>", opts)
   buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  local lsp_saga_status_ok, lsp_saga = pcall(require, "lspsaga")
+  -- buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", opts)
+  local lsp_saga_status_ok, _ = pcall(require, "lspsaga")
   if lsp_saga_status_ok then
     -- this part is just for trying out lspsaga
-    lsp_saga.init_lsp_saga {
-      error_sign = "",
-      warn_sign = "",
-      infor_sign = "",
-      hint_sign = "",
-    }
-    buf_set_keymap("n", "<leader>gh", "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", opts)
-    buf_set_keymap("n", "<leader>ca", "<cmd>lua require('lspsaga.codeaction').code_action()", opts)
-    buf_set_keymap("n", "<leader>ca", ":<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>", opts)
+    buf_set_keymap("n", "gd", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", opts)
+    buf_set_keymap("n", "gh", "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", opts)
+    buf_set_keymap("n", "sd", "<cmd>lua require('lspsaga.hover').render_hover_doc<CR>", opts)
+    buf_set_keymap("n", "<c-f>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
+    buf_set_keymap("n", "<c-b>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
+    buf_set_keymap("n", "ca", "<cmd>lua require('lspsaga.codeaction').code_action()", opts)
+    buf_set_keymap("v", "ca", ":<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>", opts)
+    buf_set_keymap("n", "gs", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", opts)
+    buf_set_keymap("n", "<space>rn", "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
+    buf_set_keymap("n", "gl", "<cmd>lua require('lspsaga.diagnostic').show_line_diagnostics()<CR>", opts)
+    buf_set_keymap("n", "[d", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", opts)
+    buf_set_keymap("n", "]d", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", opts)
+
   end
 end
 
