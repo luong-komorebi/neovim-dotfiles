@@ -13,6 +13,9 @@ vim.cmd [[runtime misc_mappings.vim]]
 
 -- init lsp soon
 require("lsp").setup_handlers()
+for lang, _ in pairs(O.lang) do
+  require("lsp").setup(lang)
+end
 
 local null_status_ok, null_ls = pcall(require, "null-ls")
 if null_status_ok then
