@@ -25,6 +25,7 @@ local colors = {
   blue = c.blue,
 }
 local left_separator = ""
+local right_separator = "  "
 
 table.insert(gls.left, {
   FirstElement = {
@@ -42,7 +43,7 @@ table.insert(gls.left, {
          return "  "
       end,
       highlight = { colors.section_bg, colors.cyan },
-      separator = "  ",
+      separator = right_separator,
       separator_highlight = { colors.nord_blue, colors.one_bg2 },
    },
 })
@@ -99,9 +100,19 @@ table.insert(gls.left, {
       return alias_mode .. " "
     end,
     highlight = { colors.bg, colors.bg },
-    separator = "  ",
+    separator = right_separator,
     separator_highlight = { colors.bg, colors.section_bg },
   },
+})
+
+table.insert(gls.left, {
+  current_dir = {
+      provider = function()
+         local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+         return "  " .. dir_name .. " "
+      end,
+      highlight = { colors.fg, colors.section_bg },
+   },
 })
 
 table.insert(gls.left, {
