@@ -82,10 +82,16 @@ packer.startup(function(use)
     "ahmedkhalf/project.nvim",
     config = [[require"luong.config.project"]],
   }
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      require("luong.config.which-key").setup()
+    end,
+    event = "BufWinEnter",
+  }
 
   -- Indicators
   -- ======================
-  -- dependencies for gitsigns
   use {
     "lewis6991/gitsigns.nvim",
     requires = {
@@ -152,25 +158,25 @@ packer.startup(function(use)
   }
 
   -- Debugging
+  -- ======================
   use {
     "mfussenegger/nvim-dap",
     config = [[require"luong.config.nvim-dap"]],
   }
-
-  -- Debugger management
   use {
     "Pocco81/DAPInstall.nvim",
   }
 
   -- Formatter and linter
+  -- ======================
   use "jose-elias-alvarez/null-ls.nvim"
 
   -- Completion and snippet
+  -- ======================
   use {
     "hrsh7th/nvim-compe",
     config = [[require"luong.config.nvim-compe"]],
   }
-
   use {
     "hrsh7th/vim-vsnip-integ",
     requires = { "hrsh7th/vim-vsnip", event = "InsertCharPre" },
@@ -178,6 +184,7 @@ packer.startup(function(use)
   use { "rafamadriz/friendly-snippets", event = "InsertCharPre" }
 
   -- Git tools
+  -- ======================
   use {
     "ruifm/gitlinker.nvim",
     requires = "nvim-lua/plenary.nvim",
@@ -185,6 +192,7 @@ packer.startup(function(use)
   }
 
   -- Terminal
+  -- ======================
   use {
     "akinsho/nvim-toggleterm.lua",
     event = "BufWinEnter",
