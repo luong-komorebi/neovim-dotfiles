@@ -8,7 +8,7 @@ function M.config()
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
   end
 
-  require("lsp.handlers").setup()
+  require("new_lsp.handlers").setup()
 end
 
 local function lsp_highlight_document(client)
@@ -40,17 +40,34 @@ local function add_lsp_buffer_keybindings(bufnr)
   end
 
   local keys = {
-    ["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Show hover" },
+    -- ["sd"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Show hover" },
+    ["sd"] = { "<cmd>lua require('lspsaga.hover').render_hover_doc<CR>", "Show hover" },
     ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Goto Definition" },
     ["gD"] = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Goto declaration" },
     ["gr"] = { "<cmd>lua vim.lsp.buf.references()<CR>", "Goto references" },
     ["gI"] = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto Implementation" },
-    ["gs"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "show signature help" },
-    ["gp"] = { "<cmd>lua require'lsp.peek'.Peek('definition')<CR>", "Peek definition" },
+    -- ["gs"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "show signature help" },
+    ["gs"] = { "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", "show signature help" },
+    -- ["gp"] = { "<cmd>lua require'lsp.peek'.Peek('definition')<CR>", "Peek definition" },
+    ["gp"] = { "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", "Peek definition" },
+    -- ["gl"] = {
+    --   "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ show_header = false, border = 'single' })<CR>",
+    --   "Show line diagnostics",
+    -- },
     ["gl"] = {
-      "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ show_header = false, border = 'single' })<CR>",
+      "<cmd>lua require('lspsaga.diagnostic').show_line_diagnostics()<CR>",
       "Show line diagnostics",
     },
+
+    ["<space>D"] = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Goto type definition" },
+    ["<space>f"] = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format" },
+    -- ["[d"] = { "<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = O.lsp.popup_border}})<CR>", "Next diagnostic" },
+    -- ["]d"] = { "<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = O.lsp.popup_border}})<CR>", "Previous diagnostic" },
+    ["[d"] = { "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>d>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = O.lsp.popup_border}})<CR>", "Next diagnostic" },
+    ["]d"] = { "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", "Previous diagnostic" },
+    ["gh"] = { "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", "Peek definition" },
+    ["<c-j>"] = { "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", "Scroll down in saga" },
+    ["<c-k>"] = { "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", "Scroll up in saga" },
   }
   wk.register(keys, { mode = "n", buffer = bufnr })
 end
@@ -117,13 +134,25 @@ function M.common_on_attach(client, bufnr)
     O.lsp.on_attach_callback(client, bufnr)
     Log:debug "Called lsp.on_init_callback"
   end
+
+  local lsp_signature_ok, lsp_signature = pcall(require, "lsp-signature")
+  if lsp_signature_ok then
+    lsp_signature.on_attach({
+      bind = true, -- This is mandatory, otherwise border config won't get registered.
+      handler_opts = {
+        border = "single",
+      },
+    }, bufnr)
+    Log:debug "Loaded lsp signature successfully"
+  end
+
   lsp_highlight_document(client)
   add_lsp_buffer_keybindings(bufnr)
-  require("lsp.null-ls").setup(vim.bo.filetype)
+  require("new_lsp.null-ls").setup(vim.bo.filetype)
 end
 
 function M.setup(lang)
-  local lsp_utils = require "lsp.utils"
+  local lsp_utils = require "new_lsp.utils"
   local lsp = O.lang[lang].lsp
   if lsp_utils.is_client_active(lsp.provider) then
     return

@@ -7,7 +7,7 @@ USER = vim.fn.expand "$USER"
 O = {
   log = {
     ---@usage can be { "trace", "debug", "info", "warn", "error", "fatal" },
-    level = "warn",
+    level = "debug",
     viewer = {
       ---@usage this will fallback on "less +F" if not found
       cmd = "lnav",
@@ -55,10 +55,10 @@ O = {
       signs = {
         active = true,
         values = {
-          { name = "LspDiagnosticsSignError", text = "" },
-          { name = "LspDiagnosticsSignWarning", text = "" },
+          { name = "LspDiagnosticsSignError", text = "" },
+          { name = "LspDiagnosticsSignWarning", text = "" },
           { name = "LspDiagnosticsSignHint", text = "" },
-          { name = "LspDiagnosticsSignInformation", text = "" },
+          { name = "LspDiagnosticsSignInformation", text = "" },
         },
       },
       virtual_text = {
@@ -113,6 +113,7 @@ O = {
     undodir = CACHE_PATH .. "/undo", -- set an undo directory
     undofile = true, -- enable persisten undo
     updatetime = 300, -- faster completion
+    timeoutlen = 100, -- time to wait for a mapped sequence to complete (in milliseconds)
     writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
     expandtab = true, -- convert tabs to spaces
     shiftwidth = 2, -- the number of spaces inserted for each indentation
@@ -165,9 +166,9 @@ local common_on_attach = require("lsp").common_on_attach
 
 O.lang = {
   docker = {
-    formatter = {
-      exe = "",
-      args = {},
+    formatters = {
+      -- exe = "",
+      -- args = {},
     },
     linters = {},
     lsp = {
@@ -182,11 +183,17 @@ O.lang = {
     },
   },
   lua = {
-    formatter = {
-      exe = "stylua",
-      args = {},
+    formatters = {
+      {
+        exe = "stylua",
+        args = {},
+      }
     },
-    linters = { "luacheck" },
+    linters = {
+      {
+        exe = "luacheck",
+      }
+    },
     lsp = {
       provider = "sumneko_lua",
       setup = {
@@ -223,11 +230,17 @@ O.lang = {
     },
   },
   python = {
-    formatter = {
-      exe = "black",
-      args = { "--line-length=99" },
+    formatters = {
+      {
+        exe = "black",
+        args = { "--line-length=99" },
+      },
     },
-    linters = { "flake8" },
+    linters = {
+      {
+        exe = "flake8",
+      },
+    },
     lsp = {
       provider = "pyright",
       setup = {
@@ -240,13 +253,18 @@ O.lang = {
     },
   },
   ruby = {
-    formatter = {
-      exe = "bundle exec rubocop ",
-      -- dirty trick from https://github.com/sbdchd/neoformat/pull/49/files
-      args = { "--auto-correct", "--stdin", "%:p", "2>/dev/null", "|", "awk 'f; /^====================$/{f=1}'" },
-      stdin = true,
+    formatters = {
+      {
+        exe = "bundle exec rubocop ",
+        -- dirty trick from https://github.com/sbdchd/neoformat/pull/49/files
+        args = { "--auto-correct", "--stdin", "%:p", "2>/dev/null", "|", "awk 'f; /^====================$/{f=1}'" },
+      },
     },
-    linters = { "ruby" }, -- this option will run a ruby process in background and consume cpu
+    linters = {
+      {
+        exe = "ruby"
+      },
+    }, -- this option will run a ruby process in background and consume cpu
     lsp = {
       provider = "solargraph",
       setup = {
@@ -256,7 +274,7 @@ O.lang = {
         settings = { -- solargraph lsp client settings
           solargraph = {
             diagnostics = true, -- this option may create false alert as solargraph uses global rubocop (not Gemfile specified)
-            autoformat = false, -- disable because we use nvim formatter
+            autoformat = false, -- disable because we use nvim formatters
             formatting = false,
           },
         },
@@ -266,34 +284,24 @@ O.lang = {
       },
     },
   },
-  go = {
-    formatter = {
-      exe = "gofmt",
-      args = {},
-      stdin = true,
-    },
-    linters = {
-      "golangcilint",
-      "revive",
-    },
-    lsp = {
-      provider = "gopls",
-      setup = {
-        cmd = {
-          DATA_PATH .. "/lspinstall/go/gopls",
-        },
-        on_attach = common_on_attach,
-      },
-    },
-  },
+  -- go = {
+  --   formatters = {
+  --     exe = "gofmt",
+  --     args = {},
+  --     stdin = true,
+  --   },
+  --   linters = {
+  --     "golangcilint",
+  --     "revive",
+  --   },
+  --   lsp = {
+  --     provider = "gopls",
+  --     setup = {
+  --       cmd = {
+  --         DATA_PATH .. "/lspinstall/go/gopls",
+  --       },
+  --       on_attach = common_on_attach,
+  --     },
+  --   },
+  -- },
 }
-
-function O.register_mappings(mappings, default_options)
-  for mode, mode_mappings in pairs(mappings) do
-    for _, mapping in pairs(mode_mappings) do
-      local options = #mapping == 3 and table.remove(mapping) or default_options
-      local prefix, cmd = unpack(mapping)
-      pcall(vim.api.nvim_set_keymap, mode, prefix, cmd, options)
-    end
-  end
-end

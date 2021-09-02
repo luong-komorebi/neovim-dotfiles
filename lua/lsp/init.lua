@@ -144,12 +144,12 @@ local function lsp_highlight_document(client, bufnr)
   local lsp_saga_status_ok, _ = pcall(require, "lspsaga")
   if lsp_saga_status_ok then
     -- this part is just for trying out lspsaga
-    buf_set_keymap("n", "gd", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", opts)
+    buf_set_keymap("n", "gp", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", opts)
     buf_set_keymap("n", "gh", "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", opts)
     buf_set_keymap("n", "sd", "<cmd>lua require('lspsaga.hover').render_hover_doc<CR>", opts)
     buf_set_keymap("n", "<c-f>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
     buf_set_keymap("n", "<c-b>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
-    buf_set_keymap("n", "ca", "<cmd>lua require('lspsaga.codeaction').code_action()", opts)
+    buf_set_keymap("n", "ca", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", opts)
     buf_set_keymap("v", "ca", ":<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>", opts)
     buf_set_keymap("n", "gs", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", opts)
     buf_set_keymap("n", "<space>rn", "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
@@ -227,7 +227,7 @@ function lsp_config.common_on_attach(client, bufnr)
       bind = true, -- This is mandatory, otherwise border config won't get registered.
       handler_opts = {
         border = "single",
-      },
+     },
     }, bufnr)
   end
   lsp_highlight_document(client, bufnr)

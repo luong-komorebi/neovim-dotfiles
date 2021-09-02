@@ -212,6 +212,10 @@ table.insert(gls.right, {
   },
 })
 
+local function str_list(list)
+  return string.format("[ %s ]", table.concat(list, ", "))
+end
+
 local get_lsp_client = function(msg)
   msg = msg or "LSP Inactive"
   local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
@@ -225,8 +229,10 @@ local get_lsp_client = function(msg)
     local filetypes = client.config.filetypes
     if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
       if client.name == "null-ls" then
-        table.insert(buf_client_names, O.lang[buf_ft].linters[1])
-        table.insert(buf_client_names, O.lang[buf_ft].formatter.exe)
+        local null_formatters = require "new_lsp.null-ls.formatters"
+        local supported_formatters = null_formatters.list_available(buf_ft)
+        table.insert(buf_client_names, str_list(supported_formatters))
+        table.insert(buf_client_names, O.lang[buf_ft].formatters[1].exe)
       else
         table.insert(buf_client_names, client.name)
       end

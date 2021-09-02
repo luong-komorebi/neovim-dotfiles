@@ -2,7 +2,7 @@ local M = {}
 
 local function find_root_dir()
   local util = require "lspconfig/util"
-  local lsp_utils = require "lsp.utils"
+  local lsp_utils = require "new_lsp.utils"
 
   local status_ok, ts_client = lsp_utils.is_client_active "typescript"
   if status_ok then

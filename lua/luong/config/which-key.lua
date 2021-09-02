@@ -62,11 +62,39 @@ M.config = function()
     -- see https://neovim.io/doc/user/map.html#:map-cmd
     vmappings = {
       -- ["/"] = { ":CommentToggle<CR>", "Comment" },
-    },
-    mappings = {
       l = {
         name = "LSP",
-        a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+        a = { ":<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>", "Code Action" }
+      }
+    },
+    mappings = {
+      ["e"] = { ":CHADopen<CR>", "Open chad tree" },
+      ["rev"] = { ":CHADopen --always-focus <CR>", "Reveal current file in chad tree" },
+      g = {
+        name = "Git",
+        j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
+        k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
+        l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
+        p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
+        r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
+        R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
+        s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
+        u = {
+          "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
+          "Undo Stage Hunk",
+        },
+        o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+        b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+        c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+        C = {
+          "<cmd>Telescope git_bcommits<cr>",
+          "Checkout commit(for current file)",
+        },
+      },
+
+      l = {
+        name = "LSP",
+        a = { "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", "Code Action" },
         d = {
           "<cmd>Telescope lsp_document_diagnostics<cr>",
           "Document Diagnostics",
@@ -76,7 +104,7 @@ M.config = function()
           "Workspace Diagnostics",
         },
         -- f = { "<cmd>silent FormatWrite<cr>", "Format" },
-        f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
+        -- f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
         i = { "<cmd>LspInfo<cr>", "Info" },
         j = {
           "<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = O.lsp.popup_border}})<cr>",
@@ -93,7 +121,8 @@ M.config = function()
           i = { "<cmd>lua require('lsp.peek').Peek('implementation')<cr>", "Implementation" },
         },
         q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
-        r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+        -- r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+        r = { "<cmd>lua require('lspsaga.rename').rename()<CR>", "Rename" },
         s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
         S = {
           "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",

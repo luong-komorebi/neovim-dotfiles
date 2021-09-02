@@ -1,4 +1,5 @@
 local M = {}
+local utils = require "utils"
 
 M.config = {
   on_config_done = nil,
@@ -72,8 +73,50 @@ end
 M._exec_toggle = function(exec)
   local binary = M._split(exec)[1]
   local Terminal = require("toggleterm.terminal").Terminal
+  if vim.fn.executable(binary) ~= 1 then
+    local Log = require "luong.log"
+    Log:error("Unable to run executable " .. binary .. ". Please make sure it is installed properly.")
+    return
+  end
   local exec_term = Terminal:new { cmd = exec, hidden = true }
   exec_term:toggle()
+end
+
+
+local function get_log_path(name)
+  --handle custom paths not managed by Plenary.log
+  local logger = require "luong.log"
+  local file
+  if name == "nvim" then
+    file = CACHE_PATH .. "/log"
+  else
+    file = logger:new({ plugin = name }):get_path()
+  end
+  if utils.is_file(file) then
+    return file
+  end
+end
+
+---Toggles a log viewer according to log.viewer.layout_config
+---param name can be the name of any of the managed logs, e,g. "nvim" or the default ones {"nvim", "lsp", "packer.nvim"}
+M.toggle_log_view = function(name)
+  local logfile = get_log_path(name)
+  if not logfile then
+    return
+  end
+  local term_opts = vim.tbl_deep_extend("force", M.config, {
+    cmd = O.log.viewer.cmd .. " " .. logfile,
+    open_mapping = O.log.viewer.layout_config.open_mapping,
+    direction = O.log.viewer.layout_config.direction,
+    -- TODO: this might not be working as expected
+    size = O.log.viewer.layout_config.size,
+    float_opts = O.log.viewer.layout_config.float_opts,
+  })
+
+  local Terminal = require("toggleterm.terminal").Terminal
+  local log_view = Terminal:new(term_opts)
+  -- require("luong.log"):debug("term", vim.inspect(term_opts))
+  log_view:toggle()
 end
 
 return M

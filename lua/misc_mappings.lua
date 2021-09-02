@@ -19,11 +19,6 @@ local my_misc_mappings = {
     { "<C-j>", "<C-w>j", { silent = true } },
     { "<C-k>", "<C-w>k", { silent = true } },
     { "<C-l>", "<C-w>l", { silent = true } },
-    -- Resize with arrows
-    { "<A-Up>", ":resize -2<CR>", { silent = true } },
-    { "<A-Down>", ":resize +2<CR>", { silent = true } },
-    { "<A-Left>", ":vertical resize -2<CR>", { silent = true } },
-    { "<A-Right>", ":vertical resize +2<CR>", { silent = true } },
   },
   i = { -- insert mode
     -- Move current line / block with Alt-j/k ala vscode.
@@ -60,4 +55,14 @@ local my_misc_mappings = {
   },
 }
 
-O.register_mappings(my_misc_mappings, { silent = true, noremap = true })
+local register_mappings = function(mappings, default_options)
+  for mode, mode_mappings in pairs(mappings) do
+    for _, mapping in pairs(mode_mappings) do
+      local options = #mapping == 3 and table.remove(mapping) or default_options
+      local prefix, cmd = unpack(mapping)
+      pcall(vim.api.nvim_set_keymap, mode, prefix, cmd, options)
+    end
+  end
+end
+
+register_mappings(my_misc_mappings, { silent = true, noremap = true })

@@ -2,7 +2,7 @@ local M = {}
 local linters_by_ft = {}
 
 local null_ls = require "null-ls"
-local services = require "lsp.null-ls.services"
+local services = require "new_lsp.null-ls.services"
 local Log = require "luong.log"
 
 local function list_names(linters, options)
