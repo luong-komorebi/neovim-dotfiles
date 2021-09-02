@@ -34,8 +34,8 @@ M.config = {
   },
   -- Add executables on the config.lua
   -- { exec, keymap, name}
-  -- lvim.builtin.terminal.execs = {{}} to overwrite
-  -- lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs+1] = {"gdb", "tg", "GNU Debugger"}
+  -- O.builtin.terminal.execs = {{}} to overwrite
+  -- O.builtin.terminal.execs[#O.builtin.terminal.execs+1] = {"gdb", "tg", "GNU Debugger"}
   execs = {
     { "lazygit", "lg", "LazyGit" },
   },
