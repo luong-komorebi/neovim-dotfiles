@@ -5,6 +5,79 @@ TERMINAL = vim.fn.expand "$TERMINAL"
 USER = vim.fn.expand "$USER"
 
 O = {
+  log = {
+    ---@usage can be { "trace", "debug", "info", "warn", "error", "fatal" },
+    level = "warn",
+    viewer = {
+      ---@usage this will fallback on "less +F" if not found
+      cmd = "lnav",
+      layout_config = {
+        ---@usage direction = 'vertical' | 'horizontal' | 'window' | 'float',
+        direction = "horizontal",
+        open_mapping = "",
+        size = 40,
+        float_opts = {},
+      },
+    },
+  },
+
+  lsp = {
+    completion = {
+      item_kind = {
+        "   (Text) ",
+        "   (Method)",
+        "   (Function)",
+        "   (Constructor)",
+        " ﴲ  (Field)",
+        "[] (Variable)",
+        "   (Class)",
+        " ﰮ  (Interface)",
+        "   (Module)",
+        " 襁 (Property)",
+        "   (Unit)",
+        "   (Value)",
+        " 練 (Enum)",
+        "   (Keyword)",
+        "   (Snippet)",
+        "   (Color)",
+        "   (File)",
+        "   (Reference)",
+        "   (Folder)",
+        "   (EnumMember)",
+        " ﲀ  (Constant)",
+        " ﳤ  (Struct)",
+        "   (Event)",
+        "   (Operator)",
+        "   (TypeParameter)",
+      },
+    },
+    diagnostics = {
+      signs = {
+        active = true,
+        values = {
+          { name = "LspDiagnosticsSignError", text = "" },
+          { name = "LspDiagnosticsSignWarning", text = "" },
+          { name = "LspDiagnosticsSignHint", text = "" },
+          { name = "LspDiagnosticsSignInformation", text = "" },
+        },
+      },
+      virtual_text = {
+        prefix = "",
+        spacing = 0,
+      },
+      underline = true,
+      severity_sort = true,
+    },
+    override = {},
+    document_highlight = true,
+    popup_border = "single",
+    on_attach_callback = nil,
+    on_init_callback = nil,
+    null_ls = {
+      setup = {},
+    },
+  },
+
   leader_key = [[\]],
   has_sourced = false,
   pallete = {}, -- color pallete to do custom coloring
@@ -65,19 +138,6 @@ O = {
   },
 
   plugin = {},
-
-  lsp = {
-    diagnostics = {
-      virtual_text = {
-        prefix = "",
-        spacing = 0,
-      },
-      signs = true,
-      underline = true,
-    },
-    document_highlight = true,
-    popup_border = "single",
-  },
 
   disabled_built_ins = {
     "netrw",
