@@ -139,7 +139,14 @@ packer.startup(function(use)
   use "editorconfig/editorconfig-vim"
   -- LSP
   use "neovim/nvim-lspconfig"
-  use "ray-x/lsp_signature.nvim"
+  use {
+    "ray-x/lsp_signature.nvim",
+    event = "InsertEnter",
+    config = function()
+      require("user.lsp_signature").config()
+    end,
+  }
+
   use {
     "glepnir/lspsaga.nvim",
     config = [[require"luong.config.lspsaga"]],
@@ -196,6 +203,13 @@ packer.startup(function(use)
     "ruifm/gitlinker.nvim",
     requires = "nvim-lua/plenary.nvim",
     config = [[require"luong.config.gitlinker"]],
+  }
+  use {
+    "pwntester/octo.nvim",
+    event = "BufRead",
+    config = function()
+      require("luong.config.octo").config()
+    end,
   }
 
   -- Terminal
