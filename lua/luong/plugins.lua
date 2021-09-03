@@ -130,7 +130,7 @@ packer.startup(function(use)
   use "benmills/vimux"
   use "liuchengxu/vista.vim"
   use "jeetsukumaran/vim-indentwise"
-  use "andymass/vim-matchup"
+  use { "andymass/vim-matchup", event = "CursorMoved" }
   use { -- rainbow parentheses
     "p00f/nvim-ts-rainbow",
     config = [[require"luong.config.nvim-ts-rainbow"]],
