@@ -7,9 +7,6 @@
 " noremap <silent> <expr> $ (v:count == 0 ? 'g$' : '^')
 
 " Copy file name / relative path / fullpath
-nmap <silent> cprp :let @+=expand("%")<CR>
-nmap <silent> cpfp :let @+ = expand("%:p")<CR>
-nmap <silent> cpfn :let @+ = expand("%:t")<CR>
 if has('nvim') && executable('nvr')
   let $GIT_EDITOR = "nvr -cc split --remote-wait +'set bufhidden=wipe'"
 endif

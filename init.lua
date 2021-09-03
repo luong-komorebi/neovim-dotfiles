@@ -9,7 +9,7 @@ require "misc_mappings"
 require "settings"
 
 -- legacy
-vim.cmd [[runtime misc_mappings.vim]]
+vim.cmd [[runtime nvr.vim]]
 
 -- init lsp soon
 -- require("lsp").setup_handlers()

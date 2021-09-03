@@ -7,7 +7,7 @@ USER = vim.fn.expand "$USER"
 O = {
   log = {
     ---@usage can be { "trace", "debug", "info", "warn", "error", "fatal" },
-    level = "debug",
+    level = "warn",
     viewer = {
       ---@usage this will fallback on "less +F" if not found
       cmd = "lnav",

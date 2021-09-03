@@ -19,6 +19,10 @@ local my_misc_mappings = {
     { "<C-j>", "<C-w>j", { silent = true } },
     { "<C-k>", "<C-w>k", { silent = true } },
     { "<C-l>", "<C-w>l", { silent = true } },
+    -- Copy file name / relative path / fullpath
+    { "cprn", [[:let @+=expand("%")<CR>]] },
+    { "cpfp", [[:let @+ = expand("%:p")<CR>]] },
+    { "cpfn", [[:let @+ = expand("%:t")<CR>]] },
   },
   i = { -- insert mode
     -- Move current line / block with Alt-j/k ala vscode.
