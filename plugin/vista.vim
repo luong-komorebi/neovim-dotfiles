@@ -5,7 +5,7 @@
 " This could make the display more compact or more spacious.
 " e.g., more compact: ["▸ ", ""]
 " Note: this option only works for the kind renderer, not the tree renderer.
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista_icon_indent = ["▸ ", ""]
 
 " Executive used when opening vista sidebar without specifying it.
 " See all the avaliable executives via `:echo g:vista#executives`.
@@ -14,10 +14,10 @@ let g:vista_default_executive = 'ctags'
 " Set the executive for some filetypes explicitly. Use the explicit executive
 " instead of the default one for these filetypes when using `:Vista` without
 " specifying the executive.
-let g:vista_executive_for = {
-  \ 'cpp': 'vim_lsp',
-  \ 'php': 'vim_lsp',
-  \ }
+" let g:vista_executive_for = {
+"   \ 'lua': 'nvim_lsp',
+"   \ 'ruby': 'nvim_lsp',
+"   \ }
 
 " Declare the command including the executable and options used to generate ctags output
 " for some certain filetypes.The file path will be appened to your custom command.
@@ -39,5 +39,4 @@ let g:vista#renderer#icons = {
 \   "function": "\uf794",
 \   "variable": "\uf71b",
 \  }
-nmap <F8> :Vista!!<CR>
-
+nmap <leader>vs :Vista!!<CR>
