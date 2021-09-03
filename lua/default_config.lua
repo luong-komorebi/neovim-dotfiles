@@ -162,8 +162,6 @@ O = {
   },
 }
 
-local common_on_attach = require("lsp").common_on_attach
-
 O.lang = {
   docker = {
     formatters = {
@@ -178,7 +176,6 @@ O.lang = {
           DATA_PATH .. "/lspinstall/dockerfile/node_modules/.bin/docker-langserver",
           "--stdio",
         },
-        on_attach = common_on_attach,
       },
     },
   },
@@ -187,12 +184,12 @@ O.lang = {
       {
         exe = "stylua",
         args = {},
-      }
+      },
     },
     linters = {
       {
         exe = "luacheck",
-      }
+      },
     },
     lsp = {
       provider = "sumneko_lua",
@@ -202,7 +199,7 @@ O.lang = {
           "-E",
           DATA_PATH .. "/lspinstall/lua/main.lua",
         },
-        on_attach = common_on_attach,
+        -- on_attach = common_on_attach,
         settings = {
           Lua = {
             runtime = {
@@ -248,7 +245,6 @@ O.lang = {
           DATA_PATH .. "/lspinstall/python/node_modules/.bin/pyright-langserver",
           "--stdio",
         },
-        on_attach = common_on_attach,
       },
     },
   },
@@ -262,7 +258,7 @@ O.lang = {
     },
     linters = {
       {
-        exe = "ruby"
+        exe = "ruby",
       },
     }, -- this option will run a ruby process in background and consume cpu
     lsp = {
@@ -270,7 +266,6 @@ O.lang = {
       setup = {
         filetypes = { "rb", "erb", "rakefile", "ruby" },
         cmd = { DATA_PATH .. "/lspinstall/ruby/solargraph/solargraph", "stdio" },
-        on_attach = common_on_attach,
         settings = { -- solargraph lsp client settings
           solargraph = {
             diagnostics = true, -- this option may create false alert as solargraph uses global rubocop (not Gemfile specified)

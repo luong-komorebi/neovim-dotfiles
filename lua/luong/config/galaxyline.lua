@@ -36,16 +36,15 @@ table.insert(gls.left, {
   },
 })
 
-
 table.insert(gls.left, {
-   statusicon = {
-      provider = function()
-         return "  "
-      end,
-      highlight = { colors.section_bg, colors.cyan },
-      separator = right_separator,
-      separator_highlight = { colors.nord_blue, colors.one_bg2 },
-   },
+  statusicon = {
+    provider = function()
+      return "  "
+    end,
+    highlight = { colors.section_bg, colors.cyan },
+    separator = right_separator,
+    separator_highlight = { colors.nord_blue, colors.one_bg2 },
+  },
 })
 
 table.insert(gls.left, {
@@ -107,12 +106,12 @@ table.insert(gls.left, {
 
 table.insert(gls.left, {
   current_dir = {
-      provider = function()
-         local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-         return "  " .. dir_name .. " "
-      end,
-      highlight = { colors.fg, colors.section_bg },
-   },
+    provider = function()
+      local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+      return "  " .. dir_name .. " "
+    end,
+    highlight = { colors.fg, colors.section_bg },
+  },
 })
 
 table.insert(gls.left, {
@@ -212,32 +211,34 @@ table.insert(gls.right, {
   },
 })
 
-local function str_list(list)
-  return string.format("[ %s ]", table.concat(list, ", "))
-end
-
 local get_lsp_client = function(msg)
   msg = msg or "LSP Inactive"
-  local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-  local clients = vim.lsp.get_active_clients()
-  if next(clients) == nil then
+  local buf_clients = vim.lsp.buf_get_clients()
+  if next(buf_clients) == nil then
     return msg
   end
+  local buf_ft = vim.bo.filetype
   local buf_client_names = {}
 
-  for _, client in ipairs(clients) do
-    local filetypes = client.config.filetypes
-    if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-      if client.name == "null-ls" then
-        local null_formatters = require "new_lsp.null-ls.formatters"
-        local supported_formatters = null_formatters.list_available(buf_ft)
-        table.insert(buf_client_names, str_list(supported_formatters))
-        table.insert(buf_client_names, O.lang[buf_ft].formatters[1].exe)
-      else
-        table.insert(buf_client_names, client.name)
-      end
+  -- add client
+  local utils = require "new_lsp.utils"
+  local active_client = utils.get_active_client_by_ft(buf_ft)
+  for _, client in pairs(buf_clients) do
+    if client.name ~= "null-ls" then
+      table.insert(buf_client_names, client.name)
     end
   end
+  vim.list_extend(buf_client_names, active_client or {})
+
+  -- add formatter
+  local formatters = require "new_lsp.null-ls.formatters"
+  local supported_formatters = formatters.list_supported_names(buf_ft)
+  vim.list_extend(buf_client_names, supported_formatters)
+
+  -- add linter
+  local linters = require "new_lsp.null-ls.linters"
+  local supported_linters = linters.list_supported_names(buf_ft)
+  vim.list_extend(buf_client_names, supported_linters)
 
   return table.concat(buf_client_names, ", ")
 end
@@ -259,10 +260,10 @@ table.insert(gls.right, {
 
 table.insert(gls.right, {
   left_arrow1 = {
-      provider = function() end,
-      separator = " " .. left_separator,
-      separator_highlight = { colors.section_bg, colors.section_bg },
-   },
+    provider = function() end,
+    separator = " " .. left_separator,
+    separator_highlight = { colors.section_bg, colors.section_bg },
+  },
 })
 
 table.insert(gls.right, {
@@ -285,21 +286,21 @@ table.insert(gls.right, {
 
 table.insert(gls.right, {
   left_arrow2 = {
-      provider = function() end,
-      separator = " " .. left_separator,
-      separator_highlight = { colors.section_bg, colors.section_bg },
-   },
+    provider = function() end,
+    separator = " " .. left_separator,
+    separator_highlight = { colors.section_bg, colors.section_bg },
+  },
 })
 
 table.insert(gls.right, {
-   some_roundicon = {
-      provider = function()
-         return " "
-      end,
-      separator = left_separator,
-      separator_highlight = { colors.green, colors.grey },
-      highlight = { colors.section_bg, colors.green },
-   },
+  some_roundicon = {
+    provider = function()
+      return " "
+    end,
+    separator = left_separator,
+    separator_highlight = { colors.green, colors.grey },
+    highlight = { colors.section_bg, colors.green },
+  },
 })
 
 table.insert(gls.right, {
