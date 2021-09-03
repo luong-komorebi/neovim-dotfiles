@@ -140,7 +140,7 @@ packer.startup(function(use)
   }
   use { "ntpeters/vim-better-whitespace", config = [[require"luong.config.better-whitespace"]] }
   use { "lukas-reineke/indent-blankline.nvim", config = [[require"luong.config.blankline"]] }
-  use "benmills/vimux"
+  use "preservim/vimux"
   use { -- use to replace tagbar
     "liuchengxu/vista.vim",
     event = "BufWinEnter",
@@ -157,7 +157,7 @@ packer.startup(function(use)
 
   -- Testing and autocomplete
   -- ================================
-  use "janko-m/vim-test"
+  use "vim-test/vim-test"
   use "editorconfig/editorconfig-vim"
   -- LSP
   use "neovim/nvim-lspconfig"
