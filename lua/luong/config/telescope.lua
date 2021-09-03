@@ -75,5 +75,6 @@ local telescope_conf = {
     },
   },
 }
-
+require("telescope").load_extension "fzf"
+require("telescope").load_extension "projects"
 require("telescope").setup(telescope_conf)

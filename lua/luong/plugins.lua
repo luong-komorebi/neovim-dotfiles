@@ -70,9 +70,8 @@ packer.startup(function(use)
   use "wellle/targets.vim"
   use "michaeljsmith/vim-indent-object"
 
-  -- Navigations and files
+  -- File and other Explorer
   -- ======================
-  use "psliwka/vim-smoothie"
   use {
     "ms-jpq/chadtree",
     branch = "chad",
@@ -80,7 +79,9 @@ packer.startup(function(use)
   }
   use {
     "ahmedkhalf/project.nvim",
-    config = [[require"luong.config.project"]],
+    config = function()
+      require("project_nvim").setup()
+    end,
   }
   use {
     "folke/which-key.nvim",
@@ -112,6 +113,12 @@ packer.startup(function(use)
 
   -- Passive support
   -- ======================
+  use {
+    "karb94/neoscroll.nvim",
+    config = function()
+      require("neoscroll").setup()
+    end,
+  }
   use "ntpeters/vim-better-whitespace"
   use "lukas-reineke/indent-blankline.nvim"
   use "benmills/vimux"

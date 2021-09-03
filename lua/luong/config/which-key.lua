@@ -64,12 +64,13 @@ M.config = function()
       -- ["/"] = { ":CommentToggle<CR>", "Comment" },
       l = {
         name = "LSP",
-        a = { ":<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>", "Code Action" }
-      }
+        a = { ":<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>", "Code Action" },
+      },
     },
     mappings = {
       ["e"] = { ":CHADopen<CR>", "Open chad tree" },
       ["rev"] = { ":CHADopen --always-focus <CR>", "Reveal current file in chad tree" },
+
       g = {
         name = "Git",
         j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
@@ -141,10 +142,7 @@ M.config = function()
         t = { "<cmd>Telescope live_grep<cr>", "Text" },
         k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
         C = { "<cmd>Telescope commands<cr>", "Commands" },
-        p = {
-          "<cmd>lua require('telescope.builtin.internal').colorscheme({enable_preview = true})<cr>",
-          "Colorscheme with Preview",
-        },
+        p = { ":Telescope projects<CR>", "Recent projects" },
       },
     },
   }
