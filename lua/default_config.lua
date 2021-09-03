@@ -250,16 +250,16 @@ O.lang = {
   },
   ruby = {
     formatters = {
-      {
-        exe = "bundle exec rubocop ",
-        -- dirty trick from https://github.com/sbdchd/neoformat/pull/49/files
-        args = { "--auto-correct", "--stdin", "%:p", "2>/dev/null", "|", "awk 'f; /^====================$/{f=1}'" },
-      },
+      -- {
+      --   exe = "bundle exec rubocop ",
+      --   -- dirty trick from https://github.com/sbdchd/neoformat/pull/49/files
+      --   args = { "--auto-correct", "--stdin", "%:p", "2>/dev/null", "|", "awk 'f; /^====================$/{f=1}'" },
+      -- },
     },
     linters = {
-      {
-        exe = "ruby",
-      },
+      -- {
+      --   exe = "ruby",
+      -- },
     }, -- this option will run a ruby process in background and consume cpu
     lsp = {
       provider = "solargraph",
@@ -269,8 +269,8 @@ O.lang = {
         settings = { -- solargraph lsp client settings
           solargraph = {
             diagnostics = true, -- this option may create false alert as solargraph uses global rubocop (not Gemfile specified)
-            autoformat = false, -- disable because we use nvim formatters
-            formatting = false,
+            autoformat = false, -- disable because we use nvim for this functionality
+            formatting = true,
           },
         },
         init_options = {
