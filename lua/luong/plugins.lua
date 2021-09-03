@@ -126,6 +126,12 @@ packer.startup(function(use)
     end,
   }
   use {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("luong.config.colorizer").config()
+    end,
+  }
+  use {
     "nacro90/numb.nvim",
     event = "BufRead",
     config = function()
