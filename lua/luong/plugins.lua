@@ -125,6 +125,13 @@ packer.startup(function(use)
       require("neoscroll").setup()
     end,
   }
+  use {
+    "nacro90/numb.nvim",
+    event = "BufRead",
+    config = function()
+      require('numb').setup()
+    end,
+  }
   use { "ntpeters/vim-better-whitespace", config = [[require"luong.config.better-whitespace"]] }
   use { "lukas-reineke/indent-blankline.nvim", config = [[require"luong.config.blankline"]] }
   use "benmills/vimux"
