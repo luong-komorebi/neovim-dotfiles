@@ -60,7 +60,12 @@ packer.startup(function(use)
   use { "mg979/vim-visual-multi", branch = "master" }
   use "AndrewRadev/splitjoin.vim"
   use "dyng/ctrlsf.vim"
-  use "rhysd/clever-f.vim"
+  use {
+    "unblevable/quick-scope",
+    config = function()
+      require "luong.config.quickscope"
+    end,
+  }
   use "junegunn/vim-peekaboo"
   use "ludovicchabant/vim-gutentags"
   use "mbbill/undotree"
@@ -98,6 +103,7 @@ packer.startup(function(use)
     requires = {
       "nvim-lua/plenary.nvim",
     },
+    event = "BufRead",
     config = [[require"luong.config.gitsigns"]],
   }
   use {
@@ -142,9 +148,6 @@ packer.startup(function(use)
   use {
     "ray-x/lsp_signature.nvim",
     event = "InsertEnter",
-    config = function()
-      require("user.lsp_signature").config()
-    end,
   }
 
   use {
@@ -189,11 +192,12 @@ packer.startup(function(use)
   -- ======================
   use {
     "hrsh7th/nvim-compe",
+    event = "InsertEnter",
     config = [[require"luong.config.nvim-compe"]],
   }
   use {
     "hrsh7th/vim-vsnip-integ",
-    requires = { "hrsh7th/vim-vsnip", event = "InsertCharPre" },
+    requires = { "hrsh7th/vim-vsnip", event = "InsertEnter" },
   }
   use { "rafamadriz/friendly-snippets", event = "InsertCharPre" }
 
