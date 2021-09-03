@@ -135,13 +135,16 @@ packer.startup(function(use)
     "nacro90/numb.nvim",
     event = "BufRead",
     config = function()
-      require('numb').setup()
+      require("numb").setup()
     end,
   }
   use { "ntpeters/vim-better-whitespace", config = [[require"luong.config.better-whitespace"]] }
   use { "lukas-reineke/indent-blankline.nvim", config = [[require"luong.config.blankline"]] }
   use "benmills/vimux"
-  use "liuchengxu/vista.vim"
+  use { -- use to replace tagbar
+    "liuchengxu/vista.vim",
+    event = "BufWinEnter",
+  }
   use "jeetsukumaran/vim-indentwise"
   use { "andymass/vim-matchup", event = "CursorMoved" }
   use { -- rainbow parentheses
@@ -162,6 +165,7 @@ packer.startup(function(use)
     "ray-x/lsp_signature.nvim",
     event = "InsertEnter",
   }
+  use { "simrat39/symbols-outline.nvim", event = "BufWinEnter" }
 
   use {
     "glepnir/lspsaga.nvim",

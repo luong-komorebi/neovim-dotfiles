@@ -37,7 +37,6 @@ O.autocommands = {
       "*",
       "setlocal formatoptions-=c formatoptions-=r formatoptions-=o",
     },
-    { "BufWritePost", "lv-config.lua", "lua require('lv-utils').reload_lv_config()" },
     { "Filetype", "qf", "set nobuflisted" },
   },
   _git = {
