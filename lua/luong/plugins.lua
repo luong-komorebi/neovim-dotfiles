@@ -126,7 +126,7 @@ packer.startup(function(use)
     end,
   }
   use { "ntpeters/vim-better-whitespace", config = [[require"luong.config.better-whitespace"]] }
-  use "lukas-reineke/indent-blankline.nvim"
+  use { "lukas-reineke/indent-blankline.nvim", config = [[require"luong.config.blankline"]] }
   use "benmills/vimux"
   use "liuchengxu/vista.vim"
   use "jeetsukumaran/vim-indentwise"
