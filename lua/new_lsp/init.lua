@@ -41,7 +41,7 @@ local function add_lsp_buffer_keybindings(bufnr)
 
   local keys = {
     -- ["sd"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Show hover" },
-    ["sd"] = { "<cmd>lua require('lspsaga.hover').render_hover_doc<CR>", "Show hover" },
+    ["sd"] = { "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", "Show hover" },
     ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Goto Definition" },
     ["gD"] = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Goto declaration" },
     ["gr"] = { "<cmd>lua vim.lsp.buf.references()<CR>", "Goto references" },
@@ -66,8 +66,8 @@ local function add_lsp_buffer_keybindings(bufnr)
     ["[d"] = { "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>d>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = O.lsp.popup_border}})<CR>", "Next diagnostic" },
     ["]d"] = { "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", "Previous diagnostic" },
     ["gh"] = { "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", "Peek definition" },
-    ["<c-j>"] = { "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", "Scroll down in saga" },
-    ["<c-k>"] = { "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", "Scroll up in saga" },
+    ["<c-f>"] = { "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", "Scroll down in saga" },
+    ["<c-b>"] = { "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", "Scroll up in saga" },
   }
   wk.register(keys, { mode = "n", buffer = bufnr })
 end
