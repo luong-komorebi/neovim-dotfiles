@@ -279,24 +279,23 @@ O.lang = {
       },
     },
   },
-  -- go = {
-  --   formatters = {
-  --     exe = "gofmt",
-  --     args = {},
-  --     stdin = true,
-  --   },
-  --   linters = {
-  --     "golangcilint",
-  --     "revive",
-  --   },
-  --   lsp = {
-  --     provider = "gopls",
-  --     setup = {
-  --       cmd = {
-  --         DATA_PATH .. "/lspinstall/go/gopls",
-  --       },
-  --       on_attach = common_on_attach,
-  --     },
-  --   },
-  -- },
+  go = {
+    formatters = { {
+      exe = "gofmt",
+      args = {},
+      stdin = true,
+    } },
+    linters = {
+      { exe = "golangcilint" },
+      { exe = "revive" },
+    },
+    lsp = {
+      provider = "gopls",
+      setup = {
+        cmd = {
+          DATA_PATH .. "/lspinstall/go/gopls",
+        },
+      },
+    },
+  },
 }
