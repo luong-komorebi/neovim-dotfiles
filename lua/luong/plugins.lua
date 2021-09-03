@@ -192,7 +192,6 @@ packer.startup(function(use)
   -- ======================
   use {
     "hrsh7th/nvim-compe",
-    event = "InsertEnter",
     config = [[require"luong.config.nvim-compe"]],
   }
   use {
