@@ -208,7 +208,7 @@ packer.startup(function(use)
     "pwntester/octo.nvim",
     event = "BufRead",
     config = function()
-      require("luong.config.octo").config()
+      require("octo").setup()
     end,
   }
 
