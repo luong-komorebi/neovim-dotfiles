@@ -9,7 +9,7 @@ local condition = require "galaxyline.condition"
 local gls = gl.section
 local c = O.pallete
 
-gl.short_line_list = { "qf", "vista_kind", "terminal", "packer", "CHADTree", "DiffviewFiles" }
+gl.short_line_list = { "qf", "vista_kind", "terminal", "packer", "CHADTree", "DiffviewFiles", "__CtrlSF__" }
 -- Colors from tokyonight theme
 local colors = {
   bg = c.bg,
@@ -141,6 +141,25 @@ table.insert(gls.left, {
     end,
     condition = condition.check_git_workspace,
     highlight = { colors.fg, colors.section_bg },
+    separator = right_separator,
+    separator_highlight = { colors.section_bg, colors.bg },
+  },
+})
+
+table.insert(gls.left, {
+  VistaPlugin = {
+    provider = function()
+      if vim.b.vista_nearest_method_or_function == nil then
+        return ""
+      elseif vim.b.vista_nearest_method_or_function == "" then
+        return ""
+      else
+        return "  -> " .. vim.b.vista_nearest_method_or_function
+      end
+    end,
+    separator = " ",
+    condition = condition.buffer_not_empty,
+    highlight = { colors.fg, colors.bg, "bold" },
   },
 })
 
@@ -149,7 +168,7 @@ table.insert(gls.left, {
     provider = "DiffAdd",
     condition = condition.hide_in_width,
     icon = "  ",
-    highlight = { colors.green, colors.section_bg },
+    highlight = { colors.green, colors.bg },
   },
 })
 
@@ -158,7 +177,7 @@ table.insert(gls.left, {
     provider = "DiffModified",
     condition = condition.hide_in_width,
     icon = " 柳",
-    highlight = { colors.blue, colors.section_bg },
+    highlight = { colors.blue, colors.bg },
   },
 })
 
@@ -167,7 +186,7 @@ table.insert(gls.left, {
     provider = "DiffRemove",
     condition = condition.hide_in_width,
     icon = "  ",
-    highlight = { colors.red, colors.section_bg },
+    highlight = { colors.red, colors.bg },
   },
 })
 
@@ -176,7 +195,7 @@ table.insert(gls.left, {
     provider = function()
       return " "
     end,
-    highlight = { colors.grey, colors.section_bg },
+    highlight = { colors.grey, colors.bg },
   },
 })
 
@@ -320,15 +339,13 @@ table.insert(gls.right, {
   },
 })
 
--- table.insert(gls.right, {
---   FileEncode = {
---     provider = "FileEncode",
---     condition = condition.hide_in_width,
---     separator = left_separator,
---     separator_highlight = { colors.bg, colors.section_bg },
---     highlight = { colors.grey, colors.section_bg },
---   },
--- })
+table.insert(gls.short_line_left, {
+  FileIcon = {
+    provider = "FileIcon",
+    condition = condition.buffer_not_empty,
+    highlight = { require("galaxyline.provider_fileinfo").get_file_icon_color, colors.section_bg },
+  },
+})
 
 table.insert(gls.short_line_left, {
   SFileName = {
