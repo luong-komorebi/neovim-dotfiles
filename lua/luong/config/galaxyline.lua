@@ -9,7 +9,7 @@ local condition = require "galaxyline.condition"
 local gls = gl.section
 local c = O.pallete
 
-gl.short_line_list = { "qf", "vista_kind", "terminal", "packer", "CHADTree", "DiffviewFiles", "__CtrlSF__" }
+gl.short_line_list = { "qf", "vista_kind", "toggleterm", "packer", "CHADTree", "DiffviewFiles", "__CtrlSF__" }
 -- Colors from tokyonight theme
 local colors = {
   bg = c.bg,
@@ -25,7 +25,7 @@ local colors = {
   blue = c.blue,
 }
 local left_separator = ""
-local right_separator = "  "
+local right_separator = " "
 
 table.insert(gls.left, {
   FirstElement = {
@@ -52,7 +52,7 @@ table.insert(gls.left, {
     provider = function()
       -- auto change color according the vim mode
       local alias = {
-        n = "NORM",
+        n = "NOR",
         i = "INS",
         c = "CMD",
         V = "VISUAL",
@@ -107,8 +107,13 @@ table.insert(gls.left, {
 table.insert(gls.left, {
   current_dir = {
     provider = function()
-      local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-      return "  " .. dir_name .. " "
+      local git_dir = require("galaxyline.provider_vcs").get_git_dir(vim.fn.expand "%:p")
+      local current_dir = vim.fn.expand "%:p:h"
+      if git_dir == current_dir .. "/.git" or git_dir == nil then
+        return "  " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. " "
+      end
+      local get_path_from_git_root = current_dir:sub(#git_dir - 3)
+      return "  " .. get_path_from_git_root .. " "
     end,
     highlight = { colors.fg, colors.section_bg },
   },
