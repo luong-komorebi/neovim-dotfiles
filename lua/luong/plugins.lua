@@ -91,6 +91,7 @@ packer.startup(function(use)
   use {
     "folke/which-key.nvim",
     config = function()
+      require("luong.config.which-key").config()
       require("luong.config.which-key").setup()
     end,
     event = "BufWinEnter",
@@ -195,10 +196,18 @@ packer.startup(function(use)
   -- ======================
   use {
     "mfussenegger/nvim-dap",
-    config = [[require"luong.config.nvim-dap"]],
+    config = function()
+      require("luong.config.nvim-dap").setup()
+    end,
   }
   use {
     "Pocco81/DAPInstall.nvim",
+    config = function()
+      require("dap-install").setup {
+        installation_path = vim.fn.stdpath "data" .. "/dapinstall/",
+        verbosely_call_debuggers = false,
+      }
+    end,
   }
 
   -- Formatter and linter

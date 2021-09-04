@@ -1,7 +1,7 @@
 local M = {}
 
 M.config = function()
-  return {
+  O.which_key = {
     ---@usage disable which-key completely [not recommeded]
     active = true,
     on_config_done = nil,
@@ -150,21 +150,20 @@ end
 
 M.setup = function()
   local which_key = require "which-key"
-  local config = M.config()
 
-  which_key.setup(config.setup)
+  which_key.setup(O.which_key.setup)
 
-  local opts = config.opts
-  local vopts = config.vopts
+  local opts = O.which_key.opts
+  local vopts = O.which_key.vopts
 
-  local mappings = config.mappings
-  local vmappings = config.vmappings
+  local mappings = O.which_key.mappings
+  local vmappings = O.which_key.vmappings
 
   which_key.register(mappings, opts)
   which_key.register(vmappings, vopts)
 
-  if config.on_config_done then
-    config.on_config_done(which_key)
+  if O.which_key.on_config_done then
+    O.which_key.on_config_done(which_key)
   end
 end
 

@@ -1,5 +1,4 @@
 ---  HELPERS  ---
-local cmd = vim.cmd
 local opt = vim.opt
 
 ---  SETTINGS  ---
@@ -23,17 +22,3 @@ end
 require "luong.colorscheme"
 require "luong.plugins"
 require "luong.autocmds".define_augroups(O.autocommands)
-
--- TODO: review if we still need this pieces of code since we rely on packer for loading configs now
--- if O.has_sourced then
---   return
--- else
---   for _, mod in ipairs(vim.api.nvim_get_runtime_file('lua/luong/config/**/*.lua', true)) do
---     local ok, msg = pcall(loadfile(mod))
---     if not ok then
---       print("Failed to load: ", mod)
---       print("\t", msg)
---     end
---     O.has_sourced = true
---   end
--- end
