@@ -1,5 +1,9 @@
 vim.g.netrw_home = os.getenv "HOME" .. "/vim"
 
+if vim.g.vscode then
+  return
+end
+
 if require "luong._first_load"() then
   return
 end
