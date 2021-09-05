@@ -1,8 +1,7 @@
-vim.g.netrw_home = os.getenv "HOME" .. "/vim"
-
 if vim.g.vscode then
   return
 end
+-- alternative : vim.fn.exists('g:vscode')
 
 -- require all global config
 -- order is important
@@ -28,31 +27,33 @@ for k, v in pairs(O.default_options) do
   vim.opt[k] = v
 end
 
--- load all plugins and configs
-local plugins = require "plugins"
-local plugin_loader = require("plugin-loader").init()
-plugin_loader:load({plugins})
+if not vim.g.vscode then
+  -- load all plugins and configs
+  local plugins = require "plugins"
+  local plugin_loader = require("plugin-loader").init()
+  plugin_loader:load { plugins }
 
-require("luong.autocmds").define_augroups(O.autocommands)
--- vim.cmd [[runtime lua/vscode.vim]]
-vim.cmd [[runtime nvr.vim]]
+  require("luong.autocmds").define_augroups(O.autocommands)
+  -- vim.cmd [[runtime lua/vscode.vim]]
+  vim.cmd [[runtime nvr.vim]]
 
--- lsp config
-require("new_lsp").config()
-for lang, _ in pairs(O.lang) do
-  require("new_lsp").setup(lang)
-end
+  -- lsp config
+  require("new_lsp").config()
+  for lang, _ in pairs(O.lang) do
+    require("new_lsp").setup(lang)
+  end
 
-local null_status_ok, null_ls = pcall(require, "null-ls")
-if null_status_ok then
-  null_ls.config {}
-  require("lspconfig")["null-ls"].setup(O.lsp.null_ls.setup)
-end
+  local null_status_ok, null_ls = pcall(require, "null-ls")
+  if null_status_ok then
+    null_ls.config {}
+    require("lspconfig")["null-ls"].setup(O.lsp.null_ls.setup)
+  end
 
--- dap config
-local dap_install_ok, dap_install = pcall(require, "dap-install")
-if dap_install_ok then
-  for dap_name, dap_conf in pairs(O.dap.lang) do
-    dap_install.config(dap_name, dap_conf)
+  -- dap config
+  local dap_install_ok, dap_install = pcall(require, "dap-install")
+  if dap_install_ok then
+    for dap_name, dap_conf in pairs(O.dap.lang) do
+      dap_install.config(dap_name, dap_conf)
+    end
   end
 end
