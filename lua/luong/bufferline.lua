@@ -1,4 +1,9 @@
 require("bufferline").setup {
+  highlights = {
+    fill = {
+      guibg = "#1f2335",
+    },
+  },
   options = {
     numbers = "ordinal",
     close_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
