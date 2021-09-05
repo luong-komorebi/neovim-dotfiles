@@ -54,7 +54,7 @@ M.add_exec = function(exec, keymap, name)
   vim.api.nvim_set_keymap(
     "n",
     "<leader>" .. keymap,
-    "<cmd>lua require('luong.config.nvim-toggleterm')._exec_toggle('" .. exec .. "')<CR>",
+    "<cmd>lua require('luong.nvim-toggleterm')._exec_toggle('" .. exec .. "')<CR>",
     { noremap = true, silent = true }
   )
 end

@@ -1,29 +1,40 @@
 vim.g.netrw_home = os.getenv "HOME" .. "/vim"
 
--- if vim.g.vscode then
---   return
--- end
-
-if require "luong._first_load"() then
+if vim.g.vscode then
   return
 end
 
 -- require all global config
 -- order is important
-require "default_config"
-require "lsp_config"
-require "lang_config"
-require "dap_config"
-
+require "config.default_config"
+require "config.lsp_config"
+require "config.lang_config"
+require "config.dap_config"
 require "misc_mappings"
-require "luong"
 
-if vim.g.vscode then
-  vim.cmd [[runtime lua/vscode.vim]]
-  return
+-- load settings
+local opt = vim.opt
+opt.shortmess:append "c"
+if O.leader_key == " " or O.leader_key == "space" then
+  vim.g.mapleader = " "
+else
+  vim.g.mapleader = O.leader_key
+end
+for _, plugin in pairs(O.disabled_built_ins) do
+  vim.g["loaded_" .. plugin] = 1
+end
+for k, v in pairs(O.default_options) do
+  vim.opt[k] = v
 end
 
+-- load all plugins and configs
+local plugins = require "plugins"
+local plugin_loader = require("plugin-loader").init()
+plugin_loader:load(plugins)
 
+require "luong.colorscheme"
+require("luong.autocmds").define_augroups(O.autocommands)
+-- vim.cmd [[runtime lua/vscode.vim]]
 vim.cmd [[runtime nvr.vim]]
 
 -- lsp config
