@@ -140,9 +140,6 @@ return {
     event = "BufWinEnter",
   },
 
-  -- Autoload load nvim plugins config
-  { "tjdevries/astronauta.nvim" },
-
   -- Testing and autocomplete
   -- ================================
   { "vim-test/vim-test" },
