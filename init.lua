@@ -1,8 +1,8 @@
 vim.g.netrw_home = os.getenv "HOME" .. "/vim"
 
-if vim.g.vscode then
-  return
-end
+-- if vim.g.vscode then
+--   return
+-- end
 
 if require "luong._first_load"() then
   return
@@ -18,7 +18,12 @@ require "dap_config"
 require "misc_mappings"
 require "luong"
 
--- legacy
+if vim.g.vscode then
+  vim.cmd [[runtime lua/vscode.vim]]
+  return
+end
+
+
 vim.cmd [[runtime nvr.vim]]
 
 -- lsp config

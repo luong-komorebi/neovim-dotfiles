@@ -19,6 +19,8 @@ for k, v in pairs(O.default_options) do
 end
 
 -- load all plugins and configs
-require "luong.colorscheme"
-require "luong.plugins"
-require "luong.autocmds".define_augroups(O.autocommands)
+if not vim.g.vscode then
+  require "luong.colorscheme"
+  require "luong.plugins"
+  require("luong.autocmds").define_augroups(O.autocommands)
+end

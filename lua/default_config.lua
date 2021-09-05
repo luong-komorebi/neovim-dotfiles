@@ -100,6 +100,5 @@ O = {
     "logipat",
     "rrhelper",
     "spellfile_plugin",
-    -- 'matchit', 'matchparen', 'shada_plugin',
   },
 }
