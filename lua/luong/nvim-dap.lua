@@ -4,7 +4,11 @@ M.setup = function()
   if not status_ok then
     return
   end
-  local dap = require "dap"
+
+  local dap_ok, dap = pcall(require, "dap")
+  if not dap_ok then
+    return
+  end
 
   vim.fn.sign_define("DapBreakpoint", O.dap.breakpoint)
   dap.defaults.fallback.terminal_win_cmd = "50vsplit new"

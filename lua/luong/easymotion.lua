@@ -1,3 +1,7 @@
+if vim.g.vscode then
+  return
+end
+
 vim.g.EasyMotion_do_mapping = 0
 vim.g.EasyMotion_smartcase = 1
 vim.api.nvim_set_keymap("n", "/", "<Plug>(easymotion-sn)", {})

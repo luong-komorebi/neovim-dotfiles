@@ -1,6 +1,10 @@
+local toggle_term_ok, _ = pcall(require, "toggleterm")
+if not toggle_term_ok then
+  return
+end
+
 local M = {}
 local utils = require "utils"
-
 M.config = {
   on_config_done = nil,
   -- size can be a number or function which is passed the current terminal
@@ -81,7 +85,6 @@ M._exec_toggle = function(exec)
   local exec_term = Terminal:new { cmd = exec, hidden = true }
   exec_term:toggle()
 end
-
 
 local function get_log_path(name)
   --handle custom paths not managed by Plenary.log

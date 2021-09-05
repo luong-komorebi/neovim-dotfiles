@@ -4,7 +4,11 @@ if not status_ok then
   return
 end
 
-local gl = require "galaxyline"
+local gl_ok, gl = pcall(require, "galaxyline")
+if not gl_ok then
+  return
+end
+
 local condition = require "galaxyline.condition"
 local gls = gl.section
 local c = O.pallete

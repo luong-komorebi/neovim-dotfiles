@@ -1,4 +1,5 @@
 if vim.g.vscode then
+  vim.cmd [[runtime vscode.vim]]
   return
 end
 -- alternative : vim.fn.exists('g:vscode')

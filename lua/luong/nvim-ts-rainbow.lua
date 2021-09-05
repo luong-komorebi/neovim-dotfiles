@@ -1,4 +1,9 @@
-require("nvim-treesitter.configs").setup {
+local ts_ok, ts = pcall(require, "nvim-treesitter.configs")
+if not ts_ok then
+  return
+end
+
+ts.setup {
   rainbow = {
     enable = true,
     extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean

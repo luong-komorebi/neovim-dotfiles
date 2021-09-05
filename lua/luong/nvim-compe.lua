@@ -1,8 +1,12 @@
-local M = {}
+local compe_ok, compe = pcall(require, "compe")
+if not compe_ok then
+  return
+end
 -- FileTypes in this list won't trigger auto-complete when TAB is pressed.  Hitting TAB will insert a tab character
+local M = {}
 local exclude_filetypes = { "md", "markdown", "mdown", "mkd", "mkdn", "mdwn", "text", "txt" }
 
-require("compe").setup {
+compe.setup {
   enabled = true,
   autocomplete = true,
   debug = false,

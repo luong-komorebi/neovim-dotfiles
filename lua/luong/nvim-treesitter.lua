@@ -1,4 +1,8 @@
-local ts = require "nvim-treesitter.configs"
+local ts_ok, ts = pcall(require, "nvim-treesitter.configs")
+if not ts_ok then
+  return
+end
+
 ts.setup {
   ensure_installed = "maintained",
   highlight = {

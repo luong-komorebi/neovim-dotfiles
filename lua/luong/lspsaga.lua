@@ -6,8 +6,8 @@ if lsp_saga_status_ok then
     warn_sign = "",
     infor_sign = "",
     hint_sign = "",
-    finder_definition_icon = '  ',
-    finder_reference_icon = '  ',
+    finder_definition_icon = "  ",
+    finder_reference_icon = "  ",
     finder_action_keys = {
       open = "o",
       vsplit = "v",
