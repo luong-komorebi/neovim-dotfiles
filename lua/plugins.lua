@@ -49,7 +49,7 @@ return {
     config = [[require"luong.autopairs"]],
     after = "nvim-compe",
   },
-  { "mg979/vim-visual-multi", branch = "master" },
+  { "mg979/vim-visual-multi", branch = "master", config = [[require"luong.vim-visual-multi"]] },
   { "AndrewRadev/splitjoin.vim" },
   { "dyng/ctrlsf.vim" },
   {
@@ -69,6 +69,7 @@ return {
   {
     "ms-jpq/chadtree",
     branch = "chad",
+    config = [[require"luong.chadtree"]],
     run = "python3 -m chadtree deps",
   },
   {
