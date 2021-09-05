@@ -13,6 +13,7 @@ require "config.dap_config"
 require "misc_mappings"
 
 -- load settings
+require "luong.colorscheme"
 local opt = vim.opt
 opt.shortmess:append "c"
 if O.leader_key == " " or O.leader_key == "space" then
@@ -30,9 +31,8 @@ end
 -- load all plugins and configs
 local plugins = require "plugins"
 local plugin_loader = require("plugin-loader").init()
-plugin_loader:load(plugins)
+plugin_loader:load({plugins})
 
-require "luong.colorscheme"
 require("luong.autocmds").define_augroups(O.autocommands)
 -- vim.cmd [[runtime lua/vscode.vim]]
 vim.cmd [[runtime nvr.vim]]

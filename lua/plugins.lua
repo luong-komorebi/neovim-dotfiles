@@ -1,4 +1,3 @@
-local execute = vim.api.nvim_command
 return {
   -- Theme and icons
   -- ======================
@@ -238,7 +237,7 @@ return {
     end,
   }, -- Miscs  -- ======================
   { "vim-scripts/git-time-lapse" },
-  { "npxbr/glow.nvim", run = "GlowInstall" },
+  { "ellisonleao/glow.nvim" },
   { "rhysd/git-messenger.vim" },
   {
     "sindrets/diffview.nvim",
@@ -264,6 +263,7 @@ return {
   {
     "noprompt/vim-yardoc",
     config = function()
+      local execute = vim.api.nvim_command
       execute "hi link yardGenericTag rubyInstanceVariable"
     end,
   },
@@ -280,7 +280,7 @@ return {
   -- latex
   {
     "lervag/vimtex",
-    ft = "tex",
+    ft = {"tex"},
   },
 
   -- Tpope and his ruby magics  -- =========================

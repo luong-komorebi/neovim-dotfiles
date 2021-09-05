@@ -18,6 +18,7 @@ function plugin_loader:init()
     package_root = util.join_paths(vim.fn.stdpath("data") .. "/site/pack/"),
     compile_path = util.join_paths("~/.config/nvim", "plugin", "packer_compiled.lua"),
     git = { clone_timeout = 300 },
+    max_jobs = 20,
     display = {
       open_fn = function()
         return util.float { border = "rounded" }
