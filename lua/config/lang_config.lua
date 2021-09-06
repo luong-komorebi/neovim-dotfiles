@@ -1,10 +1,11 @@
 O.lang = {
-  docker = {
+  dockerfile = {
     formatters = {
-      -- exe = "",
-      -- args = {},
+      -- { exe = "hadolint", args = { } }
     },
-    linters = {},
+    linters = {
+      { exe = "hadolint", args = {} },
+    },
     lsp = {
       provider = "dockerls",
       setup = {
