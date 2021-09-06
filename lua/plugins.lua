@@ -11,18 +11,18 @@ return {
   {
     "phaazon/hop.nvim",
     as = "hop",
+    event = "BufWinEnter",
     config = [[require"luong.hop"]],
   },
   {
     "easymotion/vim-easymotion",
+    event = "BufWinEnter",
     config = [[require'luong.easymotion']],
   },
 
   -- text searching, fuzzy search, file searching
   -- ======================
-  { "haya14busa/incsearch.vim" },
-  { "haya14busa/incsearch-easymotion.vim" },
-  { "haya14busa/incsearch-fuzzy.vim" },
+  { "haya14busa/incsearch.vim", event = "BufWinEnter", requires = { { "haya14busa/incsearch-easymotion.vim" }, { "haya14busa/incsearch-fuzzy.vim" } } },
   { "jesseleite/vim-agriculture" },
   {
     "junegunn/fzf.vim",
@@ -43,10 +43,11 @@ return {
     event = "BufRead",
     config = [[require"luong.nvim-comment"]],
   },
-  { "junegunn/vim-easy-align" },
+  { "junegunn/vim-easy-align", event = "BufWinEnter" },
   {
     "windwp/nvim-autopairs",
     config = [[require"luong.autopairs"]],
+    event = "BufWinEnter",
     after = "nvim-compe",
   },
   { "mg979/vim-visual-multi", branch = "master", config = [[require"luong.vim-visual-multi"]] },
@@ -59,6 +60,12 @@ return {
     end,
   },
   { "junegunn/vim-peekaboo" },
+  {
+    "AckslD/nvim-neoclip.lua",
+    config = function()
+      require("neoclip").setup()
+    end,
+  },
   { "ludovicchabant/vim-gutentags" },
   { "mbbill/undotree" },
 
@@ -128,7 +135,7 @@ return {
   },
   { "ntpeters/vim-better-whitespace", config = [[require"luong.better-whitespace"]] },
   { "lukas-reineke/indent-blankline.nvim", config = [[require"luong.blankline"]] },
-  {"preservim/vimux"},
+  { "preservim/vimux" },
   { -- ,to replace tagbar
     "liuchengxu/vista.vim",
     event = "BufWinEnter",
@@ -278,7 +285,7 @@ return {
   -- latex
   {
     "lervag/vimtex",
-    ft = {"tex"},
+    ft = { "tex" },
   },
 
   -- Tpope and his ruby magics  -- =========================
