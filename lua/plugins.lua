@@ -161,22 +161,19 @@ return {
   },
   { "simrat39/symbols-outline.nvim", event = "BufWinEnter" },
   {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end,
+  },
+  {
     "glepnir/lspsaga.nvim",
     config = [[require"luong.lspsaga"]],
-  },
-  { -- ,lsp utils when saga is not available
-    "RishabhRD/nvim-lsputils", -- a lot of sensible configs for lsp
-    requires = "RishabhRD/popfix",
-    config = function()
-      vim.lsp.handlers["textDocument/codeAction"] = require("lsputil.codeAction").code_action_handler
-      vim.lsp.handlers["textDocument/references"] = require("lsputil.locations").references_handler
-      vim.lsp.handlers["textDocument/definition"] = require("lsputil.locations").definition_handler
-      vim.lsp.handlers["textDocument/declaration"] = require("lsputil.locations").declaration_handler
-      vim.lsp.handlers["textDocument/typeDefinition"] = require("lsputil.locations").typeDefinition_handler
-      vim.lsp.handlers["textDocument/implementation"] = require("lsputil.locations").implementation_handler
-      vim.lsp.handlers["textDocument/documentSymbol"] = require("lsputil.symbols").document_handler
-      vim.lsp.handlers["workspace/symbol"] = require("lsputil.symbols").workspace_handler
-    end,
   },
   {
     "kabouzeid/nvim-lspinstall", -- auto install lsp servers
