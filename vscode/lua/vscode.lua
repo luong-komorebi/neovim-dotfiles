@@ -19,9 +19,11 @@ packer.init {
 }
 
 packer.startup(function(use)
+  use { "jeetsukumaran/vim-indentwise" }
   use { "wbthomason/packer.nvim" }
   use { "wellle/targets.vim" }
   use { "michaeljsmith/vim-indent-object" }
-  use { "jeetsukumaran/vim-indentwise" }
-  use { "asvetliakov/vim-easymotion" }
+  use { "asvetliakov/vim-easymotion", event = "BufWinEnter", config = [[require"lvscode.easymotion"]] }
+  use { "haya14busa/incsearch.vim", event = "BufWinEnter", requires = { { "haya14busa/incsearch-easymotion.vim" }, { "haya14busa/incsearch-fuzzy.vim" } } }
+  use { "junegunn/vim-easy-align", event = "BufWinEnter", config = [[require"lvscode.easyalign"]] }
 end)

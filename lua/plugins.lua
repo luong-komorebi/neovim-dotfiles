@@ -43,7 +43,7 @@ return {
     event = "BufRead",
     config = [[require"luong.nvim-comment"]],
   },
-  { "junegunn/vim-easy-align", event = "BufWinEnter" },
+  { "junegunn/vim-easy-align", event = "BufWinEnter", config = [[require"luong.easyalign"]] },
   {
     "windwp/nvim-autopairs",
     config = [[require"luong.autopairs"]],
