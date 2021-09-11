@@ -1,10 +1,4 @@
 local home_dir = vim.loop.os_homedir()
-if vim.g.vscode then
-  vim.opt.rtp:remove(home_dir .. "/.config/nvim")
-  vim.opt.rtp:append(home_dir .. "/.config/nvim/vscode")
-  return
-end
--- alternative : vim.fn.exists('g:vscode')
 
 -- require all global config
 -- order is important
@@ -28,6 +22,16 @@ for _, plugin in pairs(O.disabled_built_ins) do
 end
 for k, v in pairs(O.default_options) do
   vim.opt[k] = v
+end
+
+-- alternative : vim.fn.exists('g:vscode')
+-- debugging: nvim --cmd "let g:vscode=v:true"
+if vim.g.vscode then
+  vim.opt.rtp:remove(home_dir .. "/.config/nvim")
+  vim.opt.rtp:append(home_dir .. "/.config/nvim/vscode")
+  vim.cmd [[ runtime init.vim ]]
+  require "vscode"
+  return
 end
 
 -- load all plugins and configs

@@ -72,7 +72,8 @@ return {
   -- Additional text object
   -- ======================
   { "wellle/targets.vim" },
-  { "michaeljsmith/vim-indent-object" }, -- File and other Explorer  -- ======================
+  { "michaeljsmith/vim-indent-object" },
+  -- File and other Explorer  -- ======================
   {
     "ms-jpq/chadtree",
     branch = "chad",
