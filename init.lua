@@ -9,7 +9,6 @@ require "config.dap_config"
 require "misc_mappings"
 
 -- load settings
-require "luong.colorscheme"
 local opt = vim.opt
 opt.shortmess:append "c"
 if O.leader_key == " " or O.leader_key == "space" then
@@ -28,21 +27,19 @@ end
 -- debugging: nvim --cmd "let g:vscode=v:true"
 if vim.g.vscode then
   vim.opt.rtp:remove(home_dir .. "/.config/nvim")
+  vim.opt.rtp:remove(home_dir .. "/.config/nvim/after")
   vim.opt.rtp:remove(home_dir .. "/.local/share/nvim/site")
-  vim.opt.rtp:remove(home_dir .. "/.local/share/nvim/site/pack")
-  vim.opt.rtp:remove(home_dir .. "/.local/share/nvim/site/pack/packer")
-  vim.opt.rtp:remove(home_dir .. "/.local/share/nvim/site/pack/packer/start")
-  vim.opt.rtp:remove(home_dir .. "/.local/share/nvim/site/pack/packer/opt")
-
-  vim.opt.rtp:prepend(home_dir .. "/.local/share/nvim/site/pack/vscode")
+  vim.opt.rtp:remove(home_dir .. "/.local/share/nvim/site/after")
+  vim.opt.rtp:prepend(home_dir .. "/.local/share/nvim/vscode")
   vim.opt.rtp:prepend(home_dir .. "/.config/nvim/vscode")
-
+  vim.cmd [[ let &packpath = &runtimepath ]]
   vim.cmd [[ runtime init.vim ]]
   require "vscode"
   return
 end
 
 -- load all plugins and configs
+require "luong.colorscheme"
 local plugins = require "plugins"
 local plugin_loader = require("plugin-loader").init()
 plugin_loader:load { plugins }

@@ -71,19 +71,23 @@ time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["packer.nvim"] = {
     loaded = true,
-    path = "/Users/eh/.local/share/nvim/site/pack/vscode/packer/start/packer.nvim"
+    path = "/Users/eh/.local/share/nvim/vscode/pack/packer/start/packer.nvim"
   },
   ["targets.vim"] = {
     loaded = true,
-    path = "/Users/eh/.local/share/nvim/site/pack/vscode/packer/start/targets.vim"
+    path = "/Users/eh/.local/share/nvim/vscode/pack/packer/start/targets.vim"
+  },
+  ["vim-easymotion"] = {
+    loaded = true,
+    path = "/Users/eh/.local/share/nvim/vscode/pack/packer/start/vim-easymotion"
   },
   ["vim-indent-object"] = {
     loaded = true,
-    path = "/Users/eh/.local/share/nvim/site/pack/vscode/packer/start/vim-indent-object"
+    path = "/Users/eh/.local/share/nvim/vscode/pack/packer/start/vim-indent-object"
   },
   ["vim-indentwise"] = {
     loaded = true,
-    path = "/Users/eh/.local/share/nvim/site/pack/vscode/packer/start/vim-indentwise"
+    path = "/Users/eh/.local/share/nvim/vscode/pack/packer/start/vim-indentwise"
   }
 }
 
