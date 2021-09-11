@@ -1,7 +1,3 @@
-if vim.g.vscode then
-  return
-end
-
 -- on first load the theme may not be available yet
 local status_ok, _ = pcall(require, "tokyonight")
 if not status_ok then

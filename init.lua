@@ -1,5 +1,7 @@
+local home_dir = vim.loop.os_homedir()
 if vim.g.vscode then
-  vim.cmd [[runtime vscode.vim]]
+  vim.opt.rtp:remove(home_dir .. "/.config/nvim")
+  vim.opt.rtp:append(home_dir .. "/.config/nvim/vscode")
   return
 end
 -- alternative : vim.fn.exists('g:vscode')
