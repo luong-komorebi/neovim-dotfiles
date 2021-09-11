@@ -17,5 +17,5 @@ packer.startup(function(use)
   use { "wellle/targets.vim" }
   use { "michaeljsmith/vim-indent-object" }
   use { "jeetsukumaran/vim-indentwise" }
+  -- use { "asvetliakov/vim-easymotion" }
 end)
-
