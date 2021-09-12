@@ -9,6 +9,11 @@ if not gl_ok then
   return
 end
 
+local nvim_gps_ok, nvim_gps = pcall(require, "nvim-gps")
+if not nvim_gps_ok then
+  return
+end
+
 local condition = require "galaxyline.condition"
 local gls = gl.section
 local c = O.pallete
@@ -156,14 +161,16 @@ table.insert(gls.left, {
 })
 
 table.insert(gls.left, {
-  VistaPlugin = {
+  NearestFunction = {
     provider = function()
-      if vim.b.vista_nearest_method_or_function == nil then
+      if nvim_gps.is_available() then
+        return nvim_gps.get_location()
+      elseif vim.b.vista_nearest_method_or_function == nil then
         return ""
       elseif vim.b.vista_nearest_method_or_function == "" then
         return ""
       else
-        return "  -> " .. vim.b.vista_nearest_method_or_function
+        return " " .. vim.b.vista_nearest_method_or_function
       end
     end,
     separator = " ",
