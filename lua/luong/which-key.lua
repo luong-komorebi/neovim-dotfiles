@@ -75,7 +75,7 @@ M.config = function()
         f = { "<cmd>Trouble lsp_definitions<cr>", "LS Definitions" },
         d = { "<cmd>Trouble lsp_document_diagnostics<cr>", "LS Diagnostics" },
         q = { "<cmd>Trouble quickfix<cr>", "LS QuickFix" },
-        l = { "<cmd>Trouble loclist<cr>", "LS LocationList" },
+        -- l = { "<cmd>Trouble loclist<cr>", "LS LocationList" },
         w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "LS Workspace Diagnostics" },
       },
       g = {

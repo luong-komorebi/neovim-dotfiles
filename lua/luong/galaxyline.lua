@@ -13,7 +13,7 @@ local condition = require "galaxyline.condition"
 local gls = gl.section
 local c = O.pallete
 
-gl.short_line_list = { "qf", "vista_kind", "toggleterm", "packer", "CHADTree", "DiffviewFiles", "__CtrlSF__" }
+gl.short_line_list = { "qf", "vista_kind", "toggleterm", "packer", "CHADTree", "Trouble", "DiffviewFiles", "__CtrlSF__" }
 -- Colors from tokyonight theme
 local colors = {
   bg = c.bg,
