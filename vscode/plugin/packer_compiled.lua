@@ -69,19 +69,6 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["incsearch-easymotion.vim"] = {
-    loaded = true,
-    path = "/Users/eh/.local/share/nvim/vscode/pack/packer/start/incsearch-easymotion.vim"
-  },
-  ["incsearch-fuzzy.vim"] = {
-    loaded = true,
-    path = "/Users/eh/.local/share/nvim/vscode/pack/packer/start/incsearch-fuzzy.vim"
-  },
-  ["incsearch.vim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/Users/eh/.local/share/nvim/vscode/pack/packer/opt/incsearch.vim"
-  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/vscode/pack/packer/start/packer.nvim"
@@ -109,15 +96,24 @@ _G.packer_plugins = {
   ["vim-indentwise"] = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/vscode/pack/packer/start/vim-indentwise"
+  },
+  ["vim-visual-multi"] = {
+    config = { 'require"lvscode.vim-visual-multi"' },
+    loaded = true,
+    path = "/Users/eh/.local/share/nvim/vscode/pack/packer/start/vim-visual-multi"
   }
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: vim-visual-multi
+time([[Config for vim-visual-multi]], true)
+require"lvscode.vim-visual-multi"
+time([[Config for vim-visual-multi]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'incsearch.vim', 'vim-easy-align', 'vim-easymotion'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'vim-easy-align', 'vim-easymotion'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
