@@ -48,17 +48,15 @@ local function add_lsp_buffer_keybindings(bufnr)
     ["gI"] = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto Implementation" },
     -- ["gs"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "show signature help" },
     ["gs"] = { "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", "show signature help" },
-    -- ["gp"] = { "<cmd>lua require'lsp.peek'.Peek('definition')<CR>", "Peek definition" },
-    ["gp"] = { "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", "Peek definition" },
+    ["gp"] = { "<cmd>lua require'new_lsp.peek'.Peek('definition')<CR>", "Peek definition" },
     -- ["gl"] = {
-    --   "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ show_header = false, border = 'single' })<CR>",
+    --   "<cmd>lua require'new_lsp.handlers'.show_line_diagnostics()<CR>",
     --   "Show line diagnostics",
     -- },
     ["gl"] = {
-      "<cmd>lua require'lsp.handlers'.show_line_diagnostics()<CR>",
+      "<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>",
       "Show line diagnostics",
     },
-
     ["<space>D"] = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Goto type definition" },
     ["<space>f"] = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format" },
     -- ["[d"] = { "<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = O.lsp.popup_border}})<CR>", "Next diagnostic" },

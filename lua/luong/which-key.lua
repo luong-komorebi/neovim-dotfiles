@@ -70,7 +70,14 @@ M.config = function()
     mappings = {
       ["e"] = { ":CHADopen<CR>", "Open chad tree" },
       ["rev"] = { ":CHADopen --always-focus <CR>", "Reveal current file in chad tree" },
-
+      t = {
+        r = { "<cmd>Trouble lsp_references<cr>", "LS References" },
+        f = { "<cmd>Trouble lsp_definitions<cr>", "LS Definitions" },
+        d = { "<cmd>Trouble lsp_document_diagnostics<cr>", "LS Diagnostics" },
+        q = { "<cmd>Trouble quickfix<cr>", "LS QuickFix" },
+        l = { "<cmd>Trouble loclist<cr>", "LS LocationList" },
+        w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "LS Workspace Diagnostics" },
+      },
       g = {
         name = "Git",
         d = {

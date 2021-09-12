@@ -42,6 +42,7 @@ bufferline.setup {
     offsets = {
       { filetype = "CHADTree", text = "File Explorer", text_align = "center", highlight = "Directory" },
       { filetype = "DiffviewFiles", text = "Diff Files", text_align = "center" },
+      { filetype = "__CtrlSF", text = "Find & Replace", text_align = "center" },
     },
     show_buffer_icons = true, -- disable filetype icons for buffers
     show_buffer_close_icons = false,
