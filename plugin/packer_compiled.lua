@@ -471,10 +471,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: vim-markdown
-time([[Config for vim-markdown]], true)
-try_loadstring("\27LJ\2\n:\0\0\2\0\3\0\0056\0\0\0009\0\1\0+\1\1\0=\1\2\0K\0\1\0\29markdown_enable_mappings\6g\bvim\0", "config", "vim-markdown")
-time([[Config for vim-markdown]], false)
+-- Config for: chadtree
+time([[Config for chadtree]], true)
+require"luong.chadtree"
+time([[Config for chadtree]], false)
 -- Config for: indent-blankline.nvim
 time([[Config for indent-blankline.nvim]], true)
 require"luong.blankline"
@@ -483,22 +483,42 @@ time([[Config for indent-blankline.nvim]], false)
 time([[Config for diffview.nvim]], true)
 require"luong.diffview"
 time([[Config for diffview.nvim]], false)
--- Config for: neoscroll.nvim
-time([[Config for neoscroll.nvim]], true)
-try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14neoscroll\frequire\0", "config", "neoscroll.nvim")
-time([[Config for neoscroll.nvim]], false)
--- Config for: DAPInstall.nvim
-time([[Config for DAPInstall.nvim]], true)
-try_loadstring("\27LJ\2\n­\1\0\0\6\0\n\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0006\3\3\0009\3\4\0039\3\5\3'\5\6\0B\3\2\2'\4\a\0&\3\4\3=\3\t\2B\0\2\1K\0\1\0\22installation_path\1\0\1\29verbosely_call_debuggers\1\17/dapinstall/\tdata\fstdpath\afn\bvim\nsetup\16dap-install\frequire\0", "config", "DAPInstall.nvim")
-time([[Config for DAPInstall.nvim]], false)
--- Config for: lspsaga.nvim
-time([[Config for lspsaga.nvim]], true)
-require"luong.lspsaga"
-time([[Config for lspsaga.nvim]], false)
+-- Config for: vim-visual-multi
+time([[Config for vim-visual-multi]], true)
+require"luong.vim-visual-multi"
+time([[Config for vim-visual-multi]], false)
+-- Config for: nvim-compe
+time([[Config for nvim-compe]], true)
+require"luong.nvim-compe"
+time([[Config for nvim-compe]], false)
+-- Config for: nvim-neoclip.lua
+time([[Config for nvim-neoclip.lua]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fneoclip\frequire\0", "config", "nvim-neoclip.lua")
+time([[Config for nvim-neoclip.lua]], false)
 -- Config for: galaxyline.nvim
 time([[Config for galaxyline.nvim]], true)
 require"luong.galaxyline"
 time([[Config for galaxyline.nvim]], false)
+-- Config for: vim-markdown
+time([[Config for vim-markdown]], true)
+try_loadstring("\27LJ\2\n:\0\0\2\0\3\0\0056\0\0\0009\0\1\0+\1\1\0=\1\2\0K\0\1\0\29markdown_enable_mappings\6g\bvim\0", "config", "vim-markdown")
+time([[Config for vim-markdown]], false)
+-- Config for: lspsaga.nvim
+time([[Config for lspsaga.nvim]], true)
+require"luong.lspsaga"
+time([[Config for lspsaga.nvim]], false)
+-- Config for: vim-yardoc
+time([[Config for vim-yardoc]], true)
+try_loadstring("\27LJ\2\nd\0\0\4\0\4\0\a6\0\0\0009\0\1\0009\0\2\0\18\1\0\0'\3\3\0B\1\2\1K\0\1\0000hi link yardGenericTag rubyInstanceVariable\17nvim_command\bapi\bvim\0", "config", "vim-yardoc")
+time([[Config for vim-yardoc]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require"luong.nvim-treesitter"
+time([[Config for nvim-treesitter]], false)
+-- Config for: gitlinker.nvim
+time([[Config for gitlinker.nvim]], true)
+require"luong.gitlinker"
+time([[Config for gitlinker.nvim]], false)
 -- Config for: nvim-colorizer.lua
 time([[Config for nvim-colorizer.lua]], true)
 try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\vconfig\20luong.colorizer\frequire\0", "config", "nvim-colorizer.lua")
@@ -507,50 +527,30 @@ time([[Config for nvim-colorizer.lua]], false)
 time([[Config for project.nvim]], true)
 try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\17project_nvim\frequire\0", "config", "project.nvim")
 time([[Config for project.nvim]], false)
--- Config for: gitlinker.nvim
-time([[Config for gitlinker.nvim]], true)
-require"luong.gitlinker"
-time([[Config for gitlinker.nvim]], false)
 -- Config for: nvim-dap
 time([[Config for nvim-dap]], true)
 try_loadstring("\27LJ\2\n<\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\19luong.nvim-dap\frequire\0", "config", "nvim-dap")
 time([[Config for nvim-dap]], false)
--- Config for: trouble.nvim
-time([[Config for trouble.nvim]], true)
-try_loadstring("\27LJ\2\nV\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\29use_lsp_diagnostic_signs\2\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
-time([[Config for trouble.nvim]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-require"luong.telescope"
-time([[Config for telescope.nvim]], false)
--- Config for: vim-yardoc
-time([[Config for vim-yardoc]], true)
-try_loadstring("\27LJ\2\nd\0\0\4\0\4\0\a6\0\0\0009\0\1\0009\0\2\0\18\1\0\0'\3\3\0B\1\2\1K\0\1\0000hi link yardGenericTag rubyInstanceVariable\17nvim_command\bapi\bvim\0", "config", "vim-yardoc")
-time([[Config for vim-yardoc]], false)
--- Config for: vim-visual-multi
-time([[Config for vim-visual-multi]], true)
-require"luong.vim-visual-multi"
-time([[Config for vim-visual-multi]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-require"luong.nvim-treesitter"
-time([[Config for nvim-treesitter]], false)
--- Config for: nvim-neoclip.lua
-time([[Config for nvim-neoclip.lua]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fneoclip\frequire\0", "config", "nvim-neoclip.lua")
-time([[Config for nvim-neoclip.lua]], false)
+-- Config for: neoscroll.nvim
+time([[Config for neoscroll.nvim]], true)
+try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14neoscroll\frequire\0", "config", "neoscroll.nvim")
+time([[Config for neoscroll.nvim]], false)
 -- Config for: vim-better-whitespace
 time([[Config for vim-better-whitespace]], true)
 require"luong.better-whitespace"
 time([[Config for vim-better-whitespace]], false)
--- Config for: nvim-compe
-time([[Config for nvim-compe]], true)
-require"luong.nvim-compe"
-time([[Config for nvim-compe]], false)
--- Config for: chadtree
-time([[Config for chadtree]], true)
-require"luong.chadtree"
-time([[Config for chadtree]], false)
+-- Config for: DAPInstall.nvim
+time([[Config for DAPInstall.nvim]], true)
+try_loadstring("\27LJ\2\n­\1\0\0\6\0\n\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0006\3\3\0009\3\4\0039\3\5\3'\5\6\0B\3\2\2'\4\a\0&\3\4\3=\3\t\2B\0\2\1K\0\1\0\22installation_path\1\0\1\29verbosely_call_debuggers\1\17/dapinstall/\tdata\fstdpath\afn\bvim\nsetup\16dap-install\frequire\0", "config", "DAPInstall.nvim")
+time([[Config for DAPInstall.nvim]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require"luong.telescope"
+time([[Config for telescope.nvim]], false)
+-- Config for: trouble.nvim
+time([[Config for trouble.nvim]], true)
+try_loadstring("\27LJ\2\nV\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\29use_lsp_diagnostic_signs\2\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
+time([[Config for trouble.nvim]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
@@ -559,12 +559,12 @@ vim.cmd [[au FileType tex ++once lua require("packer.load")({'vimtex'}, { ft = "
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'gitsigns.nvim', 'numb.nvim', 'nvim-comment', 'octo.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
-vim.cmd [[au VimEnter * ++once lua require("packer.load")({'nvim-lspinstall'}, { event = "VimEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au CursorMoved * ++once lua require("packer.load")({'vim-matchup'}, { event = "CursorMoved *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'lsp_signature.nvim'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'hop', 'incsearch.vim', 'vim-easy-align', 'vim-easymotion', 'nvim-autopairs', 'nvim-toggleterm.lua', 'nvim-ts-rainbow', 'vista.vim', 'which-key.nvim', 'symbols-outline.nvim', 'bufferline.nvim'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au CursorMoved * ++once lua require("packer.load")({'vim-matchup'}, { event = "CursorMoved *" }, _G.packer_plugins)]]
+vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'nvim-autopairs', 'hop', 'vista.vim', 'which-key.nvim', 'bufferline.nvim', 'nvim-toggleterm.lua', 'nvim-ts-rainbow', 'incsearch.vim', 'symbols-outline.nvim', 'vim-easy-align', 'vim-easymotion'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertCharPre * ++once lua require("packer.load")({'friendly-snippets'}, { event = "InsertCharPre *" }, _G.packer_plugins)]]
+vim.cmd [[au VimEnter * ++once lua require("packer.load")({'nvim-lspinstall'}, { event = "VimEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'numb.nvim', 'nvim-comment', 'gitsigns.nvim', 'octo.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]
