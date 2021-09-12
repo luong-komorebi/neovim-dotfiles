@@ -48,7 +48,7 @@ return {
     "windwp/nvim-autopairs",
     config = [[require"luong.autopairs"]],
     event = "BufWinEnter",
-    after = "nvim-compe",
+    after = "nvim-cmp",
   },
   { "mg979/vim-visual-multi", branch = "master", config = [[require"luong.vim-visual-multi"]] },
   { "AndrewRadev/splitjoin.vim" },
@@ -208,14 +208,20 @@ return {
   -- Completion and snippet
   -- ======================
   {
-    "hrsh7th/nvim-compe",
-    config = [[require"luong.nvim-compe"]],
+    "hrsh7th/nvim-cmp",
+    config = function()
+      require("luong.nvim-cmp").setup()
+    end,
+    requires = {
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-nvim-lua",
+    },
   },
-  {
-    "hrsh7th/vim-vsnip-integ",
-    requires = { "hrsh7th/vim-vsnip", event = "InsertEnter" },
-  },
-  { "rafamadriz/friendly-snippets", event = "InsertCharPre" },
+  { "rafamadriz/friendly-snippets" },
 
   -- Git tools
   -- ======================

@@ -3,36 +3,43 @@
 local M = {}
 
 function M.setup()
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  local config = { -- your config
     virtual_text = O.lsp.diagnostics.virtual_text,
-    signs = O.lsp.diagnostics.signs.active,
-    underline = O.lsp.document_highlight,
-  })
+    signs = O.lsp.diagnostics.signs,
+    underline = O.lsp.diagnostics.underline,
+    update_in_insert = O.lsp.diagnostics.update_in_insert,
+    severity_sort = O.lsp.diagnostics.severity_sort,
+  }
+  if vim.fn.has "nvim-0.5.1" > 0 then
+    vim.lsp.handlers["textDocument/publishDiagnostics"] = function(_, result, ctx, _)
+      local uri = result.uri
+      local bufnr = vim.uri_to_bufnr(uri)
+      if not bufnr then
+        return
+      end
 
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = function(_, _, params, client_id, _)
-    local config = { -- your config
-      virtual_text = O.lsp.diagnostics.virtual_text,
-      signs = O.lsp.diagnostics.signs,
-      underline = O.lsp.diagnostics.underline,
-      update_in_insert = O.lsp.diagnostics.update_in_insert,
-      severity_sort = O.lsp.diagnostics.severity_sort,
-    }
-    local uri = params.uri
-    local bufnr = vim.uri_to_bufnr(uri)
-
-    if not bufnr then
-      return
+      local diagnostics = result.diagnostics
+      vim.lsp.diagnostic.save(diagnostics, bufnr, ctx.client_id)
+      if not vim.api.nvim_buf_is_loaded(bufnr) then
+        return
+      end
+      vim.lsp.diagnostic.display(diagnostics, bufnr, ctx.client_id, config)
     end
+  else
+    vim.lsp.handlers["textDocument/publishDiagnostics"] = function(_, _, params, client_id, _)
+      local uri = params.uri
+      local bufnr = vim.uri_to_bufnr(uri)
+      if not bufnr then
+        return
+      end
 
-    local diagnostics = params.diagnostics
-
-    vim.lsp.diagnostic.save(diagnostics, bufnr, client_id)
-
-    if not vim.api.nvim_buf_is_loaded(bufnr) then
-      return
+      local diagnostics = params.diagnostics
+      vim.lsp.diagnostic.save(diagnostics, bufnr, client_id)
+      if not vim.api.nvim_buf_is_loaded(bufnr) then
+        return
+      end
+      vim.lsp.diagnostic.display(diagnostics, bufnr, client_id, config)
     end
-
-    vim.lsp.diagnostic.display(diagnostics, bufnr, client_id, config)
   end
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -90,7 +97,8 @@ function M.show_line_diagnostics()
   vim.api.nvim_win_set_option(winnr, "winblend", 0)
   vim.api.nvim_buf_set_var(bufnr, "lsp_floating_window", winnr)
   for i, diag in ipairs(diags) do
-    vim.api.nvim_buf_set_lines(bufnr, i - 1, i - 1, 0, { diag.message })
+    local message = diag.message:gsub("[\n\r]", " ")
+    vim.api.nvim_buf_set_lines(bufnr, i - 1, i - 1, 0, { message })
     vim.api.nvim_buf_add_highlight(
       bufnr,
       -1,
@@ -101,9 +109,7 @@ function M.show_line_diagnostics()
     )
   end
 
-  vim.api.nvim_command(
-    "autocmd QuitPre <buffer> ++nested ++once lua pcall(vim.api.nvim_win_close, " .. winnr .. ", true)"
-  )
+  vim.api.nvim_command("autocmd QuitPre <buffer> ++nested ++once lua pcall(vim.api.nvim_win_close, " .. winnr .. ", true)")
   vim.lsp.util.close_preview_autocmd(close_events, winnr)
 end
 

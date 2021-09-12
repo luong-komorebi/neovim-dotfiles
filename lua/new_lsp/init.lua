@@ -83,6 +83,12 @@ function M.common_capabilities()
       "additionalTextEdits",
     },
   }
+
+  local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+  if status_ok then
+    capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+  end
+
   return capabilities
 end
 
