@@ -19,9 +19,9 @@ local function lsp_highlight_document(client)
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_exec(
       [[
-      hi LspReferenceRead cterm=bold ctermbg=red guibg=#464646
-      hi LspReferenceText cterm=bold ctermbg=red guibg=#464646
-      hi LspReferenceWrite cterm=bold ctermbg=red guibg=#464646
+      hi LspReferenceRead cterm=bold ctermbg=red guibg=#353d46
+      hi LspReferenceText cterm=bold ctermbg=red guibg=#353d46
+      hi LspReferenceWrite cterm=bold ctermbg=red guibg=#353d46
       augroup lsp_document_highlight
         autocmd! * <buffer>
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
@@ -55,7 +55,7 @@ local function add_lsp_buffer_keybindings(bufnr)
     --   "Show line diagnostics",
     -- },
     ["gl"] = {
-      "<cmd>lua require('lspsaga.diagnostic').show_line_diagnostics()<CR>",
+      "<cmd>lua require'lsp.handlers'.show_line_diagnostics()<CR>",
       "Show line diagnostics",
     },
 
@@ -63,7 +63,10 @@ local function add_lsp_buffer_keybindings(bufnr)
     ["<space>f"] = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format" },
     -- ["[d"] = { "<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = O.lsp.popup_border}})<CR>", "Next diagnostic" },
     -- ["]d"] = { "<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = O.lsp.popup_border}})<CR>", "Previous diagnostic" },
-    ["[d"] = { "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>d>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = O.lsp.popup_border}})<CR>", "Next diagnostic" },
+    ["[d"] = {
+      "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>d>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = O.lsp.popup_border}})<CR>",
+      "Next diagnostic",
+    },
     ["]d"] = { "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", "Previous diagnostic" },
     ["gh"] = { "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", "Peek definition" },
     ["<c-f>"] = { "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", "Scroll down in saga" },
@@ -123,9 +126,7 @@ function M.common_on_init(client, bufnr)
   local formatters = O.lang[vim.bo.filetype].formatters
   if not vim.tbl_isempty(formatters) and formatters[1]["exe"] ~= nil and formatters[1].exe ~= "" then
     client.resolved_capabilities.document_formatting = false
-    Log:debug(
-      string.format("Overriding language server [%s] with format provider [%s]", client.name, formatters[1].exe)
-    )
+    Log:debug(string.format("Overriding language server [%s] with format provider [%s]", client.name, formatters[1].exe))
   end
 end
 
@@ -154,7 +155,7 @@ end
 function M.setup(lang)
   local lsp_utils = require "new_lsp.utils"
   local lsp = O.lang[lang].lsp
-  if lsp_utils.is_client_active(lsp.provider) then
+  if (lsp.active ~= nil and not lsp.active) or lsp_utils.is_client_active(lsp.provider) then
     return
   end
 

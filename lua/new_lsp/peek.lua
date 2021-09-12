@@ -42,12 +42,11 @@ local function create_floating_file(location, opts)
   local winnr = vim.api.nvim_open_win(bufnr, false, opts)
   vim.api.nvim_win_set_option(winnr, "winblend", 0)
 
+  vim.api.nvim_win_set_cursor(winnr, { range.start.line + 1, range.start.character })
   vim.api.nvim_buf_set_var(bufnr, "lsp_floating_window", winnr)
 
   -- Set some autocmds to close the window
-  vim.api.nvim_command(
-    "autocmd QuitPre <buffer> ++nested ++once lua pcall(vim.api.nvim_win_close, " .. winnr .. ", true)"
-  )
+  vim.api.nvim_command("autocmd QuitPre <buffer> ++nested ++once lua pcall(vim.api.nvim_win_close, " .. winnr .. ", true)")
   vim.lsp.util.close_preview_autocmd(close_events, winnr)
 
   return bufnr, winnr
@@ -118,21 +117,13 @@ function M.Peek(what)
     -- Set the cursor at the correct position in the floating window
     M.set_cursor_to_prev_pos()
 
-    vim.api.nvim_buf_set_keymap(
-      M.floating_buf,
-      "n",
-      "<CR>",
-      ":lua require('new_lsp.peek').open_file()<CR>",
-      { noremap = true, silent = true }
-    )
+    vim.api.nvim_buf_set_keymap(M.floating_buf, "n", "<CR>", ":lua require('new_lsp.peek').open_file()<CR>", { noremap = true, silent = true })
   else
     -- Make a new request and then create the new window in the callback
     local params = vim.lsp.util.make_position_params()
     local success, _ = pcall(vim.lsp.buf_request, 0, "textDocument/" .. what, params, preview_location_callback)
     if not success then
-      print(
-        'peek: Error calling LSP method "textDocument/' .. what .. '". The current language lsp might not support it.'
-      )
+      print('peek: Error calling LSP method "textDocument/' .. what .. '". The current language lsp might not support it.')
     end
   end
 end
