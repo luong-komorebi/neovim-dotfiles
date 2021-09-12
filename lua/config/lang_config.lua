@@ -120,12 +120,8 @@ O.lang = {
     formatters = { {
       exe = "gofmt",
       args = {},
-      stdin = true,
     } },
-    linters = {
-      { exe = "golangcilint" },
-      { exe = "revive" },
-    },
+    linters = {},
     lsp = {
       provider = "gopls",
       setup = {
