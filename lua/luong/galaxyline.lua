@@ -240,7 +240,7 @@ table.insert(gls.right, {
 })
 
 local get_lsp_client = function(msg)
-  msg = msg or "LSP Inactive"
+  msg = msg or "LS Inactive"
   local buf_clients = vim.lsp.buf_get_clients()
   if next(buf_clients) == nil then
     return msg
