@@ -22,7 +22,9 @@ return {
 
   -- text searching, fuzzy search, file searching
   -- ======================
-  { "haya14busa/incsearch.vim", event = "BufWinEnter", requires = { { "haya14busa/incsearch-easymotion.vim" }, { "haya14busa/incsearch-fuzzy.vim" } } },
+  { "haya14busa/incsearch.vim", event = "BufWinEnter" },
+  { "haya14busa/incsearch-easymotion.vim", event = "BufWinEnter" },
+  { "haya14busa/incsearch-fuzzy.vim", event = "BufWinEnter" },
   { "jesseleite/vim-agriculture" },
   {
     "junegunn/fzf.vim",
@@ -37,7 +39,7 @@ return {
   { "nelstrom/vim-visual-star-search" },
 
   -- Editing and formatting codes  -- ======================
-  { "matze/vim-move" },
+  { "matze/vim-move", event = "BufWinEnter" },
   {
     "terrortylor/nvim-comment",
     event = "BufRead",
@@ -65,8 +67,7 @@ return {
 
   -- Additional text object
   -- ======================
-  { "wellle/targets.vim" },
-  { "michaeljsmith/vim-indent-object" },
+  { "wellle/targets.vim", event = "BufWinEnter" },
   -- File and other Explorer  -- ======================
   {
     "ms-jpq/chadtree",
@@ -248,8 +249,7 @@ return {
       require("luong.nvim-toggleterm").setup()
     end,
   }, -- Miscs  -- ======================
-  { "vim-scripts/git-time-lapse" },
-  { "ellisonleao/glow.nvim" },
+  { "ellisonleao/glow.nvim", ft = { "markdown" } },
   { "rhysd/git-messenger.vim" },
   {
     "sindrets/diffview.nvim",
@@ -262,7 +262,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     branch = "0.5-compat",
     run = ":TSUpdate",
-    requires = "nvim-treesitter/nvim-treesitter-textobjects",
+    requires = { "nvim-treesitter/nvim-treesitter-textobjects", branch = "0.5-compat" },
     config = [[require"luong.nvim-treesitter"]],
   },
   -- markdown
@@ -271,6 +271,7 @@ return {
     config = function()
       vim.g.markdown_enable_mappings = false
     end,
+    ft = { "markdown" },
   },
   -- yard
   {
@@ -279,15 +280,16 @@ return {
       local execute = vim.api.nvim_command
       execute "hi link yardGenericTag rubyInstanceVariable"
     end,
+    ft = { "ruby" },
   },
   -- yaml
-  { "towolf/vim-helm" },
+  { "towolf/vim-helm", ft = { "helm" } },
   { "pedrohdz/vim-yaml-folds" },
   -- rego
-  { "tsandall/vim-rego" },
+  { "tsandall/vim-rego", ft = { "rego" } },
   -- terraform
-  { "hashivim/vim-terraform" },
-  { "sbdchd/neoformat" }, -- Currently ALE does not support fix rego so we have to ,neoformat
+  { "hashivim/vim-terraform", ft = { "hcl", "terraform" } },
+  { "sbdchd/neoformat", ft = { "rego" } }, -- Currently ALE does not support fix rego so we have to ,neoformat
   -- jsonnet
   { "google/vim-jsonnet" },
   -- latex
@@ -297,11 +299,10 @@ return {
   },
 
   -- Tpope and his ruby magics  -- =========================
-  { "tpope/vim-cucumber" },
+  { "tpope/vim-cucumber", ft = { "ruby" } },
   { "tpope/vim-surround" },
-  { "tpope/vim-projectionist" },
+  { "tpope/vim-projectionist", ft = { "ruby" } },
   { "junegunn/gv.vim" },
-  { "tpope/vim-rhubarb" },
-  { "tpope/vim-rake" },
-  { "tpope/vim-bundler" },
+  { "tpope/vim-rake", ft = { "ruby" } },
+  { "tpope/vim-bundler", ft = { "ruby" } },
 }

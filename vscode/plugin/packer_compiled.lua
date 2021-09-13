@@ -89,10 +89,6 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/Users/eh/.local/share/nvim/vscode/pack/packer/opt/vim-easymotion"
   },
-  ["vim-indent-object"] = {
-    loaded = true,
-    path = "/Users/eh/.local/share/nvim/vscode/pack/packer/start/vim-indent-object"
-  },
   ["vim-indentwise"] = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/vscode/pack/packer/start/vim-indentwise"
