@@ -43,7 +43,7 @@ O.autocommands = {
       "*",
       "setlocal formatoptions-=c formatoptions-=r formatoptions-=o",
     },
-    { "Filetype", "qf", "set nobuflisted" },
+    { "FileType", "qf", "set nobuflisted" },
   },
   _git = {
     { "FileType", "gitcommit", "setlocal wrap" },
@@ -82,9 +82,9 @@ O.autocommands = {
   _general_lsp = {
     { "FileType", "lspinfo", "nnoremap <silent> <buffer> q :q<CR>" },
   },
-  _tab_bindings = {
-    { "FileType", "*", "lua require'luong.nvim-compe'.set_tab_keybindings()" },
-  },
+  -- _tab_bindings = {
+  --   { "FileType", "*", "lua require'luong.nvim-compe'.set_tab_keybindings()" },
+  -- },
 }
 
 function autocommands.define_augroups(definitions) -- {{{1

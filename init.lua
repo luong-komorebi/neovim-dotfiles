@@ -61,9 +61,10 @@ end
 
 -- dap config
 -- TODO: move this inside ftplugin
-local dap_install_ok, dap_install = pcall(require, "dap-install")
-if dap_install_ok then
-  for dap_name, dap_conf in pairs(O.dap.lang) do
-    dap_install.config(dap_name, dap_conf)
-  end
-end
+-- local dap_install_ok, dap_install = pcall(require, "dap-install")
+-- if dap_install_ok then
+--   for dap_name, dap_conf in pairs(O.dap.lang) do
+--     dap_install.config(dap_name, dap_conf)
+--   end
+-- end
+
