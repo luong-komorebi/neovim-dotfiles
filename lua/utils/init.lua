@@ -12,16 +12,15 @@ function utils.is_file(filename)
 end
 
 function utils.reload_config()
-  require("core.lualine").config()
+  require("luong.galaxyline").config()
 
   local config = require "config"
   config:load()
 
-  require("keymappings").setup() -- this should be done before loading the plugins
+  require("misc_mappings").setup() -- this should be done before loading the plugins
   vim.cmd("source " .. home_dir .. "/.config/nvim/lua/plugins.lua")
   local plugins = require "plugins"
   local plugin_loader = require("plugin-loader").init()
-  utils.toggle_autoformat()
   plugin_loader:load { plugins }
   vim.cmd ":PackerCompile"
   vim.cmd ":PackerInstall"

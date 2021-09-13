@@ -77,7 +77,7 @@ O.autocommands = {
   -- },
   _packer_compile = {
     -- will cause split windows to be resized evenly if main window is resized
-    { "BufWritePost", string.format("%s/.config/nvim/plugins.lua", home_dir), "lua require('utils').reload_config()" },
+    { "BufWritePost", string.format("%s/.config/nvim/lua/plugins.lua", home_dir), "lua require('utils').reload_config()" },
   },
   _general_lsp = {
     { "FileType", "lspinfo", "nnoremap <silent> <buffer> q :q<CR>" },
