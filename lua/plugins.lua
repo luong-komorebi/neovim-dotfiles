@@ -210,6 +210,7 @@ return {
   {
     "hrsh7th/nvim-cmp",
     config = function()
+      require("luong.nvim-cmp").config()
       require("luong.nvim-cmp").setup()
     end,
     requires = {
