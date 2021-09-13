@@ -82,9 +82,6 @@ O.autocommands = {
   _general_lsp = {
     { "FileType", "lspinfo", "nnoremap <silent> <buffer> q :q<CR>" },
   },
-  -- _tab_bindings = {
-  --   { "FileType", "*", "lua require'luong.nvim-compe'.set_tab_keybindings()" },
-  -- },
 }
 
 function autocommands.define_augroups(definitions) -- {{{1

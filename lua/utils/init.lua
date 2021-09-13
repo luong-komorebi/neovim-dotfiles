@@ -12,12 +12,6 @@ function utils.is_file(filename)
 end
 
 function utils.reload_config()
-  require("luong.galaxyline").config()
-
-  local config = require "config"
-  config:load()
-
-  require("misc_mappings").setup() -- this should be done before loading the plugins
   vim.cmd("source " .. home_dir .. "/.config/nvim/lua/plugins.lua")
   local plugins = require "plugins"
   local plugin_loader = require("plugin-loader").init()
