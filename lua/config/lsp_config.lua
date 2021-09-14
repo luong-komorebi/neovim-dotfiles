@@ -43,6 +43,7 @@ O.lsp = {
       spacing = 0,
     },
     underline = true,
+    update_in_insert = false,
     severity_sort = true,
   },
   override = {},
