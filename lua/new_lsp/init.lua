@@ -1,16 +1,6 @@
 local M = {}
 local Log = require "luong.log"
 
-function M.config()
-  vim.lsp.protocol.CompletionItemKind = O.lsp.completion.item_kind
-
-  for _, sign in ipairs(O.lsp.diagnostics.signs.values) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
-  end
-
-  require("new_lsp.handlers").setup()
-end
-
 local function lsp_highlight_document(client)
   if O.lsp.document_highlight == false then
     return -- we don't need further
@@ -184,6 +174,22 @@ function M.setup(lang)
     end
 
     lspconfig[lsp.provider].setup(lsp.setup)
+  end
+end
+
+function M.global_setup()
+  vim.lsp.protocol.CompletionItemKind = O.lsp.completion.item_kind
+
+  for _, sign in ipairs(O.lsp.diagnostics.signs.values) do
+    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
+  end
+
+  require("new_lsp.handlers").setup()
+
+  local null_status_ok, null_ls = pcall(require, "null-ls")
+  if null_status_ok then
+    null_ls.config()
+    require("lspconfig")["null-ls"].setup(O.lsp.null_ls.setup)
   end
 end
 

@@ -34,6 +34,11 @@ local my_misc_mappings = {
     { "<C-j>", "<C-\\><C-N><C-w>j" },
     { "<C-k>", "<C-\\><C-N><C-w>k" },
     { "<C-l>", "<C-\\><C-N><C-w>l" },
+
+    -- navigate tab completion with <c-j> and <c-k>
+    -- runs conditionally
+    { "<C-j>", 'pumvisible() ? "\\<down>" : "\\<C-j>"', { expr = true, noremap = true } },
+    { "<C-k>", 'pumvisible() ? "\\<up>" : "\\<C-k>"', { expr = true, noremap = true } },
   },
   x = { -- visual mode
     -- copy and paste multiple times

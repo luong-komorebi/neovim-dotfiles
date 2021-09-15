@@ -1,9 +1,9 @@
- ft=lua tw=80
+-- vim: ft=lua tw=80
 
 stds.nvim = {
   globals = {
-    "vim",
     "O",
+    "vim",
     vim = { fields = { "g" } },
     "CONFIG_PATH",
     "CACHE_PATH",
@@ -26,6 +26,8 @@ stds.nvim = {
   },
 }
 std = "lua51+nvim"
+
+files["tests/*_spec.lua"].std = "lua51+nvim+busted"
 
 -- Don't report unused self arguments of methods.
 self = false
