@@ -16,6 +16,28 @@ O.lang = {
       },
     },
   },
+  yaml = {
+    formatters = {
+      -- {
+      --   exe = "prettier",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "prettierd",
+      --   args = {},
+      -- },
+    },
+    linters = {},
+    lsp = {
+      provider = "yamlls",
+      setup = {
+        cmd = {
+          DATA_PATH .. "/lspinstall/yaml/node_modules/.bin/yaml-language-server",
+          "--stdio",
+        },
+      },
+    },
+  },
   lua = {
     formatters = {
       {
