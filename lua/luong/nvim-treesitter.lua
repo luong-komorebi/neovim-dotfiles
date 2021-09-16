@@ -23,7 +23,7 @@ ts.setup {
     },
   },
 
-  indent = { enable = true },
+  indent = { enable = true, disable = { "yaml" } },
   textobjects = {
     lsp_interop = {
       enable = true,
