@@ -100,7 +100,7 @@ return {
     config = [[require"luong.gitsigns"]],
   },
   {
-    "glepnir/galaxyline.nvim",
+    "NTBBloodbath/galaxyline.nvim",
     config = [[require"luong.galaxyline"]],
   },
   {

@@ -116,7 +116,7 @@ table.insert(gls.left, {
 table.insert(gls.left, {
   current_dir = {
     provider = function()
-      local git_dir = require("galaxyline.provider_vcs").get_git_dir(vim.fn.expand "%:p")
+      local git_dir = require("galaxyline.providers.vcs").get_git_dir(vim.fn.expand "%:p")
       local current_dir = vim.fn.expand "%:p:h"
       if git_dir == current_dir .. "/.git" or git_dir == nil then
         return "  " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. " "
@@ -143,7 +143,7 @@ table.insert(gls.left, {
 table.insert(gls.left, {
   GitBranch = {
     provider = function()
-      local vcs = require "galaxyline.provider_vcs"
+      local vcs = require "galaxyline.providers.vcs"
       local branch_name = vcs.get_git_branch()
       if vcs.get_git_branch() == nil then
         return "~ merge conflict" .. " "
@@ -305,7 +305,7 @@ table.insert(gls.right, {
   FileIcon = {
     provider = "FileIcon",
     condition = condition.buffer_not_empty,
-    highlight = { require("galaxyline.provider_fileinfo").get_file_icon_color, colors.section_bg },
+    highlight = { require("galaxyline.providers.fileinfo").get_file_icon_color, colors.section_bg },
   },
 })
 
@@ -359,7 +359,7 @@ table.insert(gls.short_line_left, {
   FileIcon = {
     provider = "FileIcon",
     condition = condition.buffer_not_empty,
-    highlight = { require("galaxyline.provider_fileinfo").get_file_icon_color, colors.section_bg },
+    highlight = { require("galaxyline.providers.fileinfo").get_file_icon_color, colors.section_bg },
   },
 })
 
