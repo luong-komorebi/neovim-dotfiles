@@ -7,7 +7,7 @@ ts.setup {
   ensure_installed = "maintained",
   highlight = {
     enable = true,
-    disable = { "nix" },
+    disable = { "nix", "zig" },
   },
   custom_captures = {
     -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
