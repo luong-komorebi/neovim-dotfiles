@@ -3,7 +3,6 @@ return {
   -- ======================
   { "wbthomason/packer.nvim" },
   { "folke/tokyonight.nvim" },
-  { "ryanoasis/vim-devicons" },
   { "kyazdani42/nvim-web-devicons" },
 
   -- jumping around
@@ -25,7 +24,7 @@ return {
   { "haya14busa/incsearch.vim", event = "BufWinEnter" },
   { "haya14busa/incsearch-easymotion.vim", event = "BufWinEnter" },
   { "haya14busa/incsearch-fuzzy.vim", event = "BufWinEnter" },
-  { "jesseleite/vim-agriculture" },
+  { "jesseleite/vim-agriculture", cmd = 'RgRaw' },
   {
     "junegunn/fzf.vim",
     requires = { "junegunn/fzf", dir = "~/.fzf", run = "./install --all" },
