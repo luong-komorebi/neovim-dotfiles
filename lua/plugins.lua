@@ -24,7 +24,7 @@ return {
   { "haya14busa/incsearch.vim", event = "BufWinEnter" },
   { "haya14busa/incsearch-easymotion.vim", event = "BufWinEnter" },
   { "haya14busa/incsearch-fuzzy.vim", event = "BufWinEnter" },
-  { "jesseleite/vim-agriculture", cmd = 'RgRaw' },
+  { "jesseleite/vim-agriculture", cmd = "RgRaw" },
   {
     "junegunn/fzf.vim",
     requires = { "junegunn/fzf", dir = "~/.fzf", run = "./install --all" },
@@ -62,7 +62,6 @@ return {
     end,
   },
   { "ludovicchabant/vim-gutentags" },
-  { "mbbill/undotree" },
 
   -- Additional text object
   -- ======================
@@ -73,6 +72,7 @@ return {
     branch = "chad",
     config = [[require"luong.chadtree"]],
     run = "python3 -m chadtree deps",
+    cmd = "CHADopen",
   },
   {
     "ahmedkhalf/project.nvim",
