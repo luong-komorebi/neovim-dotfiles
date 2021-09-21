@@ -109,6 +109,7 @@ table.insert(gls.left, {
     end,
     highlight = { colors.bg, colors.bg },
     separator = right_separator,
+    condition = condition.hide_in_width and condition.buffer_not_empty,
     separator_highlight = { colors.bg, colors.section_bg },
   },
 })
@@ -174,7 +175,7 @@ table.insert(gls.left, {
       end
     end,
     separator = " ",
-    condition = condition.buffer_not_empty,
+    condition = condition.buffer_not_empty and condition.hide_in_width,
     highlight = { colors.fg, colors.bg, "bold" },
   },
 })
