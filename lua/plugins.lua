@@ -52,7 +52,6 @@ return {
     after = "nvim-cmp",
   },
   { "mg979/vim-visual-multi", branch = "master", config = [[require"luong.vim-visual-multi"]] },
-  { "AndrewRadev/splitjoin.vim" },
   { "dyng/ctrlsf.vim" },
   { "junegunn/vim-peekaboo" },
   {
