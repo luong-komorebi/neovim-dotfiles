@@ -256,12 +256,14 @@ return {
   -- Terminal
   -- ======================
   {
-    "akinsho/nvim-toggleterm.lua",
+    "akinsho/toggleterm.nvim",
     event = "BufWinEnter",
     config = function()
       require("luong.nvim-toggleterm").setup()
     end,
-  }, -- Miscs  -- ======================
+  },
+
+  -- Miscs  -- ======================
   { "ellisonleao/glow.nvim", ft = { "markdown" } },
   { "rhysd/git-messenger.vim" },
   {
