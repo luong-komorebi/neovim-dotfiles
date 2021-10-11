@@ -34,6 +34,10 @@ M.config = function()
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
+    experimental = {
+      ghost_text = false,
+      native_menu = true,
+    },
     formatting = {
       format = function(entry, vim_item)
         local icons = require("new_lsp.kind").icons
