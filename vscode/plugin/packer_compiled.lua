@@ -83,12 +83,6 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/Users/eh/.local/share/nvim/vscode/pack/packer/opt/vim-easy-align"
   },
-  ["vim-easymotion"] = {
-    config = { 'require"lvscode.easymotion"' },
-    loaded = false,
-    needs_bufread = false,
-    path = "/Users/eh/.local/share/nvim/vscode/pack/packer/opt/vim-easymotion"
-  },
   ["vim-indentwise"] = {
     loaded = true,
     path = "/Users/eh/.local/share/nvim/vscode/pack/packer/start/vim-indentwise"
@@ -109,7 +103,7 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'vim-easymotion', 'vim-easy-align'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'vim-easy-align'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

@@ -22,7 +22,6 @@ packer.startup(function(use)
   use { "jeetsukumaran/vim-indentwise" }
   use { "wbthomason/packer.nvim" }
   use { "wellle/targets.vim" }
-  use { "asvetliakov/vim-easymotion", event = "BufWinEnter", config = [[require"lvscode.easymotion"]] }
   use { "junegunn/vim-easy-align", event = "BufWinEnter", config = [[require"lvscode.easyalign"]] }
   use { "mg979/vim-visual-multi", branch = "master", config = [[require"lvscode.vim-visual-multi"]] }
 end)
