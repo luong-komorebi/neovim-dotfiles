@@ -24,7 +24,6 @@ O = {
 
   leader_key = [[\]],
   pallete = {}, -- color pallete to do custom coloring
-  vsnip_dir = vim.fn.stdpath "config" .. "/snippets",
   default_options = {
     autoread = true, --  When a file has been detected to have been changed outside of Vim and it has not been changed inside of Vim, automatically read it again.
     backup = false, -- creates a backup file
