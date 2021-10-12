@@ -42,7 +42,7 @@ M.config = {
   -- O.builtin.terminal.execs = {{}} to overwrite
   -- O.builtin.terminal.execs[#O.builtin.terminal.execs+1] = {"gdb", "tg", "GNU Debugger"}
   execs = {
-    { "lazygit", "lg", "LazyGit" },
+    { "lazygit", "gg", "LazyGit" },
   },
 }
 
