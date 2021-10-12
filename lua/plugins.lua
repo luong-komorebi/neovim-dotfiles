@@ -53,7 +53,6 @@ return {
   },
   { "mg979/vim-visual-multi", branch = "master", config = [[require"luong.vim-visual-multi"]] },
   { "dyng/ctrlsf.vim" },
-  { "junegunn/vim-peekaboo" },
   {
     "AckslD/nvim-neoclip.lua",
     config = function()

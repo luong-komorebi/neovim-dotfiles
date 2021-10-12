@@ -17,8 +17,8 @@ nnoremap <silent> <leader>b :Buffers<CR>
 
 nnoremap <silent> K :call FzfVisualSearch(expand('<cword>'), 0)<CR>
 vnoremap <silent> K :call FzfVisualSearchRange()<CR>
-nnoremap <silent> <leader>gl :Commits<CR>
-nnoremap <silent> <leader>ga :BCommits<CR>
+" nnoremap <silent> <leader>gl :Commits<CR>
+" nnoremap <silent> <leader>ga :BCommits<CR>
 
 " currently this is automatically handled by gutentags
 " let g:fzf_tags_command = 'ctags --tag-relative -R --sort=yes --exclude=.git --exclude=log --exclude=tmp --exclude=*.html --exclude=tmp --exclude=public --exclude=app/assets . '
