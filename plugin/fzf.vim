@@ -15,8 +15,8 @@ nnoremap <silent> <leader>? :History<CR>
 nnoremap <silent> <leader>A :Windows<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 
-nnoremap <silent> K :call FzfVisualSearch(expand('<cword>'), 0)<CR>
-vnoremap <silent> K :call FzfVisualSearchRange()<CR>
+nnoremap <silent> E :call FzfVisualSearch(expand('<cword>'), 0)<CR>
+vnoremap <silent> E :call FzfVisualSearchRange()<CR>
 " nnoremap <silent> <leader>gl :Commits<CR>
 " nnoremap <silent> <leader>ga :BCommits<CR>
 
