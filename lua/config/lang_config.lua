@@ -63,7 +63,7 @@ O.lang = {
           Lua = {
             diagnostics = {
               -- Get the language server to recognize the `vim` global
-              globals = { "vim", "O" },
+              globals = { "vim", "O", "lvim" },
             },
             workspace = {
               -- Make the server aware of Neovim runtime files
