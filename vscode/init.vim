@@ -59,6 +59,12 @@ xnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')<CR>
 
 nnoremap gr <Cmd>call VSCodeNotify('editor.action.goToReferences')<CR>
 
+" Search in projects
+command! FindInFile call VSCodeNotify('workbench.action.findInFiles', {'query': expand('<cword>'), 'replace': ''})
+command! FindInFileS call VSCodeNotify('workbench.action.findInFiles', {'query': @p, 'replace': ''})
+nnoremap <silent> E :FindInFile<CR>
+xnoremap <silent> E "py<Esc>:FindInFileS<CR>
+
 " Bind C-/ to vscode commentary since calling from vscode produces double comments due to multiple cursors
 xnoremap <expr> <C-/> <SID>vscodeCommentary()
 nnoremap <expr> <C-/> <SID>vscodeCommentary() . '_'
