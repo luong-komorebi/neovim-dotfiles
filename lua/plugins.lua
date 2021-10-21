@@ -316,7 +316,6 @@ return {
   { "tpope/vim-cucumber", ft = { "ruby" } },
   { "tpope/vim-surround" },
   { "tpope/vim-projectionist", ft = { "ruby" } },
-  { "junegunn/gv.vim" },
   { "tpope/vim-rake", ft = { "ruby" } },
   { "tpope/vim-bundler", ft = { "ruby" } },
 }
