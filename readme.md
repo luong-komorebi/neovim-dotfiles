@@ -1,3 +1,5 @@
+**Warning: I have recently moved to LunarVim(https://github.com/LunarVim/LunarVim) so this project is no longer actively maintained.**
+
 # Neovim dotfiles
 
 My colleagues keep asking for my dotfiles. Therefore, I thought I would make it public one day :D (although this repo may not be up-to-date since I don't manage nvim configs with this repo)
