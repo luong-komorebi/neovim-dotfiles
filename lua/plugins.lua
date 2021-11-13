@@ -116,7 +116,7 @@ return {
           ["class-name"] = " ", -- Classes and class-like objects
           ["function-name"] = " ", -- Functions
           ["method-name"] = " ", -- Methods (functions inside class-like objects)
-          ["container-name"] = " ",   -- Containers (example: lua tables)
+          ["container-name"] = " ", -- Containers (example: lua tables)
         },
       }
     end,
@@ -267,6 +267,7 @@ return {
   { "rhysd/git-messenger.vim" },
   {
     "sindrets/diffview.nvim",
+    requires = "nvim-lua/plenary.nvim",
     config = [[require"luong.diffview"]],
   },
 
