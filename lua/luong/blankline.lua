@@ -7,6 +7,7 @@ vim.g.indent_blankline_filetype_exclude = {
   "neogitstatus",
   "CHADTree",
   "Trouble",
+  "terminal",
 }
 vim.g.indent_blankline_enabled = false
 -- vim.g.indent_blankline_char = "│"

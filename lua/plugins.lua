@@ -142,7 +142,7 @@ return {
       require("numb").setup()
     end,
   },
-  { "lukas-reineke/indent-blankline.nvim", config = [[require"luong.blankline"]] },
+  { "lukas-reineke/indent-blankline.nvim", event = "BufRead", config = [[require"luong.blankline"]] },
   { "preservim/vimux" },
   { -- ,to replace tagbar
     "liuchengxu/vista.vim",
