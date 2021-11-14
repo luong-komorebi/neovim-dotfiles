@@ -24,6 +24,11 @@ O.autocommands = {
       "lua require('vim.highlight').on_yank({higroup = 'Search', timeout = 200})",
     },
     {
+      "TextYankPost",
+      "*",
+      [[if v:event.operator is 'y' | execute 'OSCYankReg +' | endif]],
+    },
+    {
       "BufWinEnter",
       "*",
       "setlocal formatoptions-=c formatoptions-=r formatoptions-=o",
