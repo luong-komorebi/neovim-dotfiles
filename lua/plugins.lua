@@ -142,7 +142,6 @@ return {
       require("numb").setup()
     end,
   },
-  { "ntpeters/vim-better-whitespace", config = [[require"luong.better-whitespace"]] },
   { "lukas-reineke/indent-blankline.nvim", config = [[require"luong.blankline"]] },
   { "preservim/vimux" },
   { -- ,to replace tagbar
@@ -156,6 +155,11 @@ return {
     config = [[require"luong.nvim-ts-rainbow"]],
     event = "BufWinEnter",
   },
+  {
+    "tpope/vim-surround",
+    keys = { "c", "d", "y" },
+  },
+  { "ojroques/vim-oscyank" },
 
   -- Testing and autocomplete
   -- ================================
@@ -315,7 +319,6 @@ return {
 
   -- Tpope and his ruby magics  -- =========================
   { "tpope/vim-cucumber", ft = { "ruby" } },
-  { "tpope/vim-surround" },
   { "tpope/vim-projectionist", ft = { "ruby" } },
   { "tpope/vim-rake", ft = { "ruby" } },
   { "tpope/vim-bundler", ft = { "ruby" } },

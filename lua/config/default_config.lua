@@ -74,7 +74,8 @@ O = {
     linebreak = true, -- wrap long lines at a character in 'breakat' rather than at the last character that fits on the screen
     breakindent = true, -- every wrapped line will continue visually indented
     list = true,
-    listchars = [[lead:·,tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨]], -- notice the backslash character in lua
+
+    listchars = [[lead:·,tab:→\ ,eol:↴,nbsp:␣,trail:•,extends:⟩,precedes:⟨]], -- notice the backslash character in lua
     showbreak = [[↪\]],
     diffopt = [[filler,internal,algorithm:histogram,indent-heuristic]], -- Tip: histogram-based diffs using modern Vim integration with git's xdiff
     foldenable = false,
