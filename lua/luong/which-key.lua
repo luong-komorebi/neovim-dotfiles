@@ -153,7 +153,7 @@ M.config = function()
         t = { "<cmd>Telescope live_grep<cr>", "Text" },
         k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
         C = { "<cmd>Telescope commands<cr>", "Commands" },
-        p = { "<cmd>Telescope projects<CR>", "Recent projects" },
+        p = { "<cmd>Telescope projects<cr>", "Open recent projects" },
       },
     },
   }
