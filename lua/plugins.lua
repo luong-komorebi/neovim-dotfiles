@@ -107,6 +107,7 @@ return {
   },
 
   -- Passive support  -- ======================
+  { "ntpeters/vim-better-whitespace", config = [[require"luong.better-whitespace"]] },
   {
     "SmiteshP/nvim-gps",
     requires = "nvim-treesitter/nvim-treesitter",
