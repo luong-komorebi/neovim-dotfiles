@@ -128,16 +128,34 @@ return {
   },
   {
     "karb94/neoscroll.nvim",
+    event = "WinScrolled",
     config = function()
       require("neoscroll").setup {
-        mappings = { "<C-u>", "<C-d>", "<C-y>", "<C-e>", "zt", "zz", "zb" },
+        -- All these keys will be mapped to their corresponding default scrolling animation
+        mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb" },
+        hide_cursor = true, -- Hide cursor while scrolling
+        stop_eof = true, -- Stop at <EOF> when scrolling downwards
+        use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
+        respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+        easing_function = nil, -- Default easing function
+        pre_hook = nil, -- Function to run before the scrolling animation starts
+        post_hook = nil, -- Function to run after the scrolling animation ends
       }
     end,
   },
   {
     "norcalli/nvim-colorizer.lua",
     config = function()
-      require("luong.colorizer").config()
+      require("colorizer").setup({ "*" }, {
+        RGB = true, -- #RGB hex codes
+        RRGGBB = true, -- #RRGGBB hex codes
+        RRGGBBAA = true, -- #RRGGBBAA hex codes
+        rgb_fn = true, -- CSS rgb() and rgba() functions
+        hsl_fn = true, -- CSS hsl() and hsla() functions
+        css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+        css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+      })
     end,
   },
   {
@@ -178,7 +196,10 @@ return {
   { "neovim/nvim-lspconfig" },
   {
     "ray-x/lsp_signature.nvim",
-    event = "InsertEnter",
+    event = "BufRead",
+    config = function()
+      require("lsp_signature").setup()
+    end,
   },
   { "simrat39/symbols-outline.nvim", event = "BufWinEnter" },
   {
@@ -291,6 +312,13 @@ return {
     run = ":TSUpdate",
     requires = { "nvim-treesitter/nvim-treesitter-textobjects", branch = "0.5-compat" },
     config = [[require"luong.nvim-treesitter"]],
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    event = "InsertEnter",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
   },
   -- markdown
   {
