@@ -118,11 +118,14 @@ return {
     config = function()
       require("nvim-gps").setup {
         icons = {
-          ["class-name"] = " ", -- Classes and class-like objects
-          ["function-name"] = " ", -- Functions
-          ["method-name"] = " ", -- Methods (functions inside class-like objects)
-          ["container-name"] = " ", -- Containers (example: lua tables)
+          ["class-name"] = " ", -- classes and class-like objects
+          ["function-name"] = " ", -- functions
+          ["method-name"] = " ", -- methods (functions inside class-like objects)
+          ["container-name"] = " ", -- containers (example: lua tables)
+          ["tag-name"] = "炙", -- tags (example: html tags)
         },
+        depth = 0,
+        depth_limit_indicator = "..",
       }
     end,
   },
